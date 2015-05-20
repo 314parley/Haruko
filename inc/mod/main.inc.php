@@ -5,14 +5,14 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Mitsuba</title>
+<title>Haruko</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <frameset cols="200px,*" frameborder="1" border="1">
 <frame src="./mod.php?/nav" id="nav">
 <frame src="./mod.php?/announcements" name="main" id="main">
 <noframes>
-<h1>Mitsuba</h1>
+<h1>Haruko</h1>
 <p>This page uses frames!</p>
 </noframes>
 </frameset>

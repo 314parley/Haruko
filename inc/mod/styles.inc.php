@@ -17,8 +17,8 @@ $mitsuba->admin->reqPermission("styles.upload");
 			{
 				$name = $conn->real_escape_string($_POST['name']);
 				$filename = strtolower(preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $_FILES['upfile']['name']));
-				if(move_uploaded_file($_FILES['upfile']['tmp_name'], "./styles/".$filename)) {
-					$conn->query("INSERT INTO styles (`name`, `path`, `relative`, `default`) VALUES ('".$name."', './styles/".$filename."', 1, 0);");
+				if(move_uploaded_file($_FILES['upfile']['tmp_name'], "./css/".$filename)) {
+					$conn->query("INSERT INTO styles (`name`, `path`, `relative`, `default`) VALUES ('".$name."', './css/".$filename."', 1, 0);");
 					echo "<b style='color: green;'>".$lang['mod/style_uploaded']."</b>";
 				}
 			}

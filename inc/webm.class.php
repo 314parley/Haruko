@@ -40,7 +40,7 @@ class webm {
 		$ext = strtolower(pathinfo($thumbnail_location, PATHINFO_EXTENSION));
 		switch($ext) {
 			case 'webm':
-				$this->exec_string = '/home/www/ffmpeg -i '.$this->input_file.
+				$this->exec_string = 'ffmpeg -i '.$this->input_file.
 									 ' -vcodec '.$this->codec.
 									 ' -an'.
 									 ' -t '.$this->max_time.
@@ -49,7 +49,7 @@ class webm {
 									 ' </dev/null 2>&1';
 				break;
 			case 'gif':
-				$this->exec_string = '/home/www/ffmpeg -i '.$this->input_file.
+				$this->exec_string = 'ffmpeg -i '.$this->input_file.
 									 ' -t '.$this->max_time.
 									 ' -r 10 '.
 									 " -vf scale=\"'if(gte(iw,ih),$max_w,-1)':'if(gte(iw,ih),-1,$max_h)'\",drawtext=\"fontfile=/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf:  text='$overlay': fontcolor=white: x=2: y=(h-text_h)\" ".

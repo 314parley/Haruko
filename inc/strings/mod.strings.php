@@ -1,16 +1,16 @@
 <?php
-$lang['mod/not_logged_in'] = "NOT LOGGED IN";
+$lang['mod/not_logged_in'] = "Not Logged in!";
 $lang['mod/log_in'] = "Log in";
 $lang['mod/username'] = "Username";
 $lang['mod/password'] = "Password";
-$lang['mod/bad_password'] = "BAD PASSWORD OR USERNAME";
+$lang['mod/bad_password'] = "Incorrect info. Try again.";
 $lang['mod/logged_in_as'] = "You are logged in as ";
 $lang['mod/privileges'] = "Privileges: ";
 $lang['mod/administrator'] = "Administrator";
 $lang['mod/moderator'] = "Moderator";
 $lang['mod/janitor'] = "Janitor";
 $lang['mod/faggot'] = "Faggot";
-$lang['mod/logout'] = "[Log out]";
+$lang['mod/logout'] = "Logout";
 
 
 $lang['mod/general'] = "General";
@@ -40,7 +40,7 @@ $lang['mod/send_message'] = "Send message";
 $lang['mod/administration'] = "Administration";
 $lang['mod/configuration'] = "Configuration";
 $lang['mod/manage_boards'] = "Manage boards";
-$lang['mod/manage_board_links'] = "Manage board links";
+$lang['mod/manage_board_links'] = "Manage Categories";
 $lang['mod/manage_users'] = "Manage users";
 $lang['mod/manage_whitelist'] = "Manage whitelist";
 $lang['mod/manage_news_entries'] = "Manage news entries";
@@ -83,7 +83,7 @@ $lang['mod/all_news_entries'] = "All news entries";
 
 $lang['mod/board_created'] = "Board created";
 $lang['mod/board_exists_mysql_error'] = "Board exists or MySQL error";
-$lang['mod/fill_all_fields'] = "Please, fill all fields!";
+$lang['mod/fill_all_fields'] = "<h3>Please, fill in all fields!</h3><br />";
 $lang['mod/create_new_board'] = "Create new board";
 
 $lang['mod/board_directory'] = "Board directory (without /'s)";
@@ -111,7 +111,7 @@ $lang['mod/imageboard'] = "Imageboard";
 $lang['mod/fileboard'] = "File listing board";
 $lang['mod/linkboard'] = "Link listing board";
 $lang['mod/textboard'] = "Textboard";
-$lang['mod/archive'] = "Archive";
+$lang['mod/archive'] = "Archive (DO NOT USE!!)";
 
 $lang['mod/all_boards'] = "All boards";
 $lang['mod/directory'] = "Directory";
@@ -274,7 +274,7 @@ $lang['mod/edit_bbcode'] = "Edit BBCode";
 $lang['mod/regex'] = "Regex";
 $lang['mod/add_embed'] = "Add embed";
 $lang['mod/edit_embed'] = "Edit embed";
-$lang['mod/no_file'] = "No file selected ;_;";
+$lang['mod/no_file'] = "<h3>No file selected ;_;</h3><br />";
 $lang['mod/style_uploaded'] = "Stylesheet uploaded.";
 $lang['mod/fool'] = "Don't try to fool me!";
 $lang['mod/default'] = "default";

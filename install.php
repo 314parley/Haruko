@@ -1,7 +1,7 @@
 <?php
 if (file_exists("./config.php"))
 {
-die("Y U R TRYIN TO HACK THIS WONDERFUL SCRIPT?");
+die("Haruko has already been installed!");
 }
 if (!defined('PHP_VERSION_ID')) {
     $version = explode('.', PHP_VERSION);
@@ -11,8 +11,8 @@ if (!defined('PHP_VERSION_ID')) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Mitsuba</title>
-<link rel="stylesheet" href="./styles/mitsuba.css" />
+<title>Haruko</title>
+<link rel="stylesheet" href="/css/yotsuba.css" />
 <style type="text/css">
 tbody td {
 	color: #000000;
@@ -54,7 +54,7 @@ switch ($mode)
 		?>
 		<div class="box-outer top-box">
 		<div class="box-inner">
-		<div class="boxbar"><h2>Mitsuba installer</h2></div>
+		<div class="boxbar"><h2>Haruko installer</h2></div>
 		<div class="boxcontent">
 		<form action="?mode=install2" method="POST">
 		Database host: <input type="text" name="db_host" value="localhost" /><br />
@@ -111,9 +111,9 @@ switch ($mode)
 		</div>
 			<?php
 			} else {
-				if (file_exists("./database.sql"))
+				if (file_exists("./haruko.sql"))
 				{
-					$db = file_get_contents("./database.sql");
+					$db = file_get_contents("./haruko.sql");
 					$result = $conn->multi_query($db);
 					while ($conn->more_results())
 					{
@@ -165,7 +165,7 @@ switch ($mode)
 						?>
 			<div class="box-outer top-box">
 		<div class="box-inner">
-		<div class="boxbar"><h2>Mitsuba installed succesfully!</h2></div>
+		<div class="boxbar"><h2>Haruko installed succesfully!</h2></div>
 		<div class="boxcontent">
 		<a href="./mod.php">[ GO TO ADMIN PANEL ]</a>
 		</div>
@@ -178,7 +178,7 @@ switch ($mode)
 				?>
 			<div class="box-outer top-box">
 		<div class="box-inner">
-		<div class="boxbar"><h2>database.sql not found!</h2></div>
+		<div class="boxbar"><h2>haruko.sql not found!</h2></div>
 		<div class="boxcontent">
 		<a href="./install.php">[ BACK ]</a>
 		</div>
@@ -202,21 +202,21 @@ switch ($mode)
 			'name' => 'Is PHP version >= 5.3?',
 			'test' => PHP_VERSION_ID >= 50300,
 			'on_fail' => 'fatal_error',
-			'fail_message' => 'Mitsuba requires at least PHP version 5.3 to run.'
+			'fail_message' => 'Haruko requires at least PHP version 5.3 to run.'
 		);
 		$tests[] = array(
 			'category' => 'Environment',
 			'name' => 'Is PHP version >= 5.4?',
 			'test' => PHP_VERSION_ID >= 50400,
 			'on_fail' => 'warning',
-			'fail_message' => 'In future Mitsuba will require PHP version 5.4, so you should get ready for it.'
+			'fail_message' => 'In future Haruko will require PHP version 5.4, so you should get ready for it.'
 		);
 		$tests[] = array(
 			'category' => 'Environment',
 			'name' => 'Is MySQLi extension installed?',
 			'test' => extension_loaded("mysqli"),
 			'on_fail' => 'fatal_error',
-			'fail_message' => 'Mitsuba requires MySQLi to store boards, posts and stuff.'
+			'fail_message' => 'Haruko requires MySQLi to store boards, posts and stuff.'
 		);
 		$tests[] = array(
 			'category' => 'Environment',
@@ -230,7 +230,7 @@ switch ($mode)
 			'name' => 'Is mime_content_type supported?',
 			'test' => function_exists("mime_content_type"),
 			'on_fail' => 'fatal_error',
-			'fail_message' => 'Mitsuba needs mime_content_type to detect filetypes of uploaded files'
+			'fail_message' => 'Haruko needs mime_content_type to detect filetypes of uploaded files'
 		);
 		$tests[] = array(
 			'category' => 'Features',
@@ -262,8 +262,8 @@ switch ($mode)
 		);
 		$tests[] = array(
 			'category' => 'File system',
-			'name' => 'Is '.getcwd().'/styles/ writable?',
-			'test' => is_writable("./styles/"),
+			'name' => 'Is '.getcwd().'/css/ writable?',
+			'test' => is_writable("./css/"),
 			'on_fail' => 'fatal_error',
 			'fail_message' => 'You have to set up 755 permissions for '.getcwd().'/styles/ or you won\'t be able to upload new stylesheets'
 		);
@@ -279,19 +279,19 @@ switch ($mode)
 			'name' => 'Is GD extension available and JPG, GIF and PNG supported?',
 			'test' => (extension_loaded("gd")) && (function_exists('imagecreatefromjpeg')) && (function_exists('imagecreatefromgif')) && (function_exists('imagecreatefrompng')),
 			'on_fail' => 'fatal_error',
-			'fail_message' => 'Mitsuba requires GD to thumbnail images.'
+			'fail_message' => 'Haruko requires GD to thumbnail images.'
 		);
 		$tests[] = array(
 			'category' => 'Imaging',
 			'name' => 'Is imagick PHP extension available?',
 			'test' => extension_loaded("imagick"),
 			'on_fail' => 'warning',
-			'fail_message' => 'Mitsuba uses imagick to make animated thumbnails from GIFs.'
+			'fail_message' => 'Haruko uses imagick to make animated thumbnails from GIFs.'
 		);
 		?>
 		<div class="box-outer top-box">
 		<div class="box-inner">
-		<div class="boxbar"><h2>Mitsuba installer</h2></div>
+		<div class="boxbar"><h2>Haruko installer</h2></div>
 		<div class="boxcontent">
 		<table>
 		<thead>
@@ -343,7 +343,7 @@ switch ($mode)
 		}
 		if (count($fatals) >= 1)
 		{
-			echo "<b>Mitsuba installation can not continue because of unsolved errors</b>";
+			echo "<b>Haruko installation can not continue because of unsolved errors</b>";
 		} else {
 			echo '[ <a href="?mode=install">Install</a> ] [ <a href="?mode=convert">Convert</a> ]';
 		}

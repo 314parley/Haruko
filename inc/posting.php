@@ -365,7 +365,7 @@ class Posting {
 			{
 				if ($resto != 0)
 				{
-					$poster_id = $this->mitsuba->common->mkid($_SERVER['REMOTE_ADDR'], $resto, $board);
+					$poster_id = $this->mitsuba->common->mkid($_SERVER['HTTP_CF_CONNECTING_IP'], $resto, $board);
 				}
 				
 			}
@@ -414,7 +414,7 @@ class Posting {
 			}
 		}
 		$this->conn->query("INSERT INTO posts (board, `date`, name, trip, strip, poster_id, email, subject, comment, password, orig_filename, filename, resto, ip, lastbumped, filehash, orig_filesize, filesize, imagesize, mimetype, t_w, t_h, sticky, sage, locked, raw, capcode_text, capcode_style, capcode_icon, deleted".$custom_fields_names.")".
-		"VALUES ('".$board."', ".time().", '".$name."', '".$trip."', '".$strip."', '".$this->conn->real_escape_string($poster_id)."', '".$this->mitsuba->common->processString($email)."', '".$this->mitsuba->common->processString($subject)."', '".$this->mitsuba->common->preprocessComment($comment)."', '".md5($password)."', '".$this->mitsuba->common->processString($orig_filename)."', '".$filename."', ".$resto.", '".$_SERVER['REMOTE_ADDR']."', ".$lastbumped.", '".$md5."', ".$osize.", '".$fsize."', '".$isize."', '".$mimetype."', ".$t_w.", ".$t_h.", ".$sticky.", 0, ".$locked.", ".$raw.", '".$cc_text."', '".$cc_style."', '".$cc_icon."', 0".$custom_fields_values.")");
+		"VALUES ('".$board."', ".time().", '".$name."', '".$trip."', '".$strip."', '".$this->conn->real_escape_string($poster_id)."', '".$this->mitsuba->common->processString($email)."', '".$this->mitsuba->common->processString($subject)."', '".$this->mitsuba->common->preprocessComment($comment)."', '".md5($password)."', '".$this->mitsuba->common->processString($orig_filename)."', '".$filename."', ".$resto.", '".$_SERVER['HTTP_CF_CONNECTING_IP']."', ".$lastbumped.", '".$md5."', ".$osize.", '".$fsize."', '".$isize."', '".$mimetype."', ".$t_w.", ".$t_h.", ".$sticky.", 0, ".$locked.", ".$raw.", '".$cc_text."', '".$cc_style."', '".$cc_icon."', 0".$custom_fields_values.")");
 		$id = $this->conn->insert_id;
 		if (empty($fake_id))
 		{
@@ -423,7 +423,7 @@ class Posting {
 			{
 				if ($resto == 0)
 				{
-					$poster_id = $this->mitsuba->common->mkid($_SERVER['REMOTE_ADDR'], $id, $board);
+					$poster_id = $this->mitsuba->common->mkid($_SERVER['HTTP_CF_CONNECTING_IP'], $id, $board);
 				}
 				
 			}
@@ -513,7 +513,7 @@ class Posting {
 
 		if ($config['enable_api']==1)
 		{
-			$this->mitsuba->caching->serializeBoard($_GET['b']);
+			$this->mitsuba->caching->serializeBoard(isset($_GET['b']));
 		}
 	}
 
@@ -534,7 +534,7 @@ class Posting {
 				if ($result->num_rows == 0)
 				{
 					$reason = $this->conn->real_escape_string(htmlspecialchars($reason));
-					$this->conn->query("INSERT INTO reports (reporter_ip, reported_post, reason, created, board) VALUES ('".$_SERVER['REMOTE_ADDR']."', ".$id.", '".$reason."', ".time().", '".$board."')");
+					$this->conn->query("INSERT INTO reports (reporter_ip, reported_post, reason, created, board) VALUES ('".$_SERVER['HTTP_CF_CONNECTING_IP']."', ".$id.", '".$reason."', ".time().", '".$board."')");
 				} else {
 					return 1;
 				}

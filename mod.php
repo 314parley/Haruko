@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if (!file_exists("./config.php"))
 {
 header("Location: ./install.php");
@@ -164,10 +165,10 @@ while ($row = $styles->fetch_assoc())
 <br /><br />
 <?php
 }
-if ((!empty($_SESSION['logged'])) && ($_SESSION['logged']==1) && ($_SESSION['ip']!=$_SERVER['REMOTE_ADDR']))
+if ((!empty($_SESSION['logged'])) && ($_SESSION['logged']==1) && ($_SESSION['ip']!=$_SERVER['HTTP_CF_CONNECTING_IP']))
 {
-	$mitsuba->admin->logAction(sprintf($lang['log/ip_changed'], $_SESSION['ip'], $_SERVER['REMOTE_ADDR']));
-	$_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
+	$mitsuba->admin->logAction(sprintf($lang['log/ip_changed'], $_SESSION['ip'], $_SERVER['HTTP_CF_CONNECTING_IP']));
+	$_SESSION['ip']=$_SERVER['HTTP_CF_CONNECTING_IP'];
 }
 switch ($path)
 {

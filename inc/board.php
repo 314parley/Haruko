@@ -26,7 +26,7 @@ class Board
 					{
 						try {
 							if (preg_match($row['search'], $comment)) {
-								$this->mitsuba->common->addSystemBan($_SERVER['REMOTE_ADDR'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
+								$this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
 								echo '<meta http-equiv="refresh" content="2;URL='."'./banned.php'".'">';
 								die();
 							}
@@ -36,7 +36,7 @@ class Board
 						}
 					} else {
 						if (stripos($comment, $row['search']) !== false) {
-							$this->mitsuba->common->addSystemBan($_SERVER['REMOTE_ADDR'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
+							$this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
 							echo '<meta http-equiv="refresh" content="2;URL='."'./banned.php'".'">';
 							die();
 						}
@@ -47,7 +47,7 @@ class Board
 				{
 					try {
 						if (preg_match($row['search'], $comment)) {
-							$this->mitsuba->common->addSystemBan($_SERVER['REMOTE_ADDR'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
+							$this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
 							echo '<meta http-equiv="refresh" content="2;URL='."'./banned.php'".'">';
 							die();
 						}
@@ -57,7 +57,7 @@ class Board
 					}
 				} else {
 					if (stripos($comment, $row['search']) !== false) {
-							$this->mitsuba->common->addSystemBan($_SERVER['REMOTE_ADDR'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
+							$this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
 							echo '<meta http-equiv="refresh" content="2;URL='."'./banned.php'".'">';
 							die();
 					}
@@ -69,7 +69,7 @@ class Board
 	function checkThreadDate($bdata, $return_url)
 	{
 		global $lang;
-		$lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='".$_SERVER['REMOTE_ADDR']."' AND resto=0 AND board='".$bdata['short']."' ORDER BY date DESC LIMIT 0, 1");
+		$lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='".$_SERVER['HTTP_CF_CONNECTING_IP']."' AND resto=0 AND board='".$bdata['short']."' ORDER BY date DESC LIMIT 0, 1");
 		if ($lastdate->num_rows == 1)
 		{
 			$pdate = $lastdate->fetch_assoc();
@@ -86,7 +86,7 @@ class Board
 	function checkPostDate($bdata, $return_url)
 	{
 		global $lang;
-		$lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='".$_SERVER['REMOTE_ADDR']."' AND board='".$bdata['short']."' ORDER BY date DESC LIMIT 0, 1");
+		$lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='".$_SERVER['HTTP_CF_CONNECTING_IP']."' AND board='".$bdata['short']."' ORDER BY date DESC LIMIT 0, 1");
 		if ($lastdate->num_rows == 1)
 		{
 			$pdate = $lastdate->fetch_assoc();

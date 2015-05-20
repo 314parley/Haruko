@@ -9,12 +9,12 @@ $appeals = $conn->query("SELECT * FROM appeals;")->num_rows;
 $breqs = $conn->query("SELECT * FROM ban_requests;")->num_rows;
 $pms = $conn->query("SELECT * FROM pm WHERE to_user=".$_SESSION['id']." AND read_msg=0")->num_rows;
 
-$menu['gen'] = array(
-	'name' => $lang['mod/general'],
-	'children' => array()
-);
 $menu['acc'] = array(
 	'name' => $lang['mod/account'],
+	'children' => array()
+);
+$menu['gen'] = array(
+	'name' => $lang['mod/general'],
 	'children' => array()
 );
 $menu['adm'] = array(
@@ -26,6 +26,26 @@ $menu['brd'] = array(
 	'children' => array()
 );
 
+$menu['acc']['children'][] = array(
+	'url' => '?/inbox',
+	'name' => $lang['mod/inbox'].' ('.$pms.')',
+	'show' => $mitsuba->admin->checkPermission("user.inbox")
+);
+$menu['acc']['children'][] = array(
+	'url' => '?/outbox',
+	'name' => $lang['mod/outbox'],
+	'show' => $mitsuba->admin->checkPermission("user.inbox")
+);
+$menu['acc']['children'][] = array(
+	'url' => '?/inbox/new',
+	'name' => $lang['mod/send_message'],
+	'show' => $mitsuba->admin->checkPermission("user.inbox")
+);
+$menu['acc']['children'][] = array(
+	'url' => '?/password',
+	'name' => $lang['mod/change_password'],
+	'show' => $mitsuba->admin->checkPermission("user.change_password")
+);
 $menu['gen']['children'][] = array(
 	'url' => '?/announcements',
 	'name' => $lang['mod/announcements'],
@@ -125,26 +145,6 @@ $menu['gen']['children'][] = array(
 	'url' => '?/sticky',
 	'name' => $lang['mod/sticky'],
 	'show' => $mitsuba->admin->checkPermission("post.sticky")
-);
-$menu['acc']['children'][] = array(
-	'url' => '?/inbox',
-	'name' => $lang['mod/inbox'].' ('.$pms.')',
-	'show' => $mitsuba->admin->checkPermission("user.inbox")
-);
-$menu['acc']['children'][] = array(
-	'url' => '?/outbox',
-	'name' => $lang['mod/outbox'],
-	'show' => $mitsuba->admin->checkPermission("user.inbox")
-);
-$menu['acc']['children'][] = array(
-	'url' => '?/inbox/new',
-	'name' => $lang['mod/send_message'],
-	'show' => $mitsuba->admin->checkPermission("user.inbox")
-);
-$menu['acc']['children'][] = array(
-	'url' => '?/password',
-	'name' => $lang['mod/change_password'],
-	'show' => $mitsuba->admin->checkPermission("user.change_password")
 );
 $menu['adm']['children'][] = array(
 	'url' => '?/config',

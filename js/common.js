@@ -537,7 +537,7 @@ function addBacklinks(parent)
 			
 			if ($("#bl"+postid).html() == "")
 			{
-				$("#bl"+postid).append("<hr />");
+				$("#bl"+postid).append("<hr /> Replies: ");
 			}
 			var targetid = $(this).parent(".postMessage").attr("id").substr(1);
 			if ($("#bl"+postid+" a[data-targetid='"+targetid+"']").length == 0)

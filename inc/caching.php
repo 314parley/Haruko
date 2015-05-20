@@ -66,7 +66,7 @@ class Caching
 						}
 				$out .= '
 				<br><h2>Custom board links</h2>
-				<input type="text" value="" name="o_custom_links">
+				<center><input type="text" value="" name="o_custom_links"></center>
 				<div class="btn-wrap">
 					<input type="button" value="Reset" id="settingsReset"/>
 					<input type="button" value="Save" id="settingsSave"/>
@@ -90,7 +90,7 @@ class Caching
 		$categories = [];
 		$data = [];
 		$out = '';
-
+	
 		$result = $this->conn->query("SELECT * FROM links");
 		while ($row = $result->fetch_assoc()) {
 			$id = $row['id'];
@@ -100,26 +100,41 @@ class Caching
 			} else
 				array_push($data[$categories[$row['parent']]], $row);
 		}
-
+	
 		foreach ($data as $category => $links) {
 			$out .= '<div class="group">';
-			$out .= '<h2>'.$category.'</h2>';
+			$out .= '[';
+	
+			$i = 0;
+	
 			foreach ($links as $boardLink) {
-				if ($boardLink['relative'] == 1)
+	
+				$i++;
+	
+				/*if ($boardLink['relative'] == 1)
 				{
-					$out .= '<a href="'.$this->mitsuba->getPath($boardLink['url'], $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a>';
-				} elseif ($boardLink['relative'] == 2)
+					$out .= ' <a href="'.$this->mitsuba->getPath($boardLink['url'], $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a> /';
+				} else*/ 
+				if ($boardLink['relative'] == 2)
 				{
-					$out .= '<a href="'.$this->mitsuba->getPath("./".$boardLink['url']."/", $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a>';
+					if(count($links) ==  $i){
+	
+						$out .= ' <a href="'.$this->mitsuba->getPath("./".$boardLink['url']."/", $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a> ';
+					}
+					else{
+						
+						$out .= ' <a href="'.$this->mitsuba->getPath("./".$boardLink['url']."/", $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a> /';
+					}
+					
 				} else {
-					$out .= '<a href="'.$boardLink['url'].'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a>';
+					$out .= '<a href="'.$boardLink['url'].'" title="'.$boardLink['title'].'"> /'.$boardLink['short'].'</a>';
 				}
 			}
-			$out .= '</div>';
+			$out .= ']</div>';
 		}
+		$out .= '<div class="group">[<a class="fa fa-twitter" href="http://www.twitter.com/314chan" title="@314chan"></a> / <a class="fa fa-heartbeat" href="https://status.314chan.org/" title="Status Page"></a> / <a class="fa fa-pie-chart" href="https://anal.314chan.org/" title="Analytics"></a> / <a class="fa fa-phone" href="https://314chan.org/index.php?view=faq#id3" title="Tech Support"></a><!-- / <a>blahblahblah</a>-->]</div>';
 		return $out;
 	}
-
 	function getBoardLinks($location = "board")
 	{
 		if ($location == "board")
@@ -364,7 +379,8 @@ class Caching
 
 		// --------------------------------------------
 
-		$file .= '<link title="Mobile" rel="stylesheet" href="'.$this->mitsuba->getPath('./styles/mobile.css', $location, 1).'" type="text/css"/>';
+		$file .= '<link title="Mobile" rel="stylesheet" href="'.$this->mitsuba->getPath('/css/mobile.css', $location, 0).'" type="text/css"/>';
+		$file .= '<link rel="stylesheet" href="'.$this->mitsuba->getPath('/css/font-awesome.min.css', $location, 0).'" type="text/css"/>';
 
 		// --------------------------------------------
 
@@ -379,7 +395,7 @@ class Caching
 		}
 		if ($catalog == 1)
 		{
-			$file .= '<link rel="stylesheet" href="'.$this->mitsuba->getPath("./styles/catalog.css", $location, 1).'">';
+			$file .= '<link rel="stylesheet" href="'.$this->mitsuba->getPath("/css/catalog.css", $location, 0).'">';
 		}
 		$file .= "<script type='text/javascript' src='".$this->mitsuba->getPath("./js/jquery.js", $location, 1)."'></script>";
 		$file .= "<script type='text/javascript' src='".$this->mitsuba->getPath("./js/jquery.cookie.js", $location, 1)."'></script>";
@@ -395,6 +411,7 @@ class Caching
 			}
 		}
 		$file .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+		$file .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />';
 		$file .= '<meta property="og:boardname" content="'.$boarddata['short'].'" />';
 		$file .= $this->getAds($boarddata['short'], "head");
 		if ($location == "index")
@@ -421,7 +438,7 @@ class Caching
 			$images = array_merge($images, glob($imagesDirBoard . '*.{jpg,jpeg,png,gif}', GLOB_BRACE));
 		}
 		$randomImage = $images[array_rand($images)]; 
-		$file .= '<img class="title" src="'.$this->mitsuba->getPath($randomImage, $location, 1).'" alt="Mitsuba" />';
+		$file .= '<img class="title" src="/banners/r.php" alt="Haruko" />';
 		$file .= '<div class="boardTitle">/'.$boarddata['short'].'/ - '.$boarddata['name'].'</div>';
 		$file .= '<div class="boardSubtitle">'.$boarddata['des'].'</div>';
 		$file .= '</div>';
@@ -694,7 +711,7 @@ class Caching
 				if (!empty($fspecials))
 				{
 					$postform .= '<tr>
-						<td></td>
+						<td>Options</td>
 						<td>'.$fspecials.'</td>
 						</tr>';
 				}
@@ -746,6 +763,15 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 				$postform .= "</td></tr>";
 			}
 			$unique = $this->conn->query("SELECT DISTINCT ip FROM posts WHERE board='".$boarddata['short']."';")->num_rows;
+			$AllExtensions = array();
+				$result = $this->conn->query("SELECT DISTINCT * FROM extensions;");
+				while ($row = $result->fetch_assoc())
+				{
+					$AllExtensions[$row['ext']] = $row['ext'];
+				}
+				if($boarddata['extensions'] == "%"){
+				$boarddata['extensions'] = implode(", ", $AllExtensions);
+				}
 			$postform .= '<tr class="rules">
 				<td colspan="2">
 				<ul class="rules">
@@ -916,9 +942,9 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 					{
 						if (substr($row['capcode_icon'], 0, 1)==".")
 						{
-							$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
+							//$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
 						} else {
-							$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
+							//$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
 						}
 					}
 					$email_a = "";
@@ -1112,7 +1138,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 					$file .= '</div>';
 				}
 			}
-			$file .= '<div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+			$file .= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 			$file .= '<div id="bottom"></div>';
 			if ($this->config['enable_meny']==1)
 			{
@@ -1144,7 +1170,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 	function getMenyConfig($location = "board")
 	{
 		$file = "</div>";
-		$file .= '<link rel="stylesheet" href="'.$this->mitsuba->getPath("./styles/meny.css", $location, 1).'">';
+		$file .= '<link rel="stylesheet" href="'.$this->mitsuba->getPath("/css/meny.css", $location, 0).'">';
 		$file .= "<script type='text/javascript' src='".$this->mitsuba->getPath("./js/meny.min.js", $location, 1)."'></script>\n";
 		$file .= '<script type="text/javascript">'."\n";
 		$file .= 'if ( window.self === window.top ) {'."\n";
@@ -1334,9 +1360,9 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 		{
 			if (substr($row['capcode_icon'], 0, 1)==".")
 			{
-				$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
+				//$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
 			} else {
-				$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
+				//$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
 			}
 		}
 		$email_a = "";
@@ -1367,15 +1393,15 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 			$file .= '<span class="postNum"><a href="?/board&b='.$row['board'].'&t='.$row['id'].'#p'.$row['id'].'" title="Highlight this post">No.</a><a href="?/board&b='.$row['board'].'&t='.$row['id'].'#p'.$row['id'].'#q'.$row['id'].'" class="quotePost" id="z'.$row['id'].'" title="Quote this post">'.$row['id'].'</a></span>';
 			if ($row['locked']==1)
 			{
-				$file .= '<img src="./img/closed.gif" alt="Closed" title="Closed" class="stickyIcon" />';
+				$file .= '<i alt="Closed" title="Closed" class="fa fa-lock fa-2 stickyIcon"></i>';
 			}
 			if ($row['sticky']==1)
 			{
-				$file .= '<img src="./img/sticky.gif" alt="Sticky" title="Sticky" class="stickyIcon" />';
+				$file .= '<i alt="Sticky" title="Sticky" class="fa fa-thumb-tack fa-2 stickyIcon"></i>';
 			}
 			if ($row['sage']==1)
 			{
-				$file .= ' <span style="color: red;">[A]</span> ';
+				$file .= ' <span style="color: red;"><i alt="Permasaged" title="Permasaged" class="fa fa-leaf fa-2 stickyIcon"></i></span> ';
 			}
 			if ($adm_type >= 2)
 			{
@@ -1407,23 +1433,33 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 			$file .= '<span class="postNum"><a href="../../'.$row['board'].'/res/'.$row['id'].'.html#p'.$row['id'].'" title="Highlight this post">No.</a><a href="../../'.$row['board'].'/res/'.$row['id'].'.html#q'.$row['id'].'" class="quotePost" id="z'.$row['id'].'" title="Quote this post">'.$row['id'].'</a>';
 			if ($row['locked']==1)
 			{
-				$file .= '<img src="../../img/closed.gif" alt="Closed" title="Closed" class="stickyIcon" />';
+				$file .= '<i alt="Closed" title="Closed" class="fa fa-lock fa-2 stickyIcon"></i>';
 			}
 			if ($row['sticky']==1)
 			{
-				$file .= '<img src="../../img/sticky.gif" alt="Sticky" title="Sticky" class="stickyIcon" />';
+				$file .= '<i alt="Sticky" title="Sticky" class="fa fa-thumb-tack fa-2 stickyIcon"></i>';
 			}
+			if ($row['sage']==1)
+			{
+				$file .= ' <span style="color: red;"><i alt="Permasaged" title="Permasaged" class="fa fa-leaf fa-2 stickyIcon"></i></span> ';
+			}
+
 			$file .= '</span>';
 		} else {
 			$file .= '<span class="postNum"><a href="../'.$row['board'].'/res/'.$row['id'].'.html#p'.$row['id'].'" title="Highlight this post">No.</a><a href="../'.$row['board'].'/res/'.$row['id'].'.html#q'.$row['id'].'" class="quotePost" id="z'.$row['id'].'" title="Quote this post">'.$row['id'].'</a> ';
 			if ($row['locked']==1)
 			{
-				$file .= '<img src="../img/closed.gif" alt="Closed" title="Closed" class="stickyIcon" />';
+				$file .= '<i alt="Closed" title="Closed" class="fa fa-lock fa-2 stickyIcon"></i>';
 			}
 			if ($row['sticky']==1)
 			{
-				$file .= '<img src="../img/sticky.gif" alt="Sticky" title="Sticky" class="stickyIcon" />';
+				$file .= '<i alt="Sticky" title="Sticky" class="fa fa-thumb-tack fa-2 stickyIcon"></i>';
 			}
+			if ($row['sage']==1)
+			{
+				$file .= ' <span style="color: red;"><i alt="Permasaged" title="Permasaged" class="fa fa-leaf fa-2 stickyIcon"></i></span> ';
+			}
+
 			$file .= '&nbsp; <span>[<a href="../'.$row['board'].'/res/'.$row['id'].'.html" class="replylink">'.$lang['img/reply'].'</a>]</span></span>';
 		}
 		$file .= '</div>';
@@ -1531,9 +1567,9 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 			{
 				if (substr($row2['capcode_icon'], 0, 1)==".")
 				{
-					$c_image = ' <img src="'.$this->mitsuba->getPath($row2['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
+					//$c_image = ' <img src="'.$this->mitsuba->getPath($row2['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
 				} else {
-					$c_image = ' <img src="'.$row2['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
+					//$c_image = ' <img src="'.$row2['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
 				}
 			}
 			$email_a = "";
@@ -1836,7 +1872,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 		$file .= '<div class="stylechanger" id="stylechangerDiv" style="display:none;">'.$lang['img/style'].' <select id="stylechanger"></select></div>
 			</div>';
 		$file .= $this->getAds($boarddata['short'], "footer");
-		$file .= '<div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+		$file .= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 		$file .= '<div id="bottom"></div>';
 		if ($this->config['enable_meny']==1)
 		{

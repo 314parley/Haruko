@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if (empty($_POST['mode']))
 {
@@ -64,7 +65,7 @@ if (!empty($_POST['mode']))
 				exit;
 			}
 			$board = $_POST['board'];
-			if (($mod == 0) && ($mitsuba->common->isWhitelisted($_SERVER['REMOTE_ADDR']) < 1))
+			if (($mod == 0) && ($mitsuba->common->isWhitelisted($_SERVER['HTTP_CF_CONNECTING_IP']) < 1))
 			{
 				$mitsuba->common->banMessage($board);
 				$mitsuba->common->warningMessage();
@@ -194,7 +195,7 @@ if (!empty($_POST['mode']))
 					$fake_id = $_POST['fake_id'];
 				}
 			}
-			if (($mitsuba->common->isWhitelisted($_SERVER['REMOTE_ADDR']) != 2) && (($mod == 0) || (!$mitsuba->admin->checkPermission("post.ignorespamlimits"))))
+			if (($mitsuba->common->isWhitelisted($_SERVER['HTTP_CF_CONNECTING_IP']) != 2) && (($mod == 0) || (!$mitsuba->admin->checkPermission("post.ignorespamlimits"))))
 			{
 				if ((empty($_POST['resto'])) || ($_POST['resto']==0))
 				{
@@ -298,7 +299,7 @@ if (!empty($_POST['mode']))
 					}
 					$mime = $nfo['mimetype'];
 					$ext = ".".$nfo['extension'];
-					$fileid = time() . rand(10000000, 999999999);
+					$fileid = time();
 					$filename = $fileid . $ext; 
 					$target_path .= $filename;
 					$md5 = md5_file($_FILES['upfile']['tmp_name']);
@@ -494,7 +495,7 @@ if (!empty($_POST['mode']))
 			{
 				$msg = $conn->real_escape_string(htmlspecialchars($_POST['msg']));
 				$email = $conn->real_escape_string(htmlspecialchars($_POST['email']));
-				$ip = $_SERVER['REMOTE_ADDR'];
+				$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
 				if ($mitsuba->common->verifyBan($ip, $_POST['banid'], $_POST['banrange']))
 				{
 					$ban_id = $_POST['banid'];

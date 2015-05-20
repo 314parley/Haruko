@@ -45,11 +45,11 @@ $(document).ready(function () {
 	if (currentLocationIsOneOf(["bans/add", "spamfilter", "wordfilter"])) {
 
 		var reason = $("input[name=reason]");
-		$("<a href='#' class='lnkSmall'>Proxy</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Proxy"); });
-		$("<a href='#' class='lnkSmall'>Emotki</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Twoje emotki lądują gdzie?"); });
+		$("<a href='#' class='lnkSmall'>CP</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("CP"); });
+		$("<a href='#' class='lnkSmall'>/bs/</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Board suggestion outside of /bs/"); });
 		$("<a href='#' class='lnkSmall'>Spam</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Spam"); });
 		$("<a href='#' class='lnkSmall'>Flood</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Flood"); });
-		$("<a href='#' class='lnkSmall'>Forsowanie</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Forsowanie"); });
+		$("<a href='#' class='lnkSmall'>DMCA</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Your post was reported in a DMCA takedown. "); });
 		$("<a href='#' class='lnkSmall'>Wykop</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Wykop ->"); });
 		$("<a href='#' class='lnkSmall'>Kwejk</a> ").insertAfter(reason).before(" ").click(function (event) { event.preventDefault(); reason.val("Kwejk ->"); });
 

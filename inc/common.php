@@ -64,11 +64,10 @@ class Common {
 	}
 
 	function human_filesize($bytes, $decimals = 2) {
-	  $sz = 'BKMGTP';
-	  $factor = floor((strlen($bytes) - 1) / 3);
-	  return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
-	}
-
+    $size = array('B','KB','MB','GB','TB','PB','EB','ZB','YB');
+    $factor = floor((strlen($bytes) - 1) / 3);
+    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+}
 	function mkid($ip, $topic, $board, $junk = "")
 	{
 		global $id_salt;
@@ -152,10 +151,10 @@ class Common {
 
 		$filename = $filename.$ext;
 
-		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links xD
+		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links
 			return 0;	
 		}
-		
+		// IMAGICK PROCESSING
 		if ($extension == "imagick")
 		{
 			$fname='./'.$board.'/src/'.$filename;
@@ -174,6 +173,7 @@ class Common {
 			return $ig;
 		} elseif ($extension == "gd")
 		{
+			// GD PROCESSING
 			if(!function_exists("ImageCreate")||!function_exists("ImageCreateFromJPEG"))return;
 			$fname='./'.$board.'/src/'.$filename;
 			$thumb_dir = './'.$board.'/src/thumb/';	 //thumbnail directory
@@ -400,7 +400,7 @@ class Common {
 			if (function_exists("getimagesize")) {
 				$a = getimagesize($path);
 				$image_type = $a[2];
-				if ($image_type == IMAGETYPE_GIF)
+				/*if ($image_type == IMAGETYPE_GIF)
 				{
 					$mime = "image/gif";
 				}
@@ -411,7 +411,8 @@ class Common {
 				if ($image_type == IMAGETYPE_JPEG)
 				{
 					$mime = "image/jpeg";
-				}
+				}*/
+				$mime = image_type_to_mime_type($image_type);
 			} else {
 				return false;
 			}
@@ -420,7 +421,7 @@ class Common {
 		if ($extensions->num_rows == 1)
 		{
 			$ext = $extensions->fetch_assoc();
-			if (($board_files == "%") || (in_array($ext['ext'], explode(",", $board_files))))
+			if (($board_files == "%") || (in_array($ext['ext'], explode(",", $board_files)))) //If the extensions in $board_files are in $ext['ext']
 			{
 				$nfo['extension'] = $ext['ext'];
 				$nfo['image'] = $ext['image'];
@@ -652,7 +653,7 @@ class Common {
 		<p><?php echo $bandata['reason']; ?></p>
 		<p>You were banned on <b><?php echo date("d/m/Y (D) H:i:s", $bandata['created']); ?></b> and your ban expires  
 		<b><?php if ($left != -1) { echo " on ".date("d/m/Y (D) H:i:s", $bandata['expires']).", which is <b>".$left."</b> days from now."; } else { echo " never"; }; ?></b>.</p>
-		<p>According to our server your IP is: <b><?php echo $_SERVER['REMOTE_ADDR']; ?></b></p>
+		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_CF_CONNECTING_IP']; ?></b></p>
 		<?php
 		$range = 0;
 		if (!empty($bandata['range_ip'])) { $range = 1; }
@@ -700,7 +701,7 @@ class Common {
 
 	function banMessage($board = "%")
 	{
-		$bandata = $this->isBanned($_SERVER['REMOTE_ADDR'], $board);
+		$bandata = $this->isBanned($_SERVER['HTTP_CF_CONNECTING_IP'], $board);
 				if ($bandata != 0)
 				{
 				?>
@@ -806,7 +807,7 @@ while ($row = $styles->fetch_assoc())
 
 	function warningMessage()
 	{
-	$warndata = $this->isWarned($_SERVER['REMOTE_ADDR']);
+	$warndata = $this->isWarned($_SERVER['HTTP_CF_CONNECTING_IP']);
 				if ($warndata != 0)
 				{
 				?>

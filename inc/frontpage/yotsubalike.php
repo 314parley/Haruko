@@ -40,7 +40,7 @@ $file .= "<script type='text/javascript' src='./js/style.js'></script>
 	<div id="doc">
 		<div id="hd">
 			<div id="logo">
-				<h1>'.$this->config['sitename'].'</h1>
+				<img src="img/logo.png"/>
 			</div>
 		</div>
 
@@ -156,7 +156,7 @@ $file .= "<script type='text/javascript' src='./js/style.js'></script>
 		</div>
 		<div id="ft" class=" ">
 			<br class="clear-bug">
-			<div id="copyright" class=" ">- <a href="http://github.com/MitsubaBBS/Mitsuba">mitsuba</a> -</div>
+			<div id="copyright" class=" ">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba">mitsuba</a> -</div>
 		</div>
 	</div>
 </body>
