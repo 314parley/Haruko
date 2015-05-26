@@ -1,6 +1,0 @@
-[20-May-2015 07:02:28 UTC] PHP Warning:  substr() expects parameter 2 to be long, string given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008
-[20-May-2015 07:02:28 UTC] PHP Warning:  Missing argument 3 for Mitsuba\Common::thumb(), called in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008 and defined in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 133
-[20-May-2015 07:02:28 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 136
-[20-May-2015 07:02:28 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
-[20-May-2015 07:02:28 UTC] PHP Notice:  getimagesize(): Read error! in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 183
-[20-May-2015 07:02:28 UTC] PHP Warning:  getimagesize(./314/src/1432081941nice_meme.png): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 183

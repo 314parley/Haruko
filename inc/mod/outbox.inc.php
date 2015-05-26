@@ -6,14 +6,18 @@ if (!defined("IN_MOD"))
 $mitsuba->admin->reqPermission("user.inbox");
 ?>
 <?php $mitsuba->admin->ui->startSection($lang['mod/outbox']); ?>
-
+<!--
 <table>
 <thead>
 <td><?php echo $lang['mod/title']; ?></td>
 <td><?php echo $lang['mod/date']; ?></td>
 <td><?php echo $lang['mod/to']; ?></td>
 </thead>
-<tbody>
+<tbody>-->
+<section class="content">
+  <div class="row">
+	<div class="col-md-12">
+
 		<?php
 		$pms = $conn->query("SELECT users.username, pm.* FROM pm LEFT JOIN users ON pm.to_user=users.id WHERE pm.from_user=".$_SESSION['id']." ORDER BY pm.created DESC");
 		while ($row = $pms->fetch_assoc())
@@ -30,5 +34,5 @@ $mitsuba->admin->reqPermission("user.inbox");
 			echo "</tr>";
 		}
 		?>
-		</tbody>
+<!--		</tbody>-->
 <?php $mitsuba->admin->ui->endSection(); ?>
