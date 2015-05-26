@@ -137,51 +137,32 @@ if ((!empty($_SESSION['logged'])) && (!empty($_SESSION['cookie_set'])) && ($_SES
 if (($path != "/nav") && ($path != "/board") && ($path != "/board/action") && (($path != "/") || ((!isset($_SESSION['logged'])) || ($_SESSION['logged']==0))) && (substr($path, 0, 5) != "/api/"))
 {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Mitsuba</title>
-<?php
-$first_default = 1;
-$styles = $conn->query("SELECT * FROM styles ORDER BY `default` DESC");
-while ($row = $styles->fetch_assoc())
-{
-	if ($first_default == 1)
-	{
-		echo '<link rel="stylesheet" id="switch" href="'.$mitsuba->getPath($row['path'], "index", $row['relative']).'">';
-		$first_default = 0;
-	}
-	echo '<link rel="alternate stylesheet" style="text/css" href="'.$mitsuba->getPath($row['path'], "index", $row['relative']).'" title="'.$row['name'].'">';
-}
-?>
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/jquery.cookie.js"></script>
-<script type='text/javascript' src='./js/style.js'></script>
-<script type="text/javascript" src="./js/admin.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
-<body>
-<div id="doc">
-<br /><br />
 <?php
 }
-if ((!empty($_SESSION['logged'])) && ($_SESSION['logged']==1) && ($_SESSION['ip']!=$_SERVER['HTTP_CF_CONNECTING_IP']))
+if ((!empty($_SESSION['logged'])) && ($_SESSION['logged']==1) && ($_SESSION['ip']!=$_SERVER['REMOTE_ADDR']))
 {
-	$mitsuba->admin->logAction(sprintf($lang['log/ip_changed'], $_SESSION['ip'], $_SERVER['HTTP_CF_CONNECTING_IP']));
-	$_SESSION['ip']=$_SERVER['HTTP_CF_CONNECTING_IP'];
+	$mitsuba->admin->logAction(sprintf($lang['log/ip_changed'], $_SESSION['ip'], $_SERVER['REMOTE_ADDR']));
+	$_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
 }
 switch ($path)
 {
 	case "/":
 		include("inc/mod/main.inc.php");
 		break;
+	//yes, I know this is hard-wired into the code. We need to figure out a better way.
+	case "/login":
+		require "inc/mod/login.inc.php";
+		header("Location: /mod.php");
+		break;
+	// /?logout
 	case "/logout":
 		setcookie('in_mod', '0', time()-86400);
 		session_destroy();
-		header("Location: ./mod.php");
+		header("Location: /mod.php");
 		break;
+
 	default:
-		$file = "inc/mod/".str_replace(array("/", "\\", ".."), ".", trim($path, " \t\n\r\0\x0B/\\")).".inc.php";
+		/*$file = "inc/mod/".str_replace(array("/", "\\", ".."), ".", trim($path, " \t\n\r\0\x0B/\\")).".inc.php";
 		if (file_exists($file))
 		{
 			include($file);
@@ -193,15 +174,13 @@ switch ($path)
 				$pageclass = new $module['class']($conn, $mitsuba);
 				$pageclass->$module['method']();
 			}
-		}
+		}*/
+		include("inc/mod/main.inc.php");
 		break;
 }
 if (($path != "/nav") && ($path != "/board") && ($path != "/board/action") && (($path != "/") || ((!isset($_SESSION['logged'])) || ($_SESSION['logged']==0))) && (substr($path, 0, 5) != "/api/"))
 {
 ?>
-</div>
-</body>
-</html>
 <?php
 }
 $conn->close();

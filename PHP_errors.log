@@ -4,3 +4,5 @@
 [20-May-2015 07:02:28 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
 [20-May-2015 07:02:28 UTC] PHP Notice:  getimagesize(): Read error! in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 183
 [20-May-2015 07:02:28 UTC] PHP Warning:  getimagesize(./314/src/1432081941nice_meme.png): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 183
+[22-May-2015 12:28:12 UTC] PHP Warning:  include(nav.inc.php): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/mod.php on line 176
+[22-May-2015 12:28:12 UTC] PHP Warning:  include(): Failed opening 'nav.inc.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/mod.php on line 176

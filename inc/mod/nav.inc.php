@@ -265,63 +265,36 @@ while ($row = $result->fetch_assoc())
 	}
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Mitsuba Navigation</title>
-<meta http-equiv="refresh" content="180" />
-<?php
-$first_default = 1;
-$styles = $conn->query("SELECT * FROM styles ORDER BY `default` DESC");
-while ($row = $styles->fetch_assoc())
-{
-	if ($first_default == 1)
-	{
-		echo '<link rel="stylesheet" id="switch" href="'.$mitsuba->getPath($row['path'], "index", $row['relative']).'">';
-		$first_default = 0;
-	}
-	echo '<link rel="alternate stylesheet" style="text/css" href="'.$mitsuba->getPath($row['path'], "index", $row['relative']).'" title="'.$row['name'].'">';
-}
-?>
-<script type="text/javascript">
-function toggle(button,area) {
-	var tog=document.getElementById(area);
-	if(tog.style.display)	{
-		tog.style.display="";
-	}	else {
-		tog.style.display="none";
-	}
-	button.innerHTML=(tog.style.display)?'+':'&minus;';
-	createCookie('nav_show_'+area, tog.style.display?'0':'1', 365);
-}
-</script>
-<script type='text/javascript' src='./js/style.js'></script>
-</head>
-<body id="menu">
-<ul>
-<li><?php echo $lang['mod/logged_in_as']; ?><b><?php echo $_SESSION['username']; ?></b></li>
-<li><?php echo $lang['mod/privileges']; ?><b><?php echo $_SESSION['group_name'] ?></b></li>
-<li><a href="?/logout" target="_top"><?php echo $lang['mod/logout']; ?></a></li>
+ 	<aside class="main-sidebar">
+ 	  <!-- sidebar: style can be found in sidebar.less -->
+ 	  <section class="sidebar">
+ 		<!-- Sidebar user panel -->
+ 		<div class="user-panel">
+ 		  <div class="pull-left info">
+ 			<p><?php echo $_SESSION['username']; ?></p>
+ 	
+ 			<a href="#"> <?php echo $_SESSION['group_name'] ?></a>
+ 		  </div>
+ 		</div>
+ 		<!-- sidebar menu: : style can be found in sidebar.less -->
+ 		<ul class="sidebar-menu">
+	 		<?php
+	 			foreach ($menu as $key => $category) {
+			?>
+				<li class="header"><?php echo $category['name']; ?></li>
+				<li class="treeview">
+					<?php
+					foreach ($category['children'] as $item){
+						if ($item['show']){
+							echo '<li><a href="'.$item['url'].'" >'.$item['name'].'</a></li>';
+						}
+					}
+				?>
+				</li>
+			<?php
+				}
+			?>
 </ul>
-<?php
-foreach ($menu as $key => $category) {
-	?>
-<h2><span class="coll" onclick="toggle(this,'<?php echo $key; ?>');" title="Toggle Category">&minus;</span><?php echo $category['name']; ?></h2>
-<div id="<?php echo $key; ?>">
-<ul>
-	<?php
-		foreach ($category['children'] as $item)
-		{
-			if ($item['show'])
-			{
-				echo '<li><a href="'.$item['url'].'" target="main">'.$item['name'].'</a></li>';
-			}
-		}
-	?>
-</ul></div>
-<?php
-}
-?>
-</body>
-</html>
+ 	  </section>
+ 	  <!-- /.sidebar -->
+ 	</aside>
