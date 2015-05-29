@@ -194,13 +194,14 @@ video.full-view {width: 750px!important;}
 	}
 
 	#open {
-		position:fixed;
-		top:13px;
-		margin-left:13px;
-		width:40px;
-		height:40px;
-		z-index:100;
-		padding:7px;
+		position: fixed;
+		top: 1px;
+		/* margin-left: 13px; */
+		/* width: 40px; */
+		/* height: 40px; */
+		/* z-index: 100; */
+		/* padding: 7px; */
+		right: 1px;
 	}
 
 	#open.alt {
@@ -217,7 +218,12 @@ video.full-view {width: 750px!important;}
 		padding:30px 0;
 		height:auto;
 	}
-
+	.group:not(a) {
+		font-size: 0px!important;
+	}
+	/*.sub-menu:not(a) {
+		font-size: 0px!important;
+	}*/
 	#menu {
 		position:absolute;
 		height:100%;

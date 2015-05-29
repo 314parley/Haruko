@@ -166,19 +166,18 @@ class UI {
 	function startSection($title)
 	{
 		?>
-		<div class="box-outer top-box">
-		<div class="box-inner">
-		<div class="boxbar"><h2><?php echo $title; ?></h2></div>
-		<div class="boxcontent">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			<h1><?php echo $title; ?></h1>
 		<?php
 	}
 
 	function endSection()
 	{
 		?>
-		</div>
-		</div>
-		</div>
+	</h1>
+	</section>
+
 		<?php
 	}
 }

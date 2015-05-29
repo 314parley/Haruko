@@ -322,7 +322,7 @@ if (!empty($_POST['mode']))
 					}
 					if(move_uploaded_file($_FILES['upfile']['tmp_name'], $target_path)) {
 						if ($nfo['image']==1 || $nfo['extension'] == "webm") { $gen_thumb = 1; }
-						printf($lang['img/file_uploaded'], basename( $_FILES['upfile']['name']));
+						//printf($lang['img/file_uploaded'], basename( $_FILES['upfile']['name']));
 					} else {
 						echo $lang['img/upload_error'];
 						$filename = "";
@@ -361,7 +361,7 @@ if (!empty($_POST['mode']))
 						if ((empty($returned['width'])) || (empty($returned['height'])))
 						{
 							unlink($target_path);
-							$mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']);
+							$mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']."blah");
 							exit;
 						}
 						$thumb_w = $returned['width'];
@@ -371,7 +371,7 @@ if (!empty($_POST['mode']))
 						if ((empty($returned['width'])) || (empty($returned['height'])))
 						{
 							unlink($target_path);
-							$mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']);
+							$mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']."bloop");
 							exit;
 						}
 						$thumb_w = $returned['width'];

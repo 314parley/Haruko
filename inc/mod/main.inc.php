@@ -16,7 +16,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>AdminLTE 2 | Dashboard</title>
+	<title><? echo($sitename)?> Management</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -46,7 +46,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  		</a>
  		<div class="navbar-custom-menu">
  		  <ul class="nav navbar-nav">
- 			<!-- Messages: style can be found in dropdown.less-->
+ 			<!-- PMs: style can be found in dropdown.less-->
  			<li class="dropdown messages-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
  				<i class="fa fa-envelope-o"></i>
@@ -63,50 +63,30 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  						  <!--<img src="/img/adminLTE/user2-160x160.jpg" class="img-circle" alt="User Image"/>-->
  						</div>
  						<h4>
- 						  Support Team
+ 						  parley
  						  <small><i class="fa fa-clock-o"></i> 5 mins</small>
  						</h4>
- 						<p>Why not buy a new awesome theme?</p>
+ 						<p>Sooner or later, this'll show a PM preview!</p>
  					  </a>
  					</li><!-- end message -->
  				  </ul>
  				</li>
- 				<li class="footer"><a href="#">See All Messages</a></li>
+ 				<li class="footer"><a href="mod.php?/inbox">See All Messages</a></li>
  			  </ul>
  			</li>
- 			<!-- Notifications: style can be found in dropdown.less -->
- 			<li class="dropdown notifications-menu">
- 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
- 				<i class="fa fa-bell-o"></i>
- 				<span class="label label-warning">10</span>
- 			  </a>
- 			  <ul class="dropdown-menu">
- 				<li class="header">You have 10 notifications</li>
- 				<li>
- 				  <!-- inner menu: contains the actual data -->
- 				  <ul class="menu">
- 					<li>
- 					  <a href="#">
- 						<i class="fa fa-users text-aqua"></i> 5 new members joined today
- 					  </a>
- 					</li>
- 				  </ul>
- 				</li>
- 				<li class="footer"><a href="#">View all</a></li>
- 			  </ul>
- 			</li>
- 			<!-- Tasks: style can be found in dropdown.less -->
+ 			<!-- Reports: style can be found in dropdown.less -->
  			<li class="dropdown tasks-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
  				<i class="fa fa-flag-o"></i>
- 				<span class="label label-danger">9</span>
+ 				<? if($reports > 0){?><span class="label label-danger"><? echo $reports ?></span><? } ?>
  			  </a>
  			  <ul class="dropdown-menu">
- 				<li class="header">You have 9 tasks</li>
+ 				<li class="header">You have <? echo $reports ?> reports</li>
  				<li>
  				  <!-- inner menu: contains the actual data -->
  				  <ul class="menu">
- 					<li><!-- Task item -->
+	 				<!-- Task item -->
+ 					<!--<li>
  					  <a href="#">
  						<h3>
  						  Design some buttons
@@ -118,14 +98,57 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  						  </div>
  						</div>
  					  </a>
- 					</li><!-- end task item -->
+ 					</li>--><!-- end task item -->
+ 					<li>
+ 					<a href="https://flcl.314chan.org/314/res/47.html#p47" target="_blank">
+ 					<h3><strong>Guy is a nerd</strong> <small class="pull-right">/314/47</small></h3>
+ 					</a>
+ 					</li>
+ 					<li>
+ 					<a href="https://flcl.314chan.org/314/res/47.html#p47" target="_blank">
+ 					<h3><strong>Guy is a nerd</strong> <small class="pull-right">/314/47</small></h3>
+ 					</a>
+ 					</li>
+ 					<li>
+ 					<a href="https://flcl.314chan.org/314/res/47.html#p47" target="_blank">
+ 					<h3><strong>Guy is a nerd</strong> <small class="pull-right">/314/47</small></h3>
+ 					</a>
+ 					</li>
+ 					<li>
+ 					<a href="https://flcl.314chan.org/314/res/47.html#p47" target="_blank">
+ 					<h3><strong>Guy is a nerd</strong> <small class="pull-right">/314/47</small></h3>
+ 					</a>
+ 					</li>
  				  </ul>
  				</li>
+
  				<li class="footer">
- 				  <a href="#">View all tasks</a>
+ 				  <a href="mod.php?/reports">View all reports</a>
  				</li>
  			  </ul>
  			</li>
+  			<!-- Notifications: style can be found in dropdown.less -->
+ 			<li class="dropdown notifications-menu">
+ 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+ 				<i class="fa fa-gavel"></i>
+ 				<? if($appeals > 0){?><span class="label label-warning"><? echo $appeals ?></span><? } ?>
+ 			  </a>
+ 			  <ul class="dropdown-menu">
+ 				<li class="header">You have <? echo $appeals ?> ban appeals</li>
+ 				<li>
+ 				  <!-- inner menu: contains the actual data -->
+ 				  <ul class="menu">
+ 					<li>
+ 					  <a href="#">
+ 						<i class="fa fa-users text-aqua"></i> 5 new members joined today
+ 					  </a>
+ 					</li>
+ 				  </ul>
+ 				</li>
+ 				<li class="footer"><a href="mod.php?/appeals">View all appeals</a></li>
+ 			  </ul>
+ 			</li>
+
  			<!-- User Account: style can be found in dropdown.less -->
  			<li class="dropdown user user-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">

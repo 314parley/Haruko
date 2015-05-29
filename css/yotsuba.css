@@ -185,7 +185,7 @@ legend {
 
 pre,code,kbd,samp,tt {
 	font-family: monospace;
-	*font-size: 108%;
+	font-size: 108%;
 	line-height: 100%;
 }
 
@@ -196,7 +196,7 @@ pre,code,kbd,samp,tt {
 #doc,#doc2,#doc3,#doc4,.yui-t1,.yui-t2,.yui-t3,.yui-t4,.yui-t5,.yui-t6,.yui-t7 {
 	text-align: left; 
 	width: auto;
-	*width: 56.301em; 
+	width: 56.301em; 
 	min-width: 750px; 
 	display: table;
 	margin-left: auto;
@@ -208,7 +208,7 @@ pre,code,kbd,samp,tt {
 
 #doc2 {
 	width: 73.074em;
-	*width: 71.313em;
+	width: 71.313em;
 }
 
 #doc3 {
