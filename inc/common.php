@@ -130,7 +130,7 @@ class Common {
 		<?php
 	}
 
-	function thumb($board, $filename, $ext, $s=250){
+		function thumb($board, $filename, $ext, $s=250){
 		$extension = $this->getGraphicsExtension();
 		
 		if ($ext == ".webm") {
@@ -151,10 +151,10 @@ class Common {
 
 		$filename = $filename.$ext;
 
-		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links
+		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links xD
 			return 0;	
 		}
-		// IMAGICK PROCESSING
+		
 		if ($extension == "imagick")
 		{
 			$fname='./'.$board.'/src/'.$filename;
@@ -173,7 +173,6 @@ class Common {
 			return $ig;
 		} elseif ($extension == "gd")
 		{
-			// GD PROCESSING
 			if(!function_exists("ImageCreate")||!function_exists("ImageCreateFromJPEG"))return;
 			$fname='./'.$board.'/src/'.$filename;
 			$thumb_dir = './'.$board.'/src/thumb/';	 //thumbnail directory
@@ -221,8 +220,15 @@ class Common {
 			if(function_exists("ImageCreateTrueColor")){
 				$im_out = ImageCreateTrueColor($out_w, $out_h);
 			}else{$im_out = ImageCreate($out_w, $out_h);}
+			//adds transparency [devnote: this took me fucking 3-4 days to figure out how to do it... why isn't there better documentation?]
+			imagealphablending($im_out, false);
+			imagesavealpha($im_out, true);
+			
+			$trans_layer_overlay = imagecolorallocatealpha($image, 220, 220, 220, 127);
+			imagefill($im_out, 0, 0, $trans_layer_overlay);
+
 			// copy resized original
-			ImageCopyResized($im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1]);
+			imagecopyresampled($im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1]);
 			// thumbnail saved
 			switch ($type)
 			{
@@ -243,6 +249,7 @@ class Common {
 			return array("width" => $out_w, "height" => $out_h);
 		}
 	}
+
 
 	function delTree($dir) { 
 	   $files = array_diff(scandir($dir), array('.','..'));
@@ -813,7 +820,7 @@ while ($row = $styles->fetch_assoc())
 				?>
 				<html>
 	<head>
-	<title>Banned</title>
+	<title>Warning!</title>
 <?php
 $first_default = 1;
 $styles = $this->conn->query("SELECT * FROM styles ORDER BY `default` DESC");
@@ -836,19 +843,7 @@ while ($row = $styles->fetch_assoc())
 	<div class="box-inner">
 	<div class="boxbar"><h2>You were issued a warning! ;_;</h2></div>
 	<div class="boxcontent">
-	<?php
-	$imagesDir = './rnd/banned/';
-	if (is_dir($imagesDir))
-	{
-		$images = glob($imagesDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-		$randomImage = $images[array_rand($images)]; 
-		if ($return == 1)
-		{
-			$file .= '<img style="float: right;" src="'.$randomImage.'" alt="Mitsuba" />';
-		}
-	}
-	?>
-	<p>You were issued <b>a warning</b> with the following message:</p>
+		<img style="float: right;" src="/banned/r.php" alt="Mitsuba" />	<p>You have been issued <b>a warning</b> with the following message:</p>
 	<p><?php echo $warndata['reason']; ?></p>
 	<p>Your warning was issued on <b><?php echo date("d/m/Y (D) H:i:s", $warndata['created']); ?></b>.</p>
 	<p>Now that you have seen this message, you should be able to post again. Click <a href="javascript:history.back()">here</a> to return.</p>

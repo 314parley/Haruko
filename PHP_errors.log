@@ -6,3 +6,88 @@
 [20-May-2015 07:02:28 UTC] PHP Warning:  getimagesize(./314/src/1432081941nice_meme.png): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 183
 [22-May-2015 12:28:12 UTC] PHP Warning:  include(nav.inc.php): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/mod.php on line 176
 [22-May-2015 12:28:12 UTC] PHP Warning:  include(): Failed opening 'nav.inc.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/mod.php on line 176
+[28-May-2015 19:40:15 UTC] PHP Warning:  substr() expects parameter 2 to be long, string given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008
+[28-May-2015 19:40:15 UTC] PHP Warning:  Missing argument 3 for Mitsuba\Common::thumb(), called in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008 and defined in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 133
+[28-May-2015 19:40:15 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 134
+[28-May-2015 19:40:15 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 136
+[28-May-2015 19:40:15 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
+[28-May-2015 20:00:31 UTC] PHP Warning:  substr() expects parameter 2 to be long, string given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008
+[28-May-2015 20:00:31 UTC] PHP Warning:  Missing argument 3 for Mitsuba\Common::thumb(), called in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008 and defined in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 133
+[28-May-2015 20:00:31 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 134
+[28-May-2015 20:00:31 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 136
+[28-May-2015 20:00:31 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
+[28-May-2015 20:02:01 UTC] PHP Warning:  substr() expects parameter 2 to be long, string given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008
+[28-May-2015 20:02:01 UTC] PHP Warning:  Missing argument 3 for Mitsuba\Common::thumb(), called in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2008 and defined in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 133
+[28-May-2015 20:02:01 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 134
+[28-May-2015 20:02:01 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 136
+[28-May-2015 20:02:01 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
+[29-May-2015 17:31:59 UTC] PHP Notice:  Undefined variable: im in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 223
+[29-May-2015 17:31:59 UTC] PHP Warning:  imagecolorallocate() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 223
+[29-May-2015 17:36:31 UTC] PHP Notice:  Undefined variable: im in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 223
+[29-May-2015 17:36:31 UTC] PHP Warning:  imagecolorallocate() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 223
+[29-May-2015 17:42:20 UTC] PHP Notice:  Undefined variable: im in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 224
+[29-May-2015 17:42:20 UTC] PHP Warning:  imagecolorallocate() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 224
+[29-May-2015 18:04:27 UTC] PHP Notice:  Undefined variable: thumb in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 229
+[29-May-2015 18:04:27 UTC] PHP Warning:  imagealphablending() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 229
+[29-May-2015 18:04:27 UTC] PHP Notice:  Undefined variable: thumb in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:04:27 UTC] PHP Warning:  imagesavealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:06:45 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:06:45 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:07:12 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:07:12 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 230
+[29-May-2015 18:09:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:09:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  substr() expects parameter 2 to be long, string given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2007
+[29-May-2015 18:22:14 UTC] PHP Warning:  Missing argument 3 for Mitsuba\Common::thumb(), called in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/caching.php on line 2007 and defined in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 133
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 136
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: ext in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 152
+[29-May-2015 18:22:14 UTC] PHP Notice:  getimagesize(): Read error! in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 182
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:14 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  getimagesize(./314/src/1432081941nice_meme.png): failed to open stream: No such file or directory in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 182
+[29-May-2015 18:22:15 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:15 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:16 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:17 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Notice:  Undefined variable: image in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
+[29-May-2015 18:22:18 UTC] PHP Warning:  imagecolorallocatealpha() expects parameter 1 to be resource, null given in /media/sdp1/home/specter/www/flcl.314chan.org/public_html/inc/common.php on line 227
