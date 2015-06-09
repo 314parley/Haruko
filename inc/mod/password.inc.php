@@ -33,15 +33,36 @@ if ((!empty($_POST['old'])) && (!empty($_POST['new'])) && (!empty($_POST['new2']
 			}
 		} else {
 		?>
-<?php $mitsuba->admin->ui->startSection($lang['mod/pwd_change']); ?>
+<?php $mitsuba->admin->ui->startSection(); ?>
+<div class="col-md-6">
+<div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title"><?php echo $lang['mod/pwd_change'];?></h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form action="?/password" method="POST">
+	            <?php $mitsuba->admin->ui->getToken($path); ?>
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><?php echo $lang['mod/pwd_current']; ?></label>
+                      <input type="password" class="form-control" name="old">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1"><?php echo $lang['mod/pwd_new']; ?></label>
+                      <input type="password" class="form-control" name="new">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1"><?php echo $lang['mod/pwd_confirm']; ?></label>
+                      <input type="password" class="form-control" name="new2">
+                    </div>
+                  </div><!-- /.box-body -->
 
-<form action="?/password" method="POST">
-<?php $mitsuba->admin->ui->getToken($path); ?>
-<?php echo $lang['mod/pwd_current']; ?>: <input type="password" name="old"><br />
-<?php echo $lang['mod/pwd_new']; ?>: <input type="password" name="new"><br />
-<?php echo $lang['mod/pwd_confirm']; ?>: <input type="password" name="new2"><br />
-<input type="submit" value="<?php echo $lang['mod/submit']; ?>"><br />
-</form>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+</div>
 <?php $mitsuba->admin->ui->endSection(); ?>
 		<?php
 		}

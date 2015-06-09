@@ -1016,7 +1016,7 @@ a:focus {
 }
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > h4 {
   padding: 0;
-  margin: 0 0 0 45px;
+  margin: 0 0 0 0px;
   color: #444444;
   font-size: 15px;
   position: relative;
@@ -1029,7 +1029,7 @@ a:focus {
   right: 0px;
 }
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > p {
-  margin: 0 0 0 45px;
+  margin: 0 0 0 0px;
   font-size: 12px;
   color: #888888;
 }

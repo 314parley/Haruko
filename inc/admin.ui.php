@@ -40,7 +40,7 @@ class UI {
 		echo $lang['mod/boards'].': <input type="checkbox" name="all" id="all" value=1'.$all.'/> ';
 		echo "<label style='float:none;display:inline' for='all'>".$lang['mod/all']."</label>";
 
-		?>
+?>
 		<fieldset id="boardSelect">
 		<?php
 		if (($boards != "%") && ($boards != "")) { $boards = explode(",", $boards); }
@@ -57,7 +57,7 @@ class UI {
 			echo "<input id='{$row['short']}' type='checkbox' name='boards[]' value='".$row['short']."'".$checked."/>";
 			echo "</div>";
 		}
-		?>
+?>
 		</fieldset>
 		<?php
 	}
@@ -67,15 +67,15 @@ class UI {
 		global $lang;
 		if ($links == "%")
 		{
-		?>
+?>
 		<?php echo $lang['mod/board_links']; ?>: <input type="checkbox" name="l_all" id="l_all" onClick="$('#linkSelect').toggle()" value=1 checked/> <?php echo $lang['mod/all']; ?>
 		<?php
 		} else {
-		?>
+?>
 		<?php echo $lang['mod/board_links']; ?>: <input type="checkbox" name="l_all" id="l_all" onClick="$('#linkSelect').toggle()" value=1/> <?php echo $lang['mod/all']; ?>
 		<?php
 		}
-		?>
+?>
 		<br/>
 		<fieldset id="linkSelect">
 		<?php
@@ -83,18 +83,18 @@ class UI {
 		$result = $this->conn->query("SELECT * FROM link ORDER BY name ASC;");
 		while ($row = $result->fetch_assoc())
 		{
-		$checked = "";
-		if (($links !== "%") && ($links !== ""))
-		{
-			if (in_array($links, $row['name']))
+			$checked = "";
+			if (($links !== "%") && ($links !== ""))
 			{
-				$checked = " checked ";
+				if (in_array($links, $row['name']))
+				{
+					$checked = " checked ";
+				}
 			}
+			echo "<label for='links'>".$row['name']."</label>";
+			echo "<input type='checkbox' onClick='document.getElementById(\"all\").checked=false;' name='links[]' value='".$row['name']."'".$checked."/>";
 		}
-		echo "<label for='links'>".$row['name']."</label>";
-		echo "<input type='checkbox' onClick='document.getElementById(\"all\").checked=false;' name='links[]' value='".$row['name']."'".$checked."/>";
-		}
-		?>
+?>
 		</fieldset>
 		<?php
 	}
@@ -104,40 +104,40 @@ class UI {
 		global $lang;
 		if ($extensions == "%")
 		{
-		?>
+?>
 		<?php echo $lang['mod/extensions']; ?>: <input type="checkbox" name="ext_all" id="ext_all" onClick="$('#extSelect').toggle()" value=1 checked/> <?php echo $lang['mod/all']; ?><br/>
 		<?php
 		} else {
-		?>
+?>
 		<?php echo $lang['mod/extensions']; ?>: <input type="checkbox" name="ext_all" id="ext_all" onClick="$('#extSelect').toggle()" value=1/> <?php echo $lang['mod/all']; ?><br/>
 		<?php
 		}
-		?>
+?>
 		<fieldset id="extSelect">
 		<?php
 		if (($extensions != "%") && ($extensions != "")) { $extensions = explode(",", $extensions); }
 		$result = $this->conn->query("SELECT DISTINCT ext FROM extensions ORDER BY ext ASC;");
 		while ($row = $result->fetch_assoc())
 		{
-		$checked = "";
-		if (($extensions !== "%") && ($extensions !== ""))
-		{
-			if (in_array($extensions, $row['ext']))
+			$checked = "";
+			if (($extensions !== "%") && ($extensions !== ""))
 			{
-				$checked = " checked ";
+				if (in_array($extensions, $row['ext']))
+				{
+					$checked = " checked ";
+				}
 			}
-		}
-		if (empty($extensions))
-		{
-			if (($row['ext']=="jpg") || ($row['ext']=="gif") || ($row['ext']=="png"))
+			if (empty($extensions))
 			{
-				$checked = " checked ";
+				if (($row['ext']=="jpg") || ($row['ext']=="gif") || ($row['ext']=="png"))
+				{
+					$checked = " checked ";
+				}
 			}
+			echo "<label for='ext'>".$row['ext']."</label>";
+			echo "<input type='checkbox' onClick='document.getElementById(\"ext_all\").checked=false;' name='ext[]' value='".$row['ext']."'".$checked."/>";
 		}
-		echo "<label for='ext'>".$row['ext']."</label>";
-		echo "<input type='checkbox' onClick='document.getElementById(\"ext_all\").checked=false;' name='ext[]' value='".$row['ext']."'".$checked."/>";
-		}
-		?>
+?>
 		</fieldset>
 		<?php
 	}
@@ -165,16 +165,16 @@ class UI {
 
 	function startSection($title)
 	{
-		?>
+?>
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1><?php echo $title; ?></h1>
+			<?if($title){?><h1><?php echo $title; ?></h1><?}?>
 		<?php
 	}
 
 	function endSection()
 	{
-		?>
+?>
 	</h1>
 	</section>
 

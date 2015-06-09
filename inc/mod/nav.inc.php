@@ -277,7 +277,7 @@ while ($row = $result->fetch_assoc())
  		  </div>
  		</div>
  		<!-- sidebar menu: : style can be found in sidebar.less -->
- 		<ul class="sidebar-menu">
+ 		<ul class="nav sidebar-menu">
 	 		<?php
 	 			foreach ($menu as $key => $category) {
 			?>
@@ -286,7 +286,11 @@ while ($row = $result->fetch_assoc())
 					<?php
 					foreach ($category['children'] as $item){
 						if ($item['show']){
+							if (strpos($_SERVER['REQUEST_URI'], $item['url']) !== false){
+							echo '<li class="active"><a href="'.$item['url'].'" >'.$item['name'].'</a></li>';
+							}else{
 							echo '<li><a href="'.$item['url'].'" >'.$item['name'].'</a></li>';
+							}
 						}
 					}
 				?>

@@ -160,7 +160,7 @@ class Admin
 			{
 				return 1;
 			} else {
-				die("CAN'T BOARD");
+				die("You do not have rights to this board.");
 			}
 		} else {
 			return 1;

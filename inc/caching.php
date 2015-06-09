@@ -36,7 +36,7 @@ class Caching
 		$settings = [
 			'o_pinned' => 'Pin board menu',
 			'o_preview' => 'Enable post preview',
-			'o_loader' => 'Enable page loader',
+			'o_loader' => 'Enable infinite scrolling',
 			'o_watched' => 'Enable watched threads',
 			'o_updater' => 'Enable updater',
 			'o_imgexpand' => 'Enable image expander (RES)',
@@ -1137,7 +1137,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 					$file .= '</div>';
 				}
 			}
-			$file .= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+			$file .= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 			$file .= '<div id="bottom"></div>';
 			if ($this->config['enable_meny']==1)
 			{
@@ -2236,9 +2236,14 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 						$file .= '<span class="fileText" id="fT'.$row['id']."_".$filenum.'"><a href="./'.$board.'/src/'.$fileinfo['filename'].'" target="_blank">File</a>: ('.$fileinfo['filesize'].$imgsize.', <span title="'.$fileinfo['orig_filename'].'">'.$fileinfo['orig_filename'].'</span>)</span>';
 					} elseif ($threadno != 0)
 					{
+						//user is in thread
 						$file .= '<span class="fileText" id="fT'.$row['id']."_".$filenum.'"><a href="../../'.$board.'/src/'.$fileinfo['filename'].'" target="_blank">File</a>: ('.$fileinfo['filesize'].$imgsize.', <span title="'.$fileinfo['orig_filename'].'">'.$fileinfo['orig_filename'].'</span>)</span>';
 					} else {
-						$file .= '<span class="fileText" id="fT'.$row['id']."_".$filenum.'"><a href="../'.$board.'/src/'.$fileinfo['filename'].'" target="_blank">File</a>: ('.$fileinfo['filesize'].$imgsize.', <span title="'.$fileinfo['orig_filename'].'">'.$fileinfo['orig_filename'].'</span>)</span>';
+						//board index
+						//$file .= '<span class="fileText" id="fT'.$row['id']."_".$filenum.'"><a href="../'.$board.'/src/'.$fileinfo['filename'].'" target="_blank">File</a>: ('.$fileinfo['filesize'].$imgsize.', <span title="'.$fileinfo['orig_filename'].'">'.$fileinfo['orig_filename'].'</span>)</span>';
+						$file .= '<span class="fileText" id="fT'.$row['id']."_".$filenum.'">
+						File: <a href="../'.$board.'/src/'.$fileinfo['filename'].'" target="_blank">'.$fileinfo['filename'].'</a> ('.$fileinfo['filesize'].$imgsize.')
+						</span>';
 					}
 					$file .= '</div>';
 					$filepath = "";

@@ -5,6 +5,7 @@
 	$reports = $conn->query("SELECT * FROM reports;")->num_rows;
 	$appeals = $conn->query("SELECT * FROM appeals;")->num_rows;
 	$breqs = $conn->query("SELECT * FROM ban_requests;")->num_rows;
+	$ppd = $conn->query("SELECT COUNT(*) FROM posts WHERE date > NOW() - INTERVAL 7 DAY")->num_rows;
 	
 ?>
 <?php
@@ -23,15 +24,13 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 	<link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 	<link href="/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
  </head>
- <body class="skin-blue sidebar-mini">
+ <body class="skin-blue fixed">
    <!-- Site wrapper -->
    <div class="wrapper">
  	
  	<header class="main-header">
  	  <!-- Logo -->
  	  <a href="/" class="logo">
- 		<!-- mini logo for sidebar mini 50x50 pixels -->
- 		<span class="logo-mini"><b>314</b>M</span>
  		<!-- logo for regular state and mobile devices -->
  		<span class="logo-lg"><b><? echo($sitename)?></b> Panel</span>
  	  </a>
@@ -59,9 +58,9 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  				  <ul class="menu">
  					<li><!-- start message -->
  					  <a href="#">
- 						<div class="pull-left">
- 						  <!--<img src="/img/adminLTE/user2-160x160.jpg" class="img-circle" alt="User Image"/>-->
- 						</div>
+ 						<!--<div class="pull-left">
+ 						  <img src="/img/adminLTE/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+ 						</div>-->
  						<h4>
  						  parley
  						  <small><i class="fa fa-clock-o"></i> 5 mins</small>
@@ -161,6 +160,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  				  <p>
  					<?php echo $_SESSION['username']; ?>
  					<small><?php echo $_SESSION['group_name'] ?></small>
+ 					<small>Automatic Logout in <span id="SecondsUntilExpire"></span> seconds for inactivity.</small>
  				  </p>
  				</li>
  				<!-- Menu Footer-->
@@ -207,25 +207,51 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 	 	}
 	 	?>
  	  <!-- Main content -->
- 	  <section class="content">
 	 	  <? if($path == "/"){ ?>
+	 	   	  <section class="content">
  		<!-- Default box -->
- 		<div class="box">
- 		  <div class="box-header with-border">
- 			<h3 class="box-title">Title</h3>
- 			<div class="box-tools pull-right">
- 			  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
- 			  <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
- 			</div>
- 		  </div>
- 		  <div class="box-body">
- 			Start creating your amazing application!
- 		  </div><!-- /.box-body -->
- 		  <div class="box-footer">
- 			Footer
- 		  </div<!-- /.box-footer-->
- 		</div><!-- /.box -->
+<div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-comments-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Posts (24 hr)</span>
+                  <span class="info-box-number"><? var_dump($ppd); ?></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Likes</span>
+                  <span class="info-box-number">LOL</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
 
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Sales</span>
+                  <span class="info-box-number">760</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">New Members</span>
+                  <span class="info-box-number">2,000</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div>
  	  </section><!-- /.content -->
  	  <? } ?>
  	</div><!-- /.content-wrapper -->
@@ -417,6 +443,37 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
    <!-- Demo -->
    <script src="/js/demo.js" type="text/javascript"></script>
  </body>
+ <script>
+	 var IDLE_TIMEOUT = 99999999999999999999999999999999999999999999999999999999999999999999999999999999; //seconds
+	 var _idleSecondsTimer = null;
+	 var _idleSecondsCounter = 0;
+
+	document.onclick = function() {
+		 _idleSecondsCounter = 0;
+	};
+
+	document.onmousemove = function() {
+    	_idleSecondsCounter = 0;
+    };
+
+	document.onkeypress = function() {
+		_idleSecondsCounter = 0;
+	};
+
+	_idleSecondsCounter = window.setInterval(CheckIdleTime, 1000);
+
+function CheckIdleTime() {
+     _idleSecondsCounter++;
+     var oPanel = document.getElementById("SecondsUntilExpire");
+     if (oPanel)
+         oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
+    if (_idleSecondsCounter >= IDLE_TIMEOUT) {
+        window.clearInterval(_idleSecondsCounter);
+        alert("Time expired!");
+        document.location.href = "/mod.php?/logout";
+    }
+}
+ </script>
 		<?php
 		} else {
 			?>
@@ -458,31 +515,8 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 	</div><!-- /.login-box -->
 </div>
 </body>
-</html>
-
-<!--
-<form action="?/login" method="POST">
-<table class="logForm">
-	<tbody>
-		<tr>
-			<td style="text-align: center; width: 65px;"><?php echo $lang['mod/username']; ?></td>
-			<td><input type="text" name="username" style="width: 145px; text-align: center;"></td>
-		</tr>
-
-		<tr>
-			<td style="text-align: center; width: 65px;"><?php echo $lang['mod/password']; ?></td>
-			<td><input type="password" name="password" style="width: 145px; text-align: center;"></td>
-		</tr>
-
-		<tr>
-			<td colspan="2" style="padding: 5px 0; border: none; background: none; text-align: center; font-weight: normal; padding-bottom: 20px;">
-				<input type="submit" value="<?php echo $lang['mod/log_in']; ?>" style="margin: 0px;">
-			</td>
-		</tr>
-	</tbody>
-</table>
-</form>-->
-<?php //$mitsuba->admin->ui->endSection(); ?>
-		<?php
+<?php
 		}
 ?>
+</html>
+<?php //$mitsuba->admin->ui->endSection(); ?>
