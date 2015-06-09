@@ -6,8 +6,8 @@ if (localStorage.getItem("firsttime") != 1)
 	localStorage.setItem("o_preview", 1);
 	localStorage.setItem("o_loader", 0);
 	localStorage.setItem("o_watched", 0);
-	localStorage.setItem("o_updater", 0);
-	localStorage.setItem("o_imgexpand", 0);
+	localStorage.setItem("o_updater", 1);
+	localStorage.setItem("o_imgexpand", 1);
 	localStorage.setItem("o_fastreply", 0);
 	localStorage.setItem("o_alt_mobile", 0);
 	localStorage.setItem("o_custom_links", '');
@@ -554,7 +554,7 @@ function addThreadExpander(parent)
 {
 	
 	$(parent).find(".thread").each(function () {
-		$('<a href="javascript:;" class="expander" id="e'+$(this).attr("id")+'">[+]</a>').insertAfter($("div#"+$(this).attr("id")+" > span.summary")).click(function () {
+		$('<a href="javascript:;" class="expander" id="e'+$(this).attr("id")+'"><i class="fa fa-expand" title="Expand Thread"></i></a>').insertAfter($("div#"+$(this).attr("id")+" > span.summary")).click(function () {
 			var tid = "#"+$(this).attr("id").substr(1);
 			var href = absolutizeURI(window.location.href, $(tid).find(".replylink").attr("href"));
 			$.ajax({
@@ -570,7 +570,7 @@ function addThreadExpander(parent)
 
 				$(tid).html($(tid, nodes).html());
 
-				$('<a href="javascript:;" class="hider" id="ht'+tid.substr(2)+'">[-]</a>').appendTo($(tid+" div.op div.postInfo")).click(function () {
+				$('<a href="javascript:;" class="hider" id="ht'+tid.substr(2)+'"><i class="fa fa-eye-slash" title="Hide Thread"></i></a>').appendTo($(tid+" div.op div.postInfo")).click(function () {
 					var id = $(this).attr("id").substr(2);
 					thread_toggle(id);
 				});
@@ -612,7 +612,7 @@ function addThreadHider(parent)
 {
 	$(parent).find(".op .postInfo").each(function () {
 		var id = $(this).attr("id").substr(2);
-		$(this).append(' <a href="javascript:;" class="hider" id="ht'+id+'">[-]</a>');
+		$(this).append(' <a href="javascript:;" class="hider" id="ht'+id+'"><i class="fa fa-eye-slash" title="Hide Thread"></i></a>');
 	});
 
 	$(parent).find(".hider").click(function () {
@@ -706,7 +706,7 @@ function hideThread(id, type)
 		});
 	}
 
-	$("#ht"+id).html("[+]");
+	$("#ht"+id).html("<i class='fa fa-expand' title='Expand Thread'></i>");
 }
 
 function showThread(id)
@@ -729,7 +729,7 @@ function showThread(id)
 	}
 
 	
-	$("#ht"+id).html("[-]");
+	$("#ht"+id).html("<i class='fa fa-eye-slash' title='Hide Thread'></i>");
 }
 
 function thread_toggle(id)

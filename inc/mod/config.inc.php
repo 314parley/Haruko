@@ -19,7 +19,11 @@ $config = $mitsuba->config;
 $styles = glob('./inc/frontpage/*.php', GLOB_BRACE);
 foreach ($styles as $style)
 {
+	if(basename($style) == $config['frontpage_style']){
+		echo "<option value='".basename($style)."' selected>".basename($style)."</option>";
+	}else{
 	echo "<option value='".basename($style)."'>".basename($style)."</option>";
+	}
 }
 ?></select><br />
 <?php echo $lang['mod/frontpage_url']; ?>: <input type="text" name="frontpage_url" value="<?php echo $config['frontpage_url']; ?>" /><br />

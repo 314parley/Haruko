@@ -515,6 +515,8 @@ class Posting {
 		{
 			$this->mitsuba->caching->serializeBoard(isset($_GET['b']));
 		}
+		//oh please generate a new index page :p
+		$this->mitsuba->caching->generateFrontpage();
 	}
 
 	function reportPost($board, $id, $reason)

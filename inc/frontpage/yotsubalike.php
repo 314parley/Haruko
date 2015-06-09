@@ -156,7 +156,7 @@ $file .= "<script type='text/javascript' src='./js/style.js'></script>
 		</div>
 		<div id="ft" class=" ">
 			<br class="clear-bug">
-			<div id="copyright" class=" ">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba">mitsuba</a> -</div>
+			<div id="copyright" class=" ">- <a href="https://github.com/314parley/Haruko">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba">mitsuba</a> -</div>
 		</div>
 	</div>
 </body>
