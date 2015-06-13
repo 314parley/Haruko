@@ -154,8 +154,12 @@ class Common {
 
 		$filename = $filename.$ext;
 
+<<<<<<< HEAD
 		if (!(strpos($filename,"url:") === false)) { 
 			//dont make thumbnails of links
+=======
+		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links xD
+>>>>>>> af245c0fe4d9f1f87c14b08b40a8c4b002afb589
 			return 0;	
 		}
 		

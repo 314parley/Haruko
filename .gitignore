@@ -1,8 +1,12 @@
 # Ignore the htaccess... oops.
 .htaccess
 
+<<<<<<< HEAD
 # Ignore the menu/index page... oops.
 menu.html
+=======
+# Ignore the index page... oops.
+>>>>>>> af245c0fe4d9f1f87c14b08b40a8c4b002afb589
 index.html
 
 # ignore the config file, duh.
