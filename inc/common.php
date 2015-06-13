@@ -133,25 +133,29 @@ class Common {
 		function thumb($board, $filename, $ext, $s=250){
 		$extension = $this->getGraphicsExtension();
 		
-		if ($ext == ".webm") {
-
+		if ($ext == ".webm") {	
+			//initialize	
 			$fname = './'.$board.'/src/'.$filename.$ext;
 			$thumb_dir = './'.$board.'/src/thumb/';
-			require_once dirname(__FILE__) . '/webm.class.php';
-
-
+			require_once 'webm.class.php';
 			$movie = new \webm($fname);
 
-			if ($movie->thumbnail($thumb_dir.$filename.'.gif', $s, $s))
-				return array("width" => $s, "height" => $s);
-			else
-				echo "Problem with creating thumbnail\n";
-
+			//actual logic...
+				if ($movie->valid_webm()) {
+					if($movie->thumbnail($thumb_dir.$filename.'.gif', $s,$s,"") && $movie->thumbnail($thumb_dir.$filename.'.webm', $s,$s,"h")){
+						return array("width" => $s, "height" => $s);
+					}else{
+						echo "There was a problem in uploading your thumbnail... contact parley.";
+					}
+			}else{
+				//echo "The file you uploaded was <strong>NOT</strong> a valid WebM file.";
+			}
 		}
 
 		$filename = $filename.$ext;
 
-		if (!(strpos($filename,"url:") === false)) { //dont make thumbnails of links xD
+		if (!(strpos($filename,"url:") === false)) { 
+			//dont make thumbnails of links
 			return 0;	
 		}
 		
@@ -292,7 +296,7 @@ class Common {
 		return (substr($haystack, -$length) === $needle);
 	}
 
-	function randomPassword() {
+	/*function randomPassword() {
 		$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
 		$pass = array();
 		$alphaLength = strlen($alphabet) - 1;
@@ -301,7 +305,24 @@ class Common {
 			$pass[] = $alphabet[$n];
 		}
 		return implode($pass);
-	}
+	}*/
+	function randomPassword() {
+	    $fp = @fopen('/dev/urandom','rb');
+	    $result = '';
+	    if ($fp !== FALSE) {
+	        $result .= @fread($fp, 8);
+	        @fclose($fp);
+	    }else{
+		    trigger_error('Can not open /dev/urandom.');
+		}
+	    // convert from binary to string
+	    $result = base64_encode($result);
+	    // remove none url chars
+	    $result = strtr($result, '+/', '-_');
+	    // Remove = from the end
+	    $result = str_replace('=', ' ', $result);
+	    return $result;
+}
 
 	function randomSalt() {
 		$alphabet = 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789+_-)(*&^%$#@!~|';

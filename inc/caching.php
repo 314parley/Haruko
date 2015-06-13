@@ -439,7 +439,7 @@ class Caching
 		$randomImage = $images[array_rand($images)]; 
 		$file .= '<img class="title" src="/banners/r.php" alt="Haruko" />';
 		$file .= '<div class="boardTitle">/'.$boarddata['short'].'/ - '.$boarddata['name'].'</div>';
-		$file .= '<div class="boardSubtitle">'.$boarddata['des'].'</div>';
+		$file .= '<div class="boardSubtitle">'.$boarddata['message'].'</div>';
 		$file .= '</div>';
 		$file .= '<br />';
 		$file .= '<hr />';

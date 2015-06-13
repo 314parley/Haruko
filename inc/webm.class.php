@@ -28,7 +28,7 @@ class webm {
 	private $input_file;	//orginal webm movie
 	private $exec_string;	//commandline for ffmpeg
 
-	
+
 	function webm($webm_clip_name) {
 		$this->codec      = 'vp8';           //used only in .webm thumbnail option
 		$this->input_file = $webm_clip_name;
@@ -40,7 +40,7 @@ class webm {
 		$ext = strtolower(pathinfo($thumbnail_location, PATHINFO_EXTENSION));
 		switch($ext) {
 			case 'webm':
-				$this->exec_string = 'ffmpeg -i '.$this->input_file.
+				$this->exec_string = dirname(__FILE__).'/ffmpeg -i '.$this->input_file.
 									 ' -vcodec '.$this->codec.
 									 ' -an'.
 									 ' -t '.$this->max_time.
@@ -49,7 +49,7 @@ class webm {
 									 ' </dev/null 2>&1';
 				break;
 			case 'gif':
-				$this->exec_string = 'ffmpeg -i '.$this->input_file.
+				$this->exec_string = dirname(__FILE__).'/ffmpeg -i '.$this->input_file.
 									 ' -t '.$this->max_time.
 									 ' -r 10 '.
 									 " -vf scale=\"'if(gte(iw,ih),$max_w,-1)':'if(gte(iw,ih),-1,$max_h)'\",drawtext=\"fontfile=/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf:  text='$overlay': fontcolor=white: x=2: y=(h-text_h)\" ".
@@ -61,12 +61,12 @@ class webm {
 		exec($this->exec_string,$output,$return_var);
 		if ($return_var==0) {return true;} else {return false;}
 	}
-	
+
 	/* 
 	 *    check for VP8 format 
 	 */
 	function valid_webm() {
-		$this->exec_string = 'ffmpeg -i '.$this->input_file .' </dev/null 2>&1';
+		$this->exec_string = dirname(__FILE__).'/ffmpeg -i '.$this->input_file .' </dev/null 2>&1';
 		$lines = shell_exec($this->exec_string);
 		$lines = explode("\n", $lines);
 		$found = false;
@@ -75,7 +75,7 @@ class webm {
 		}
 		return $found;
 	}
-	
+
 
 }
 
