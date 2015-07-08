@@ -41,7 +41,8 @@ class Caching
 			'o_updater' => 'Enable updater',
 			'o_imgexpand' => 'Enable image expander (RES)',
 			'o_fastreply' => 'Enable fast reply',
-			'o_alt_mobile' => 'Mobile menu on the right'
+			'o_alt_mobile' => 'Mobile menu on the right',
+			'o_night_css' => 'Nighty Time Mode'
 		];
 
 		$out = '<a href="#" class="ico" id="open"></a>

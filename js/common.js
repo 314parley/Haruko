@@ -1,4 +1,3 @@
-localStorage.setItem("meow", 1);
 if (localStorage.getItem("firsttime") != 1)
 {
 	localStorage.setItem("firsttime", 1);
@@ -10,6 +9,7 @@ if (localStorage.getItem("firsttime") != 1)
 	localStorage.setItem("o_imgexpand", 1);
 	localStorage.setItem("o_fastreply", 0);
 	localStorage.setItem("o_alt_mobile", 0);
+	localStorage.setItem("o_night_css", 0);
 	localStorage.setItem("o_custom_links", '');
 }
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
 	fillFields("body");
 
 	(localStorage.o_alt_mobile == 1) && $("a#open, #menu").addClass("alt");
-	(localStorage.o_pinned == 0) && $("div#menu-wrapper").removeClass("pinned");
+	(localStorage.o_pinned === 0) && $("div#menu-wrapper").removeClass("pinned");
 
 
 	//$('link[title="mystyle"]').prop('disabled', true);
@@ -37,7 +37,7 @@ $(document).ready(function () {
 	addThreadHider("body");
 	hideThreads();
 
-	if (localStorage.getItem('o_custom_links') != '') {
+	if (localStorage.getItem('o_custom_links') !== '') {
 		//var customLinks = ["b", "h", "kara", "oc"];
 		var customLinks = localStorage.getItem('o_custom_links').split(' ');
 
@@ -54,6 +54,17 @@ $(document).ready(function () {
 		});
 	}
 
+	if (localStorage.getItem('o_night_css') == 1) {
+		//this gets the current hour in 24 hour format.
+		var CurrHour = new Date().getHours();
+		//if the Current Hour is 9:00PM, change CSS to the "night.css".
+		if (CurrHour >= '18'){
+			document.styleSheets[0].disable = true;
+			$('head').append("<link rel='stylesheet' href='/css/night.css' type='text/css'>");
+		}
+		
+	}
+
 	if (localStorage.getItem("o_preview") == 1)
 	{
 		$("body").append('<div id="quote-preview" class="post preview" style="display: none; position: absolute; z-index:999;"></div>');
@@ -64,7 +75,7 @@ $(document).ready(function () {
 		addImgExpand("body");
 		addWebmExpand("body");
 	}
-	if ($(".postingMode").length == 0) //outside thread
+	if ($(".postingMode").length === 0) //outside thread
 	{
 		if (localStorage.getItem("o_fastreply") == 1)
 		{
@@ -231,7 +242,7 @@ function addSettings()
 
 	$("#settingsSave").click(function (e) {
 		
-		if(linksInput.val() != '' && !linksInput.val().match(/^[a-z0-9$ ]+$/)) {
+		if(linksInput.val() !== '' && !linksInput.val().match(/^[a-z0-9$ ]+$/)) {
 			alert('Custom boardlinks field contains illegal characters');
 			return;
 		} else {
