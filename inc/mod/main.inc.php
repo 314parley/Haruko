@@ -1,12 +1,13 @@
-<?php 
+<?php
 	$config = $mitsuba->config;
 	$sitename = $config['sitename'];
-	
+
 	$reports = $conn->query("SELECT * FROM reports;")->num_rows;
 	$appeals = $conn->query("SELECT * FROM appeals;")->num_rows;
 	$breqs = $conn->query("SELECT * FROM ban_requests;")->num_rows;
-	$ppd = $conn->query("SELECT COUNT(*) FROM posts WHERE date > NOW() - INTERVAL 7 DAY")->num_rows;
-	
+	$ppd = $conn->query("SELECT COUNT(*) FROM posts WHERE from_unixtime(date) > NOW() - INTERVAL 7 DAY");
+	$ppd_r = $ppd->fetch_row();
+
 ?>
 <?php
 if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
@@ -27,7 +28,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  <body class="skin-blue fixed">
    <!-- Site wrapper -->
    <div class="wrapper">
- 	
+
  	<header class="main-header">
  	  <!-- Logo -->
  	  <a href="/" class="logo">
@@ -182,13 +183,13 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  		</div>
  	  </nav>
  	</header>
- 
+
  	<!-- =============================================== -->
- 
+
  	<!-- Left side column. contains the sidebar -->
-<?php require("nav.inc.php") ?> 
+<?php require("nav.inc.php") ?>
  	<!-- =============================================== -->
- 
+
  	<!-- Content Wrapper. Contains page content -->
  	<div class="content-wrapper">
 	 	<?
@@ -216,7 +217,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
                 <span class="info-box-icon bg-aqua"><i class="fa fa-comments-o"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Posts (24 hr)</span>
-                  <span class="info-box-number"><? var_dump($ppd); ?></span>
+                  <span class="info-box-number"><? echo $ppd_r[0]; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -251,6 +252,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
+
           </div>
  	  </section><!-- /.content -->
  	  <? } ?>
@@ -260,13 +262,13 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  		- Haruko + Mitsuba -
  	  </div>
  	</footer>
- 	
- 	<!-- Control Sidebar -->      
- 	<aside class="control-sidebar control-sidebar-dark">                
+
+ 	<!-- Control Sidebar -->
+ 	<aside class="control-sidebar control-sidebar-dark">
  	  <!-- Create the tabs -->
  	  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
  		<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
- 		
+
  		<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
  	  </ul>
  	  <!-- Tab panes -->
@@ -312,60 +314,60 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  			  </a>
  			</li>
  		  </ul><!-- /.control-sidebar-menu -->
- 
- 		  <h3 class="control-sidebar-heading">Tasks Progress</h3> 
+
+ 		  <h3 class="control-sidebar-heading">Tasks Progress</h3>
  		  <ul class='control-sidebar-menu'>
  			<li>
- 			  <a href='javascript::;'>               
+ 			  <a href='javascript::;'>
  				<h4 class="control-sidebar-subheading">
  				  Custom Template Design
  				  <span class="label label-danger pull-right">70%</span>
  				</h4>
  				<div class="progress progress-xxs">
  				  <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
- 				</div>                                    
+ 				</div>
  			  </a>
- 			</li> 
+ 			</li>
  			<li>
- 			  <a href='javascript::;'>               
+ 			  <a href='javascript::;'>
  				<h4 class="control-sidebar-subheading">
  				  Update Resume
  				  <span class="label label-success pull-right">95%</span>
  				</h4>
  				<div class="progress progress-xxs">
  				  <div class="progress-bar progress-bar-success" style="width: 95%"></div>
- 				</div>                                    
+ 				</div>
  			  </a>
- 			</li> 
+ 			</li>
  			<li>
- 			  <a href='javascript::;'>               
+ 			  <a href='javascript::;'>
  				<h4 class="control-sidebar-subheading">
  				  Laravel Integration
  				  <span class="label label-waring pull-right">50%</span>
  				</h4>
  				<div class="progress progress-xxs">
  				  <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
- 				</div>                                    
+ 				</div>
  			  </a>
- 			</li> 
+ 			</li>
  			<li>
- 			  <a href='javascript::;'>               
+ 			  <a href='javascript::;'>
  				<h4 class="control-sidebar-subheading">
  				  Back End Framework
  				  <span class="label label-primary pull-right">68%</span>
  				</h4>
  				<div class="progress progress-xxs">
  				  <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
- 				</div>                                    
+ 				</div>
  			  </a>
- 			</li>               
- 		  </ul><!-- /.control-sidebar-menu -->         
- 
+ 			</li>
+ 		  </ul><!-- /.control-sidebar-menu -->
+
  		</div><!-- /.tab-pane -->
  		<!-- Stats tab content -->
  		<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
  		<!-- Settings tab content -->
- 		<div class="tab-pane" id="control-sidebar-settings-tab">            
+ 		<div class="tab-pane" id="control-sidebar-settings-tab">
  		  <form method="post">
  			<h3 class="control-sidebar-heading">General Settings</h3>
  			<div class="form-group">
@@ -377,7 +379,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  				Some information about this general settings option
  			  </p>
  			</div><!-- /.form-group -->
- 
+
  			<div class="form-group">
  			  <label class="control-sidebar-subheading">
  				Allow mail redirect
@@ -387,7 +389,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  				Other sets of options are available
  			  </p>
  			</div><!-- /.form-group -->
- 
+
  			<div class="form-group">
  			  <label class="control-sidebar-subheading">
  				Expose author name in posts
@@ -397,28 +399,28 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  				Allow the user to show his name in blog posts
  			  </p>
  			</div><!-- /.form-group -->
- 
+
  			<h3 class="control-sidebar-heading">Chat Settings</h3>
- 
+
  			<div class="form-group">
  			  <label class="control-sidebar-subheading">
  				Show me as online
  				<input type="checkbox" class="pull-right" checked />
- 			  </label>                
+ 			  </label>
  			</div><!-- /.form-group -->
- 
+
  			<div class="form-group">
  			  <label class="control-sidebar-subheading">
  				Turn off notifications
  				<input type="checkbox" class="pull-right" />
- 			  </label>                
+ 			  </label>
  			</div><!-- /.form-group -->
- 
+
  			<div class="form-group">
  			  <label class="control-sidebar-subheading">
  				Delete chat history
  				<a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
- 			  </label>                
+ 			  </label>
  			</div><!-- /.form-group -->
  		  </form>
  		</div><!-- /.tab-pane -->
@@ -428,7 +430,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  		 immediately after the control sidebar -->
  	<div class='control-sidebar-bg'></div>
    </div><!-- ./wrapper -->
- 
+
    <!-- jQuery 2.1.4 -->
    <script src="/js/jQuery/jQuery-2.1.4.min.js"></script>
    <!-- Bootstrap 3.3.2 JS -->
@@ -439,7 +441,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
    <script src='/js/fastclick/fastclick.min.js'></script>
    <!-- AdminLTE App -->
    <script src="/js/app.js" type="text/javascript"></script>
-   
+
    <!-- Demo -->
    <script src="/js/demo.js" type="text/javascript"></script>
  </body>
@@ -502,15 +504,15 @@ function CheckIdleTime() {
 			<input type="password" class="form-control" placeholder="<?php echo $lang['mod/password']; ?>" name="password"/>
 		  </div>
 		  <div class="row">
-			<div class="col-xs-8">    
+			<div class="col-xs-8">
 			  <div class="checkbox icheck">
-			  </div>                        
+			  </div>
 			</div><!-- /.col -->
 			<div class="col-xs-4">
 			  <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo $lang['mod/log_in']; ?></button>
 			</div><!-- /.col -->
 		  </div>
-		</form>	
+		</form>
 	  </div><!-- /.login-box-body -->
 	</div><!-- /.login-box -->
 </div>
