@@ -30,12 +30,12 @@ enctype="multipart/form-data">
 <h1 align=center>Banners currently in rotation:</h1><br />
 <?php
 error_reporting();
- $files = glob("*.{png,jpg,jpeg,gif}", GLOB_BRACE);
+$files = glob("*.{png,jpg,jpeg,gif}", GLOB_BRACE);
 // $files = glob("*.gif");
-  for ($i=1; $i<count($files); $i++) {
-  	 $num = $files[$i]; echo '<img src="'.$num.'" alt="image" id="img" style="border:1px solid black">'."&nbsp;&nbsp;";
-  	  }
-  	  
+for ($i = 1;$i < count($files);$i++) {
+    $num = $files[$i];
+    echo '<img src="' . $num . '" alt="image" id="img" style="border:1px solid black">' . "&nbsp;&nbsp;";
+}
 ?>
 <br><br>
 <SCRIPT LANGUAGE="JavaScript">
