@@ -910,12 +910,15 @@ if ($(\"#custom_cc\").prop(\"checked\"))
                     for ($i = 0;$i <= $max_pages;$i++) {
                         if ($i == $pg) {
                             if ($i == 0) {
+	                            //if you're on the index.html...
                                 $file.= "[<a href='./index.html'><strong>" . $i . "</strong></a>] ";
                             } else {
+	                            //if you're on $i.html...
                                 $file.= "[<a href='./" . $i . ".html'><strong>" . $i . "</strong></a>] ";
                             }
                         } else {
-                            if ($i > $pages) {
+                            if ($i+1 > $pages) {
+	                            // $i.html doesn't exist
                                 $file.= "[" . $i . "] ";
                             } else {
                                 if ($i != 0) {
