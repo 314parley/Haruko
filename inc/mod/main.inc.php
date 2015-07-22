@@ -18,7 +18,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title><? echo($sitename)?> Management</title>
+	<title><?php echo $sitename; ?> Management</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -33,7 +33,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  	  <!-- Logo -->
  	  <a href="/" class="logo">
  		<!-- logo for regular state and mobile devices -->
- 		<span class="logo-lg"><b><? echo($sitename)?></b> Panel</span>
+ 		<span class="logo-lg"><b><?php echo $sitename; ?></b> Panel</span>
  	  </a>
  	  <!-- Header Navbar: style can be found in header.less -->
  	  <nav class="navbar navbar-static-top" role="navigation">
@@ -50,10 +50,10 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  			<li class="dropdown messages-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
  				<i class="fa fa-envelope-o"></i>
- 				<? if($pms > 0){?><span class="label label-success"><? echo $pms ?></span><? } ?>
+ 				<?php  if($pms > 0){?><span class="label label-success"><?php  echo $pms ?></span><?php  } ?>
  			  </a>
  			  <ul class="dropdown-menu">
- 				<li class="header">You have <? echo $pms ?> messages</li>
+ 				<li class="header">You have <?php  echo $pms ?> messages</li>
  				<li>
  				  <!-- inner menu: contains the actual data -->
  				  <ul class="menu">
@@ -78,10 +78,10 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  			<li class="dropdown tasks-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
  				<i class="fa fa-flag-o"></i>
- 				<? if($reports > 0){?><span class="label label-danger"><? echo $reports ?></span><? } ?>
+ 				<?php  if($reports > 0){?><span class="label label-danger"><?php  echo $reports ?></span><?php  } ?>
  			  </a>
  			  <ul class="dropdown-menu">
- 				<li class="header">You have <? echo $reports ?> reports</li>
+ 				<li class="header">You have <?php  echo $reports ?> reports</li>
  				<li>
  				  <!-- inner menu: contains the actual data -->
  				  <ul class="menu">
@@ -131,10 +131,10 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  			<li class="dropdown notifications-menu">
  			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
  				<i class="fa fa-gavel"></i>
- 				<? if($appeals > 0){?><span class="label label-warning"><? echo $appeals ?></span><? } ?>
+ 				<?php  if($appeals > 0){?><span class="label label-warning"><?php  echo $appeals ?></span><?php  } ?>
  			  </a>
  			  <ul class="dropdown-menu">
- 				<li class="header">You have <? echo $appeals ?> ban appeals</li>
+ 				<li class="header">You have <?php  echo $appeals ?> ban appeals</li>
  				<li>
  				  <!-- inner menu: contains the actual data -->
  				  <ul class="menu">
@@ -192,7 +192,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
  	<!-- Content Wrapper. Contains page content -->
  	<div class="content-wrapper">
-	 	<?
+	 	<?php 
 	 	$file = "inc/mod/".str_replace(array("/", "\\", ".."), ".", trim($path, " \t\n\r\0\x0B/\\")).".inc.php";
 	 	if (file_exists($file))
 	 	{
@@ -208,7 +208,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 	 	}
 	 	?>
  	  <!-- Main content -->
-	 	  <? if($path == "/"){ ?>
+	 	  <?php  if($path == "/"){ ?>
 	 	   	  <section class="content">
  		<!-- Default box -->
 <div class="row">
@@ -217,7 +217,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
                 <span class="info-box-icon bg-aqua"><i class="fa fa-comments-o"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Posts (24 hr)</span>
-                  <span class="info-box-number"><? echo $ppd_r[0]; ?></span>
+                  <span class="info-box-number"><?php  echo $ppd_r[0]; ?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </div><!-- /.col -->
@@ -255,7 +255,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
           </div>
  	  </section><!-- /.content -->
- 	  <? } ?>
+ 	  <?php  } ?>
  	</div><!-- /.content-wrapper -->
  	<footer class="main-footer">
  	  <div class="text-center hidden-xs">

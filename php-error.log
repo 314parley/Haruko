@@ -1,4 +1,0 @@
-[18-Jul-2015 00:29:54 America/Los_Angeles] Hello, errors!
-[18-Jul-2015 07:29:54 UTC] PHP Notice:  Undefined index: HTTP_CF_CONNECTING_IP in /Users/Parley/Haruko/mod.php on line 142
-[18-Jul-2015 07:29:54 UTC] PHP Stack trace:
-[18-Jul-2015 07:29:54 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0

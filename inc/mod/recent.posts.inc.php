@@ -16,7 +16,7 @@ $mitsuba->admin->ui->startSection();
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title"><?echo sprintf($lang['mod/recent_n_posts'], $max)?></h3>
+                  <h3 class="box-title"><?php echo sprintf($lang['mod/recent_n_posts'], $max)?></h3>
                   <div class="box-tools">
                     <div class="input-group">
 <?php echo $lang['mod/show_recent_none']; ?>: <a href="?/recent/posts">50</a>&nbsp;<a href="?/recent/posts&max=100">100</a>&nbsp;<a href="?/recent/posts&max=250">250</a>&nbsp;<a href="?/recent/posts&max=500">500</a>

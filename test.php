@@ -1,4 +1,4 @@
-<?
+<?php
 	function randomFromDev($len)
 {
     $fp = @fopen('/dev/urandom','rb');

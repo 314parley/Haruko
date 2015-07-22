@@ -22,16 +22,16 @@ if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
 					$_SESSION['username'] = $username;
 					$_SESSION['group'] = $data['group'];
 					$_SESSION['boards'] = $data['boards'];
-					$_SESSION['ip'] = $_SERVER['HTTP_CF_CONNECTING_IP'];
+					$_SESSION['ip'] = $_SERVER['HTTP_X_REAL_IP'];
 					$_SESSION['capcode_text'] = $gdata['capcode'];
 					$_SESSION['capcode_style'] = $gdata['capcode_style'];
 					$_SESSION['capcode_icon'] = $gdata['capcode_icon'];
 					$_SESSION['group_name'] = $gdata['name'];
 					$_SESSION['cookie_set'] = 2;
-					$mitsuba->admin->logAction(sprintf($lang['log/logged_in'], $_SERVER['HTTP_CF_CONNECTING_IP']));
+					$mitsuba->admin->logAction(sprintf($lang['log/logged_in'], $_SERVER['HTTP_X_REAL_IP']));
 					header("Location: ./mod.php");
 				} else {
-					$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+					$ip = $_SERVER['HTTP_X_REAL_IP'];
 					$result = $conn->query("SELECT * FROM bruteforce_tries WHERE ip='".$ip."';");
 					if ($result->num_rows >= 1)
 					{
@@ -52,7 +52,7 @@ if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
 					die($lang['mod/bad_password']);
 				}
 			} else {
-				$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+				$ip = $_SERVER['HTTP_X_REAL_IP'];
 				$result = $conn->query("SELECT * FROM bruteforce_tries WHERE ip='".$ip."';");
 				if ($result->num_rows >= 1)
 				{

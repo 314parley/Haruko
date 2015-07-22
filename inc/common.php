@@ -588,7 +588,7 @@ class Common {
         } else {
             echo " never";
         }; ?></b>.</p>
-		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_CF_CONNECTING_IP']; ?></b></p>
+		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_X_REAL_IP']; ?></b></p>
 		<?php
         $range = 0;
         if (!empty($bandata['range_ip'])) {
@@ -633,7 +633,7 @@ class Common {
         }
     }
     function banMessage($board = "%") {
-        $bandata = $this->isBanned($_SERVER['HTTP_CF_CONNECTING_IP'], $board);
+        $bandata = $this->isBanned($_SERVER['HTTP_X_REAL_IP'], $board);
         if ($bandata != 0) {
 ?>
 				<html>
@@ -720,7 +720,7 @@ class Common {
         return false;
     }
     function warningMessage() {
-        $warndata = $this->isWarned($_SERVER['HTTP_CF_CONNECTING_IP']);
+        $warndata = $this->isWarned($_SERVER['HTTP_X_REAL_IP']);
         if ($warndata != 0) {
 ?>
 				<html>

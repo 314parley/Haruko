@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 $config = $mitsuba->config;
 		?>
 <?php $mitsuba->admin->ui->startSection($lang['mod/configuration']); ?>
-<?
+<?php 
 var_dump($config["frontpage_style"]);
 ?>
 <form action="?/config/reset" method="POST">

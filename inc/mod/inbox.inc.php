@@ -9,7 +9,7 @@ if (!defined("IN_MOD"))
 <section class="content">
   <div class="row">
 	<div class="col-md-12">
-		<? if($pms == 0){?>
+		<?php  if($pms == 0){?>
 		<br />
 		  <div class="box box-solid box-success">
 			<div class="box-header">
@@ -19,7 +19,7 @@ if (!defined("IN_MOD"))
 		  	No Private Messages available!
 			</div><!-- /.box-body -->
 		  </div>
-		<? }else{?>
+		<?php  }else{?>
 	  <div class="box box-primary">
 		<div class="box-header with-border">
 		  <h3 class="box-title">Inbox</h3>
@@ -45,7 +45,7 @@ if (!defined("IN_MOD"))
 			<table class="table table-hover table-striped">
 			  <tbody>
 
-				  <?
+				  <?php 
 				  $pms = $conn->query("SELECT users.username, pm.* FROM pm LEFT JOIN users ON pm.from_user=users.id WHERE pm.to_user=".$_SESSION['id']." ORDER BY pm.created DESC");
 				  while ($row = $pms->fetch_assoc())
 				  {
@@ -84,7 +84,7 @@ if (!defined("IN_MOD"))
 		  </div>
 		</div>
 	  </div><!-- /. box -->
-	  <? } ?>
+	  <?php  } ?>
 	</div><!-- /.col -->
   </div><!-- /.row -->
 </section>
