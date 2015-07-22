@@ -19,7 +19,5 @@
     $result = str_replace('=', ' ', $result);
     return $result;
 }
-require '/kint/Kint.class.php';
-Kint::dump( $_SERVER );
 echo str_shuffle(randomFromDev(8));
 ?>
