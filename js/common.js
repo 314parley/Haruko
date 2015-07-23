@@ -57,8 +57,8 @@ $(document).ready(function () {
 	if (localStorage.getItem('o_night_css') == 1) {
 		//this gets the current hour in 24 hour format.
 		var CurrHour = new Date().getHours();
-		//if the Current Hour is 9:00PM, change CSS to the "night.css".
-		if (CurrHour >= '18'){
+		//if the Current Hour is greater than 9PM, or less than 5AM change CSS to the "night.css".
+		if (CurrHour >= '18'|| CurrHour <= '5'){
 			document.styleSheets[0].disable = true;
 			$('head').append("<link rel='stylesheet' href='/css/night.css' type='text/css'>");
 		}

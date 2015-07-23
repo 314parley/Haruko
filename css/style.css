@@ -1,0 +1,28 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+body{
+  background-color: #ffe;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+table.striped > tbody > tr:nth-child(odd) {
+  /*background-color: #a7ffeb;*/
+}
+
+.card > .collection{
+  border: none;
+}
+
+.marooncolor{
+  background-color: #800!important;
+}

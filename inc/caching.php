@@ -875,12 +875,13 @@ if ($(\"#custom_cc\").prop(\"checked\"))
                     $file.= '<div class="pages">';
                     for ($i = 0;$i <= $max_pages;$i++) {
                         if ($i > $all_pages) {
-                            $file.= "[" . $i . "] ";
+                            $file.= "[1" . $i . "] ";
                         } else {
                             if ($i == $page) {
+	                            //if you're on $i.html (technically)
                                 $file.= "[<strong>" . $i . "</strong>] ";
                             } else {
-                                $file.= "[<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
+                                $file.= "[3<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
                             }
                         }
                     }

@@ -7,7 +7,7 @@ html {
 }
 
 body:not(#menu) {
-	background-image: none !important;
+	background-image: none!important;
 	background-color: #000112;
 	font-family: trebuchet ms, sans serif;
 	color: #CCC;
@@ -37,6 +37,18 @@ a.replylink:not(:hover) {
 a:hover {
 	color: #FFF!important;
 	text-decoration: none;
+}
+
+img {
+  filter: gray; /* IE6-9 */
+  filter: grayscale(1); /* Firefox 35+ */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+/* Disable grayscale on hover */
+img:hover {
+  filter: none;
+  -webkit-filter: grayscale(0);
 }
 
 img {
