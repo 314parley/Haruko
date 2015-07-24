@@ -71,3 +71,12 @@ Stack trace:
 [24-Jul-2015 22:26:17 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
 [24-Jul-2015 22:26:17 UTC] PHP Stack trace:
 [24-Jul-2015 22:26:17 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 23:00:21 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[24-Jul-2015 23:00:21 UTC] PHP Stack trace:
+[24-Jul-2015 23:00:21 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 23:00:34 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[24-Jul-2015 23:00:34 UTC] PHP Stack trace:
+[24-Jul-2015 23:00:34 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 23:00:40 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[24-Jul-2015 23:00:40 UTC] PHP Stack trace:
+[24-Jul-2015 23:00:40 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0

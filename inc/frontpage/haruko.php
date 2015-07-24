@@ -145,7 +145,7 @@ class Frontpage {
 
 				$result = $this->conn->query("SELECT sum(orig_filesize) FROM posts");
 					$num_bytes = $result->fetch_array()[0];
-					
+
 				$result = $this->conn->query("SELECT * FROM `bans`");
 					$num_bans = $result->num_rows;
 		{
@@ -206,7 +206,7 @@ class Frontpage {
 
 
           <!--  Scripts-->
-          <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+          <script src="js/jquery.js"></script>
           <script src="js/materialize.js"></script>
           <script src="js/init.js"></script>
 					</body>
