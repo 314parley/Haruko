@@ -21,6 +21,7 @@ class CssColorValidator implements \JBBCode\InputValidator
      * characters.
      *
      * @param $input  the string to validate
+     * @return bool
      */
     public function validate($input)
     {

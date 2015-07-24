@@ -27,4 +27,3 @@ if (count($fileList) > 0 ? $img = $folder . $fileList[rand(0, count($fileList) -
 $imageInfo = pathinfo($img);
 header('Content-type: image/' . ($imageInfo['extension'] == 'jpg' ? 'jpeg' : $imageInfo['extension']));
 readfile($img);
-?>

@@ -16,6 +16,7 @@ config.php
 #some other ignored files
 PHP_errors.log
 php-error.log
+/.idea
 #[parles.us specific]
 ignore.php
 /bonzi

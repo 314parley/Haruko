@@ -37,6 +37,7 @@ class CodeDefinitionBuilder
      * Sets the tag name the CodeDefinition should be built with.
      *
      * @param $tagName  the tag name for the new CodeDefinition
+     * @return $this
      */
     public function setTagName($tagName)
     {
@@ -49,6 +50,7 @@ class CodeDefinitionBuilder
      * built with.
      *
      * @param $replacementText  the replacement text for the new CodeDefinition
+     * @return $this
      */
     public function setReplacementText($replacementText)
     {
@@ -61,6 +63,7 @@ class CodeDefinitionBuilder
      * argument.
      *
      * @param $option  ture iff the definition includes an option
+     * @return $this
      */
     public function setUseOption($option)
     {
@@ -73,6 +76,7 @@ class CodeDefinitionBuilder
      * to be parsed and evaluated as bbcode.
      *
      * @param $parseContent  true iff the content should be parsed
+     * @return $this
      */
     public function setParseContent($parseContent)
     {
@@ -84,6 +88,7 @@ class CodeDefinitionBuilder
      * Sets the nest limit for this code definition.
      *
      * @param $nestLimit a positive integer, or -1 if there is no limit.
+     * @return $this
      * @throws InvalidArgumentException  if the nest limit is invalid
      */
     public function setNestLimit($limit)
@@ -100,6 +105,7 @@ class CodeDefinitionBuilder
      * Sets the InputValidator that option arguments should be validated with.
      *
      * @param $validator  the InputValidator instance to use
+     * @return $this
      */
     public function setOptionValidator(\JBBCode\InputValidator $validator)
     {
@@ -111,6 +117,7 @@ class CodeDefinitionBuilder
      * Sets the InputValidator that body ({param}) text should be validated with.
      *
      * @param $validator  the InputValidator instance to use
+     * @return $this
      */
     public function setBodyValidator(\JBBCode\InputValidator $validator)
     {

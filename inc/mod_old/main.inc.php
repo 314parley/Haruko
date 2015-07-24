@@ -38,7 +38,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
 		<tr>
 			<td colspan="2" style="padding: 5px 0; border: none; background: none; text-align: center; font-weight: normal; padding-bottom: 20px;">
-				<input type="submit" value="<?php echo $lang['mod/log_in']; ?>" style="margin: 0px;">
+				<input type="submit" value="<?php echo $lang['mod/log_in']; ?>" style="margin: 0;">
 			</td>
 		</tr>
 	</tbody>

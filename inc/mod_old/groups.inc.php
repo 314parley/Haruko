@@ -23,12 +23,12 @@ $groupn = $result->num_rows;
 while ($row = $result->fetch_assoc())
 {
 echo "<tr>";
-echo "<td><center>".$row['name']."</center></td>";
-echo "<td><center>## ".$row['capcode']."<center></td>";
-echo "<td><center><a href='?/groups/edit&id=".$row['id']."'>".$lang['mod/edit']."</a></center></td>";
+echo "<td style=\"text-align: center;\">" .$row['name']. "</td>";
+echo "<td style=\"text-align: center;\">## " .$row['capcode']."<center></td>";
+echo "<td style=\"text-align: center;\"><a href='?/groups/edit&id=" .$row['id']."'>".$lang['mod/edit']. "</a></td>";
 if ($groupn != 1)
 {
-echo "<td><center><a href='?/groups/delete&id=".$row['id']."'>".$lang['mod/delete']."</a></center></td>";
+echo "<td style=\"text-align: center;\"><a href='?/groups/delete&id=" .$row['id']."'>".$lang['mod/delete']. "</a></td>";
 } else {
 echo "<td></td>";
 }

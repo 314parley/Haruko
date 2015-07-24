@@ -12,4 +12,3 @@ $lang['log/updated_board'] = "Updated board's data: /%s/";
 $lang['log/rebuilt_board'] = "Rebuilt board's cache: /%s/";
 $lang['log/rebuilt_cache'] = "Rebuilt cache";
 $lang['log/rebuilt_thumbs'] = "Rebuilt thumbnails";
-?>

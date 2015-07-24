@@ -49,7 +49,7 @@ if (document.layers)
 {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
 else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
 
-document.oncontextmenu=new Function("return false")
+document.oncontextmenu=new Function("return false");
 // --> 
 </script>
 </body>

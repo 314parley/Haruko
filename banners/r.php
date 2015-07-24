@@ -179,4 +179,3 @@ if ($img != null) {
         imagedestroy($im);
     }
 }
-?>

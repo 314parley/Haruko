@@ -57,7 +57,7 @@ switch ($mode) {
 		Database host: <input type="text" name="db_host" value="localhost" /><br />
 		Database username: <input type="text" name="db_username" /><br />
 		Database password: <input type="password" name="db_password" /><br />
-		Database <b>name</b>: <input type="text" name="db_name" /><br />
+		Database <strong>name</strong>: <input type="text" name="db_name" /><br />
 		<em>(Will be created if not exists)</em><br />
 		<hr />
 		Admin username: <input type="text" name="username" value="root" /><br />

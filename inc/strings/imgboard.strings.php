@@ -80,4 +80,3 @@ $lang['img/badhostlink'] = "This host is not allowed";
 $lang['img/replies_not_allowed'] = "Replies are not allowed in this board";
 $lang['img/file_replies_not_allowed'] = "File replies are not allowed in this board";
 $lang['img/url'] = "URL";
-?>

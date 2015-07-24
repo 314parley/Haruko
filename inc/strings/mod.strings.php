@@ -391,4 +391,3 @@ $lang['mod/module_table_conflict'] = "Table %s already exists!";
 $lang['mod/module_installed_delete'] = "Before deleting module you have to uninstall it!";
 
 //$lang['mod/'] = "";
-?>

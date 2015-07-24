@@ -47,6 +47,7 @@ class TagCountingVisitor implements \JBBcode\NodeVisitor
      * Retrieves the frequency of the given tag name.
      *
      * @param $tagName  the tag name to look up
+     * @return int
      */
     public function getFrequency($tagName)
     {

@@ -300,8 +300,8 @@ function toggle(button,area) {
 </head>
 <body id="menu">
 <ul>
-<li><?php echo $lang['mod/logged_in_as']; ?><b><?php echo $_SESSION['username']; ?></b></li>
-<li><?php echo $lang['mod/privileges']; ?><b><?php echo $_SESSION['group_name'] ?></b></li>
+<li><?php echo $lang['mod/logged_in_as']; ?><strong><?php echo $_SESSION['username']; ?></strong></li>
+<li><?php echo $lang['mod/privileges']; ?><strong><?php echo $_SESSION['group_name'] ?></strong></li>
 <li><a href="?/logout" target="_top"><?php echo $lang['mod/logout']; ?></a></li>
 </ul>
 <?php

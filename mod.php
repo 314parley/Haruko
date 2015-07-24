@@ -165,4 +165,3 @@ if (($path != "/nav") && ($path != "/board") && ($path != "/board/action") && ((
 <?php
 }
 $conn->close();
-?>

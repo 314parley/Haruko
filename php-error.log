@@ -1,0 +1,73 @@
+[23-Jul-2015 13:26:23 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 13:26:23 UTC] PHP Stack trace:
+[23-Jul-2015 13:26:23 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 13:54:20 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 13:54:20 UTC] PHP Stack trace:
+[23-Jul-2015 13:54:20 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:39 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:20:39 UTC] PHP Stack trace:
+[23-Jul-2015 14:20:39 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:39 UTC] PHP Notice:  Undefined index: token in /Users/Parley/Haruko/inc/mod/cache.inc.php on line 7
+[23-Jul-2015 14:20:39 UTC] PHP Stack trace:
+[23-Jul-2015 14:20:39 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:39 UTC] PHP   2. include() /Users/Parley/Haruko/mod.php:160
+[23-Jul-2015 14:20:39 UTC] PHP   3. include() /Users/Parley/Haruko/inc/mod/main.inc.php:199
+[23-Jul-2015 14:20:49 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:20:49 UTC] PHP Stack trace:
+[23-Jul-2015 14:20:49 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:53 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:20:53 UTC] PHP Stack trace:
+[23-Jul-2015 14:20:53 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:58 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:20:58 UTC] PHP Stack trace:
+[23-Jul-2015 14:20:58 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:20:59 UTC] PHP Fatal error:  Uncaught exception 'ImagickException' with message 'unable to open image `./314/src/1435684018.jpg': No such file or directory @ error/blob.c/OpenBlob/2658' in /Users/Parley/Haruko/inc/common.php:137
+Stack trace:
+#0 /Users/Parley/Haruko/inc/common.php(137): Imagick->__construct('./314/src/14356...')
+#1 /Users/Parley/Haruko/inc/caching.php(1642): Mitsuba\Common->thumb('314', '1435684018', '.jpg')
+#2 /Users/Parley/Haruko/inc/mod/cache.inc.php(29): Mitsuba\Caching->regenThumbnails('314')
+#3 /Users/Parley/Haruko/inc/mod/main.inc.php(199): include('/Users/Parley/H...')
+#4 /Users/Parley/Haruko/mod.php(160): include('/Users/Parley/H...')
+#5 {main}
+  thrown in /Users/Parley/Haruko/inc/common.php on line 137
+[23-Jul-2015 14:21:01 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:21:01 UTC] PHP Stack trace:
+[23-Jul-2015 14:21:01 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:21:04 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:21:04 UTC] PHP Stack trace:
+[23-Jul-2015 14:21:04 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:24:31 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:24:31 UTC] PHP Stack trace:
+[23-Jul-2015 14:24:31 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:29:01 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:29:01 UTC] PHP Stack trace:
+[23-Jul-2015 14:29:01 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:29:30 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:29:30 UTC] PHP Stack trace:
+[23-Jul-2015 14:29:30 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:37:24 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:37:24 UTC] PHP Stack trace:
+[23-Jul-2015 14:37:24 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:37:37 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:37:37 UTC] PHP Stack trace:
+[23-Jul-2015 14:37:37 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:38:01 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:38:01 UTC] PHP Stack trace:
+[23-Jul-2015 14:38:01 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 14:38:09 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 14:38:09 UTC] PHP Stack trace:
+[23-Jul-2015 14:38:09 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[23-Jul-2015 17:08:05 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[23-Jul-2015 17:08:05 UTC] PHP Stack trace:
+[23-Jul-2015 17:08:05 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 22:26:17 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/inc/mod/login.inc.php on line 25
+[24-Jul-2015 22:26:17 UTC] PHP Stack trace:
+[24-Jul-2015 22:26:17 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 22:26:17 UTC] PHP   2. require() /Users/Parley/Haruko/mod.php:136
+[24-Jul-2015 22:26:17 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/inc/mod/login.inc.php on line 31
+[24-Jul-2015 22:26:17 UTC] PHP Stack trace:
+[24-Jul-2015 22:26:17 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0
+[24-Jul-2015 22:26:17 UTC] PHP   2. require() /Users/Parley/Haruko/mod.php:136
+[24-Jul-2015 22:26:17 UTC] PHP Notice:  Undefined index: HTTP_X_REAL_IP in /Users/Parley/Haruko/mod.php on line 125
+[24-Jul-2015 22:26:17 UTC] PHP Stack trace:
+[24-Jul-2015 22:26:17 UTC] PHP   1. {main}() /Users/Parley/Haruko/mod.php:0

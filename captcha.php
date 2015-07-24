@@ -20,4 +20,3 @@ if (isset($_GET['t'])) {
     //echo "<a style='display: block; padding-top: 10px; text-align: center; text-decoration: none; color: #FFF; font-size: 30px; text-shadow: -1px 0px #000, 0px 1px #000, 1px 0px #000, 0px -1px #000' href='?i=".time()."'>Click here</a>";
     
 }
-?>

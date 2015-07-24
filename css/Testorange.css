@@ -775,7 +775,7 @@ div.closed {
 	cursor: pointer;
 }
 
-span.capcodeAdmin span.name,span.capcodeAdmin span.name a,span.capcodeAdmin span.postertrip,span.capcodeAdmin 
+span.capcodeAdmin span.name, span.capcodeAdmin span.name a, span.capcodeAdmin span.postertrip, span.capcodeAdmin,
 strong.capcode {
 	color: #F00!important;
 }

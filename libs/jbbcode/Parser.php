@@ -418,6 +418,7 @@ class Parser
      *
      * @param $parent  the current parent element
      * @param $tokenizer  the tokenizer we're using
+     * @return ElementNode|the
      */
     protected function parseAsTextUntilClose(ElementNode $parent, Tokenizer $tokenizer)
     {
