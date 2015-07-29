@@ -1,4 +1,4 @@
-Haruko [![Build Status](https://travis-ci.org/314parley/Haruko.svg)](https://travis-ci.org/314parley/Haruko)
+Haruko
 =======
 
 Project Haruko (previously Mitsuba) is an opensource (AGPLv3 licensed) image board software written in PHP and using MySQLi. This is the version deployed on a test 314chan server (contact [parley](mailto:admin@314chan.org) for URL, or visit 314chan IRC)

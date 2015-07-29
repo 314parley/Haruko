@@ -407,12 +407,12 @@ class Caching {
         $page = 0;
         if (!is_numeric($threadno)) {
             return -15; //error
-            
+
         }
         if ($return == 1) {
             if (!is_numeric($mode)) {
                 return -15; //error
-                
+
             }
             if (($mode == 0) && ($threadno != 0)) {
                 $page = $threadno;
@@ -657,7 +657,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
             }
         } elseif ($overboard == 1) {
             //TODO: Overboard stuff
-            
+
         } else {
             $postform.= "<div class='closed'><h1>" . $lang['img/locked'] . "</h1></div>";
         }
@@ -775,10 +775,10 @@ if ($(\"#custom_cc\").prop(\"checked\"))
                     if (!empty($row['capcode_icon'])) {
                         if (substr($row['capcode_icon'], 0, 1) == ".") {
                             //$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
-                            
+
                         } else {
                             //$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
-                            
+
                         }
                     }
                     $email_a = "";
@@ -1121,10 +1121,10 @@ if ($(\"#custom_cc\").prop(\"checked\"))
         if (!empty($row['capcode_icon'])) {
             if (substr($row['capcode_icon'], 0, 1) == ".") {
                 //$c_image = ' <img src="'.$this->mitsuba->getPath($row['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
-                
+
             } else {
                 //$c_image = ' <img src="'.$row['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
-                
+
             }
         }
         $email_a = "";
@@ -1282,10 +1282,10 @@ if ($(\"#custom_cc\").prop(\"checked\"))
             if (!empty($row2['capcode_icon'])) {
                 if (substr($row2['capcode_icon'], 0, 1) == ".") {
                     //$c_image = ' <img src="'.$this->mitsuba->getPath($row2['capcode_icon'], $location, 1).'" alt="Capcode" style="margin-bottom: -3px;" />';
-                    
+
                 } else {
                     //$c_image = ' <img src="'.$row2['capcode_icon'].'" alt="Capcode" style="margin-bottom: -3px;" />';
-                    
+
                 }
             }
             $email_a = "";

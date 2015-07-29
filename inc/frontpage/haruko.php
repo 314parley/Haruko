@@ -9,6 +9,7 @@ class Frontpage {
         $this->mitsuba = $mitsuba;
         $this->config = $this->mitsuba->config;
     }
+    
     function generateFrontpage($action = "none") {
         $file = '<!doctype html>';
         $file.= '<html lang="en">
@@ -56,13 +57,11 @@ class Frontpage {
                       <thead>
                         <tr>
                           <h4>Boards</h4>
-                        </tr>
-                        <tr>';
+                        </tr>';
                         $cats = $this->conn->query("SELECT * FROM links WHERE parent=-1 ORDER BY short ASC;");
                         while ($row = $cats->fetch_assoc())
                         $file .= '<th data-field="section">'.$row['title'].'</th>';
                         $file .= '
-                        </tr>
                       </thead>
                       <tbody>
                         <tr>

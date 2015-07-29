@@ -10,7 +10,7 @@ index.html
 # ignore the config file, duh.
 config.php
 
-#ignore ffmpeg... 
+#ignore ffmpeg...
 /inc/ffmpeg
 
 #some other ignored files
