@@ -1,4 +1,6 @@
 <?php
+	ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 if (!defined("IN_MOD"))
 {
 	die("Nah, I won't serve that file to you.");
@@ -6,7 +8,7 @@ if (!defined("IN_MOD"))
 $mitsuba->admin->reqPermission("pages.update");
 	if (!empty($_GET['b']))
 	{
-	$result = $conn->query("SELECT * FROM pages WHERE name=".$_GET['b']);
+	$result = $conn->query("SELECT * FROM pages WHERE name='".$_GET['b']."'");
 	if ($result->num_rows != 0)
 	{
 	if ((empty($_POST['text'])) || (empty($_POST['name'])))
@@ -53,6 +55,7 @@ $mitsuba->admin->reqPermission("pages.update");
 		
 	}
 	} else {
+		echo($conn->error);
 	?>
 	<meta http-equiv="refresh" content="0;URL='?/pages'" />
 	<?php
