@@ -1002,36 +1002,53 @@ if ($(\"#custom_cc\").prop(\"checked\"))
         if ($row['raw'] == 1) {
             $file = $text;
         } else {
-            $file = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
-            $file.= '<html>
-				<head>
-				<title>' . $title . '</title>';
-            $first_default = 1;
-            $styles = $this->conn->query("SELECT * FROM styles ORDER BY `default` DESC");
-            while ($row = $styles->fetch_assoc()) {
-                if ($first_default == 1) {
-                    $file.= '<link rel="stylesheet" id="switch" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '">';
-                    $first_default = 0;
-                }
-                $file.= '<link rel="alternate stylesheet" style="text/css" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '" title="' . $row['name'] . '">';
-            }
-            $file.= "
-	<script type='text/javascript' src='./js/style.js'></script>
-	</head>
-				<body>";
-            $file.= '<div id="doc">
-				<br /><br />';
-            $file.= '<div class="box-outer top-box">
-				<div class="box-inner">
-				<div class="boxbar"><h2>' . $title . '</h2></div>
-				<div class="boxcontent">';
+            $file = '<!doctype html>';
+            $file.= '<html lang="en">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+						<meta charset="UTF-8">
+				<title>' . $title . '</title>
+            <link href="css/MIcons.css" rel="stylesheet">
+            <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+            <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+					</head>
+					<body>
+					<div class="navbar-fixed">
+              <nav class="marooncolor" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">' . $this->config['sitename'] . '</a>
+            
+              <ul class="right hide-on-med-and-down">
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="news.php">News</a></li>
+                <li><a href="irc.html">IRC</a></li>
+              </ul>
+
+              <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="news.php">News</a></li>
+                <li><a href="irc.html">IRC</a></li>
+              </ul>
+              
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+          </nav>
+        </div>';
+            $file.= '<div class="container">
+            <br /><br />
+            <div class="card-panel">';
+            //I need to figure out why class card-title isn't working on this page...for now, just make it an h3
+            $file.= '
+				<h1>' . $title . '</h1>
+				';
             require_once ("libs/Michelf/Markdown.php");
             $file.= \Michelf\Markdown::defaultTransform($text);
-            $file.= '</div>
+            $file.= '
 				</div>
 				</div>
-				</div>';
+				';
             if ($this->config['enable_meny'] == 1) {
                 $file.= '</div>';
             }

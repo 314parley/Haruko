@@ -68,7 +68,7 @@ $lang['mod/add_user'] = "Add user";
 $lang['mod/all_users'] = "All users";
 
 $lang['mod/by'] = "By";
-$lang['mod/title'] = "Subject";
+$lang['mod/title'] = "Title";
 $lang['mod/text'] = "Text";
 $lang['mod/submit'] = "Submit";
 $lang['mod/your_entries'] = "Your entries";

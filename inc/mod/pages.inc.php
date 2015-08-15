@@ -37,7 +37,7 @@ $mitsuba->admin->reqPermission("pages.delete");
 	?>
 <?php $mitsuba->admin->ui->startSection($lang['mod/all_pages']); ?>
 
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <td><?php echo $lang['mod/title']; ?></td>
@@ -53,7 +53,7 @@ while ($row = $result->fetch_assoc())
 {
 echo "<tr>";
 echo "<td class='text-center'>".$row['title']."</td>";
-echo "<td class='text-center'>".$row['name']."</td>";
+echo "<td class='text-center'>".$row['name'].".html</td>";
 echo "<td class='text-center'><a href='?/pages/edit&b=".$row['name']."'>".$lang['mod/edit']."</a></td>";
 echo "<td class='text-center'><a href='?/pages&m=delete&b=".$row['name']."'>".$lang['mod/delete']."</a></td>";
 echo "</tr>";
@@ -67,9 +67,9 @@ echo "</tr>";
 
 <form action="?/pages&m=add" method="POST">
 <?php $mitsuba->admin->ui->getToken($path); ?>
-<?php echo $lang['mod/name']; ?>: <input type="text" name="name" /><br />
-<?php echo $lang['mod/title']; ?>: <input type="text" name="title" /><br />
-<?php echo $lang['mod/text']; ?>: <br />
+<?php echo $lang['mod/name']; ?>: <input type="text" name="name" /><small><em>&nbsp;[will be located at /name.html and is case sensitive]</em></small><br />
+<?php echo $lang['mod/title']; ?>: <input type="text" name="title" /><small><em>&nbsp;[Text in title HTML element and header text]</em></small><br />
+<?php echo $lang['mod/text']; ?>: <small><em>&nbsp;[Text will be rendered using <a href="http://nestacms.com/docs/creating-content/markdown-cheat-sheet">Markdown</a>, unless "<?php echo $lang['mod/raw_html']; ?>" is checked.]</em></small><br />
 <textarea name="text" cols="70" rows="10"></textarea><br />
 <input type="checkbox" name="raw" value="1" /><?php echo $lang['mod/raw_html']; ?><br />
 <input type="submit" value="<?php echo $lang['mod/submit']; ?>" />

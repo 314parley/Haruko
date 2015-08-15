@@ -32,7 +32,7 @@ API
 
 The API is at {install_location}/`board`/`thread_no`.json
 
-For more info visit [4chan's api](https://github.com/4chan/4chan-API)
+~~For more info visit [4chan's api](https://github.com/4chan/4chan-API)~~ *the api we use is not on track with the current 4chan's (or Vichan's for that instance) API
 
 Credits
 -------
@@ -48,6 +48,6 @@ sebagaua - some PHPs
 
 License
 --------
-See [LICENSE](https://github.com/HarukoBBS/Haruko/blob/master/LICENSE).
+See [LICENSE](https://github.com/314parley/Haruko/blob/master/LICENSE).
 
 Haruko contains code from [jQuery (MIT license)](http://jquery.com/), [PHP Markdown by Michel Fortin (custom license, available on website)](http://michelf.ca/projects/php-markdown/), [jBBCode by Jackson Owens (MIT license)](http://jbbcode.com/), [cool-php-captcha by José Rodríguez (GPLv3)](https://code.google.com/p/cool-php-captcha/), [Meny by Hakim El Hattab (custom license, available on website)](https://github.com/hakimel/Meny), [AdminLTE (MIT license)](https://github.com/almasaeed2010/AdminLTE) and [jquery.cookie by Klaus Hartl (MIT license)](https://github.com/carhartl/jquery-cookie).
