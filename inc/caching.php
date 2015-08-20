@@ -61,8 +61,6 @@ class Caching {
         return $out;
     }
     function rebuildBoardLinks() {
-    	error_reporting(E_ALL);
-    	ini_set('display_errors', 1);
         $this->mitsuba->updateConfigValue("boardLinks", $this->generateBoardLinks("index"));
         $this->mitsuba->updateConfigValue("boardLinks_thread", $this->generateBoardLinks("thread"));
         $this->mitsuba->updateConfigValue("boardLinks_board", $this->generateBoardLinks("board"));
@@ -105,8 +103,6 @@ class Caching {
         return $out;
     }
     function getBoardLinks($location = "board") {
-    	error_reporting(E_ALL);
-    	ini_set('display_errors', 1);
         if ($location == "board") {
             return $this->config['boardLinks_board'];
         } elseif ($location == "thread") {
