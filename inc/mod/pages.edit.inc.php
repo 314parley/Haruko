@@ -1,6 +1,6 @@
 <?php
 	ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+	error_reporting(E_ALL);
 if (!defined("IN_MOD"))
 {
 	die("Nah, I won't serve that file to you.");
@@ -30,8 +30,8 @@ $mitsuba->admin->reqPermission("pages.update");
 	<?php
 	} else {
 			$mitsuba->admin->ui->checkToken($_POST['token']);
-		if ($_SESSION['type']==2)
-		{
+		//what the hell is this doing here? 
+		//if ($_SESSION['type']==2){
 			if (($_POST['name']=="news") || ($_POST['name']=="frontpage") || ($_POST['name']=="index"))
 			{
 				die($lang['mod/page_wrong_name']);
@@ -50,7 +50,7 @@ $mitsuba->admin->reqPermission("pages.update");
 <a href="?/pages"><?php echo $lang['mod/back']; ?></a><?php $mitsuba->admin->ui->endSection(); ?>
 				<?php
 			}
-		}
+		//}
 		
 		
 	}

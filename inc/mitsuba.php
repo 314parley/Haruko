@@ -222,23 +222,25 @@ class Mitsuba {
             $eventclass->$module['method']($name, $data);
         }
     }
-    function getPath($path, $location, $relative) {
-        if ($relative == 0) {
-            return $path;
-        }
-        switch ($location) {
-            case "index":
-                return $path;
-            break;
-            case "board":
-                return "." . $path;
-            break;
-            case "thread":
-                return "../." . $path;
-            break;
-            default:
-                return $path;
-            break;
-        }
-    }
-}
+    function getPath($path, $location, $relative)
+	{
+		if ($relative == 0)
+		{
+			return $path;
+		}
+		switch ($location)
+		{
+			case "index":
+				return $path;
+				break;
+			case "board":
+				return ".".$path;
+				break;
+			case "thread":
+				return "../.".$path;
+				break;
+			default:
+				return $path;
+				break;
+		}
+	}}
