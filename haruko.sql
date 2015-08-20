@@ -224,7 +224,9 @@ CREATE TABLE IF NOT EXISTS `config` (
 --
 
 INSERT INTO `config` (`name`, `value`) VALUES
+('boardLinks', ''),
 ('boardLinks_board', ''),
+('boardLinks_thread', ''),
 ('frontpage_menu_url', 'menu.html'),
 ('frontpage_style', 'yotsubalike.php'),
 ('frontpage_url', 'index.html'),
