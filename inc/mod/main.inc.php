@@ -5,7 +5,7 @@
 	$reports = $conn->query("SELECT * FROM reports;")->num_rows;
 	$appeals = $conn->query("SELECT * FROM appeals;")->num_rows;
 	$breqs = $conn->query("SELECT * FROM ban_requests;")->num_rows;
-	$ppd = $conn->query("SELECT COUNT(*) FROM posts WHERE from_unixtime(date) > NOW() - INTERVAL 7 DAY");
+	$ppd = $conn->query("SELECT COUNT(*) FROM posts WHERE from_unixtime(date) >= DATE_SUB(NOW(), INTERVAL 1 DAY)");
 	$ppd_r = $ppd->fetch_row();
 
 ?>

@@ -32,15 +32,15 @@ class Frontpage {
               <ul class="right hide-on-med-and-down">
                 <li><a href="rules.html">Rules</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="irc.html">IRC</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
               </ul>
 
               <ul id="nav-mobile" class="side-nav">
                 <li><a href="rules.html">Rules</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="irc.html">IRC</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
               </ul>
               '.
               //end if statement
@@ -56,7 +56,7 @@ class Frontpage {
               <table class="centered striped">
                       <thead>
                         <tr>
-                          <h4>Boards</h4>
+                          <h4>Boards</h4><small>Sections are currently broken</small>
                         </tr>';
                         $cats = $this->conn->query("SELECT * FROM links WHERE parent=-1 ORDER BY short ASC;");
                         while ($row = $cats->fetch_assoc())
@@ -64,27 +64,24 @@ class Frontpage {
                         $file .= '
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><a href="">/b1/ - Board 1</a></td>
-                          <td><a href="">/b2/ - Board 2</a></td>
-                          <td><a href="">/b3/ - Board 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="">/b4/ - Board 4</a></td>
-                          <td><a href="">/b5/ - Board 5</a></td>
-                          <td><a href="">/b6/ - Board 6</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="">/b7/ - Board 7</a></td>
-                          <td><a href="">/b8/ - Board 8</a></td>
-                          <td><a href="">/b9/ - Board 9</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="">/b10/ - Board 10</a></td>
-                          <td><a href="">/b11/ - Board 11</a></td>
-                          <td><a href="">/b12/ - Board 12</a></td>
-                        </tr>
-                      </tbody>
+                        ';
+                        $cats = $this->conn->query("SELECT * FROM links WHERE parent=-1 ORDER BY short ASC;");
+                        while ($row = $cats->fetch_assoc()){
+	                        $children = $this->conn->query("SELECT * FROM links WHERE parent=".$row['id']." ORDER BY short ASC");
+	                        while ($child = $children->fetch_assoc()){
+		                        if (!empty($child['url_index'])){
+			                        $file .= '<td>
+			                        <a class="boardlink" href="'.$child['url_index'].'" title="'.$child['title'].'">'.$child['title'].'</a>
+			                        </td>';
+		                        }else{
+			                        $file .= '<td>
+			                        <a class="boardlink" href="'.$child['url'].'" title="'.$child['title'].'">/'.$child['url'].'/ - '.$child['title'].'</a>
+			                        </td>';
+		                        }
+	                        }
+                        }
+                        $file .='
+                        </tbody>
                     </table>
               <br><br>
 
@@ -213,34 +210,59 @@ class Frontpage {
         fclose($handle);
     }
     function generateNews() {
-        $file = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-			"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
-        $file.= '<html>
-			<head>
-			<title>' . $this->config['sitename'] . '</title>';
-        $first_default = 1;
-        $styles = $this->conn->query("SELECT * FROM styles ORDER BY `default` DESC");
-        while ($row = $styles->fetch_assoc()) {
-            if ($first_default == 1) {
-                $file.= '<link rel="stylesheet" id="switch" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '">';
-                $first_default = 0;
-            }
-            $file.= '<link rel="alternate stylesheet" style="text/css" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '" title="' . $row['name'] . '">';
-        }
-        $file.= "
-			<script type='text/javascript' src='./js/style.js'></script>
-			</head>
-			<body>";
-        $file.= '<div id="doc">
-			<br /><br />';
-        $file.= '<div class="box-outer top-box">
-			<div class="box-inner">
-			<div class="boxbar"><h2>News</h2></div>
-			<div class="boxcontent">';
+        $file = '<!doctype html>';
+        $file.= '
+        <html lang="en">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+						<meta charset="UTF-8">
+						<title>' . $this->config['sitename'] . ' - News</title>
+            <link href="css/MIcons.css" rel="stylesheet">
+            <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+            <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+					</head>
+
+        ';
+        $file.= '
+        					<body>
+          <div class="navbar-fixed">
+              <nav class="marooncolor" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">' . $this->config['sitename'] . '</a>
+            '.
+            //put an if statement on weather the sitename equals "314chan" here"
+            '
+              <ul class="right hide-on-med-and-down">
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
+              </ul>
+
+              <ul id="nav-mobile" class="side-nav">
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
+              </ul>
+              '.
+              //end if statement
+              '
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+          </nav>
+        </div>
+
+        ';
+        $file.= '
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+              <br><br>
+        ';
         $result = $this->conn->query("SELECT * FROM news ORDER BY date DESC;");
         while ($row = $result->fetch_assoc()) {
-            $file.= '<div class="content">';
-            $file.= '<h3><span class="newssub">' . $row['title'] . ' by ' . $row['who'] . ' - ' . date("d/m/Y @ H:i", $row['date']) . '</span></span></h3>';
+            $file.= '<div class="card-panel">';
+            $file.= '<h4>' . $row['title'] . ' by ' . $row['who'] . ' - ' . date("d/m/Y h:i", $row['date']) . '</h4><hr />';
             $file.= $row['text'];
             $file.= '</div>';
         }

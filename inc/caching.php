@@ -99,7 +99,7 @@ class Caching {
             }
             $out.= ']</div>';
         }
-        $out.= '<div class="group">[<a class="fa fa-twitter" href="http://www.twitter.com/314chan" title="@314chan"></a> / <a class="fa fa-heartbeat" href="https://status.314chan.org/" title="Status Page"></a> / <a class="fa fa-pie-chart" href="https://anal.314chan.org/" title="Analytics"></a> / <a class="fa fa-phone" href="https://314chan.org/index.php?view=faq#id3" title="Tech Support"></a><!-- / <a>blahblahblah</a>-->]</div>';
+        $out.= '<div class="group">[<a class="fa fa-twitter" href="http://www.twitter.com/314chan" title="@314chan"></a> / <a class="fa fa-heartbeat" href="https://status.314chan.org/" title="Status Page"></a> / <a class="fa fa-pie-chart" href="https://anal.314chan.org/" title="Analytics"></a> <!--/ <a class="fa fa-phone" href="https://314chan.org/index.php?view=faq#id3" title="Tech Support"></a>--><!-- / <a>blahblahblah</a>-->]</div>';
         return $out;
     }
     function getBoardLinks($location = "board") {
@@ -1014,6 +1014,20 @@ if ($(\"#custom_cc\").prop(\"checked\"))
             <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 					</head>
 					<body>
+					<style>
+					sp,sp a:not(:hover) {
+						color: #000!important;
+						background: #000!important;
+						text-decoration: none;
+						}
+						
+					sp:hover,sp:focus,sp:hover a {
+						color: #fff!important;
+						}
+					sp:hover a {
+						text-decoration: underline;
+						}
+					</style>
 					<div class="navbar-fixed">
               <nav class="marooncolor" role="navigation">
             <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">' . $this->config['sitename'] . '</a>
@@ -1021,15 +1035,15 @@ if ($(\"#custom_cc\").prop(\"checked\"))
               <ul class="right hide-on-med-and-down">
                 <li><a href="rules.html">Rules</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="irc.html">IRC</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
               </ul>
 
               <ul id="nav-mobile" class="side-nav" style="left: -250px;">
                 <li><a href="rules.html">Rules</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="news.php">News</a></li>
-                <li><a href="irc.html">IRC</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="https://irc.314chan.org">IRC</a></li>
               </ul>
               
               <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -1039,7 +1053,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
             $file.= '<div class="container">
             <br /><br />
             <div class="card-panel">';
-            //I need to figure out why class card-title isn't working on this page...for now, just make it an h3
+            //I need to figure out why class card-title isn't working on this page...for now, just make it an h1
             $file.= '
 				<h1>' . $title . '</h1>
 				';
@@ -1537,8 +1551,8 @@ if ($(\"#custom_cc\").prop(\"checked\"))
             }
             //processComment($board, $string, $parser, $thread = 0, $specialchars = 1, $bbcode = 1, $id = 0, $resto = 0, $wordfilter = 1, $wf_table = array())
             //$file .= $this->processComment($row['board'], $row['comment'], $parser, 2, 0, $boarddata['bbcode'], $row['id'], $row['resto'], $wf, $replace_array);
-            $file.= '<div class="teaser">' . $this->processComment($board, $row['comment'], $this->_parser, 2, 0, $boarddata['bbcode'], $row['id'], $row['resto'], 1, $this->_replace_array) . '&nbsp;</div>';
-            //$file .= '<div class="teaser">'.$subject.htmlspecialchars(strtr($row['comment'], $replace_array)).'&nbsp;</div>';
+            //$file.= '<div class="teaser">' . $this->processComment($board, $row['comment'], $this->_parser, 2, 0, $boarddata['bbcode'], $row['id'], $row['resto'], 1, $this->_replace_array) . '&nbsp;</div>';
+            $file .= '<div class="teaser">'.$subject.htmlspecialchars(strtr($row['comment'], $replace_array)).'&nbsp;</div>';
             $file.= '</div>';
         }
         $file.= '</div>';

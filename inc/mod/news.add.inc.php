@@ -20,7 +20,8 @@ $mitsuba->admin->reqPermission("news.add");
 <?php $mitsuba->admin->ui->endSection(); ?><br />
 <?php $mitsuba->admin->ui->startSection($lang['mod/your_entries']); ?>
 
-<table>
+<div class="box-body no-padding">
+<table class="table table-striped">
 <thead>
 <tr>
 <td><?php echo $lang['mod/title']; ?></td>
@@ -45,6 +46,7 @@ $mitsuba->caching->generateNews();
 ?>
 </tbody>
 </table>
+</div>
 <?php $mitsuba->admin->ui->endSection(); ?>
 	<?php
 	} else {
