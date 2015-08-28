@@ -6,14 +6,14 @@ if (!defined("IN_MOD"))
 }
 	if (empty($_POST['ip']))
 	{
-		$ip = "";
+		$IPAddress = "";
 		$title = "";
 		$title = $lang['mod/add_range_ban'];
 		$mitsuba->admin->ui->startSection($title);
 		?>
 <form action="?/rangebans/add" method="POST">
 <?php $mitsuba->admin->ui->getToken($path); ?>
-<?php echo $lang['mod/ip']; ?>: <input type="text" name="ip" value="<?php echo $ip; ?>"/><br />
+<?php echo $lang['mod/ip']; ?>: <input type="text" name="ip" value="<?php echo $IPAddress; ?>"/><br />
 <?php echo $lang['mod/reason']; ?>: <input type="text" name="reason" /><br />
 <?php echo $lang['mod/staff_note']; ?>: <input type="text" name="note" /><br />
 <?php echo $lang['mod/expires_eg']; ?>: <input type="text" name="expires" /><br />

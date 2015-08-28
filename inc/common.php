@@ -19,9 +19,9 @@ class Common {
         }
         return 0;
     }
-    function addSystemBan($ip, $reason, $note, $expires, $boards) {
-        if (!empty($ip)) {
-            $ip = $this->conn->real_escape_string($ip);
+    function addSystemBan($IPAddress, $reason, $note, $expires, $boards) {
+        if (!empty($IPAddress)) {
+            $IPAddress = $this->conn->real_escape_string($IPAddress);
             $reason = $this->conn->real_escape_string($reason);
             $note = $this->conn->real_escape_string($note);
             $boards = $this->conn->real_escape_string($boards);
@@ -37,7 +37,7 @@ class Common {
             if (($expires == false) && ($perma == 0)) {
                 return -2;
             }
-            $this->conn->query("INSERT INTO bans (ip, mod_id, reason, note, created, expires, boards) VALUES ('" . $ip . "', 0, '" . $reason . "', '" . $note . "', " . $created . ", " . $expires . ", '" . $boards . "');");
+            $this->conn->query("INSERT INTO bans (ip, mod_id, reason, note, created, expires, boards) VALUES ('" . $IPAddress . "', 0, '" . $reason . "', '" . $note . "', " . $created . ", " . $expires . ", '" . $boards . "');");
             return 1;
         }
     }
@@ -54,9 +54,9 @@ class Common {
         $factor = floor((strlen($bytes) - 1) / 3);
         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
     }
-    function mkid($ip, $topic, $board, $junk = "") {
+    function mkid($IPAddress, $topic, $board, $junk = "") {
         global $id_salt;
-        return substr(crypt(md5($ip . 't' . $board . $topic . $junk . $id_salt), 'h!'), -8);
+        return substr(crypt(md5($IPAddress . 't' . $board . $topic . $junk . $id_salt), 'h!'), -8);
     }
     function getGraphicsExtension() {
         if (extension_loaded('imagick')) {
@@ -234,8 +234,8 @@ class Common {
         }
         return rmdir($dir);
     }
-    function isWhitelisted($ip) {
-        $whitelist = $this->conn->query("SELECT * FROM whitelist WHERE ip='" . $ip . "' ORDER BY id DESC LIMIT 0, 1");
+    function isWhitelisted($IPAddress) {
+        $whitelist = $this->conn->query("SELECT * FROM whitelist WHERE ip='" . $IPAddress . "' ORDER BY id DESC LIMIT 0, 1");
         if ($whitelist->num_rows >= 1) {
             $wlistdata = $whitelist->fetch_assoc();
             if ($wlistdata['nolimits'] == 1) {
@@ -432,17 +432,17 @@ class Common {
         $trip = crypt($pw . $randomstring . $securetrip_salt, $salt);
         return $trip;
     }
-    function isBanned($ip, $board) {
-        $ipbans = $this->conn->query("SELECT * FROM bans WHERE ip='" . $ip . "' AND (expires>" . time() . " OR expires=0) ORDER BY expires DESC;");
+    function isBanned($IPAddress, $board) {
+        $IPAddressbans = $this->conn->query("SELECT * FROM bans WHERE ip='" . $IPAddress . "' AND (expires>" . time() . " OR expires=0) ORDER BY expires DESC;");
         $rangebans = $this->conn->query("SELECT * FROM rangebans ORDER BY expires DESC;");
-        $ipbandata = null;
+        $IPAddressbandata = null;
         $rangebandata = null;
         $bandata = null;
         $otherbans = array();
         while ($row = $rangebans->fetch_assoc()) {
             $range = str_replace('*', '(.*)', $row['ip']);
             if ($this->startsWith($range, ".")) {
-                if ((strpos($ip, $range) !== FALSE)) {
+                if ((strpos($IPAddress, $range) !== FALSE)) {
                     if ($row['boards'] == "%") {
                         $rangebandata = $row;
                         $rangebandata['range'] = 1;
@@ -461,7 +461,7 @@ class Common {
                     $otherbans[] = $row;
                     $otherbans[count($otherbans) - 1]['range'] = 1;
                 }
-            } elseif ($this->startsWith($ip, $range)) {
+            } elseif ($this->startsWith($IPAddress, $range)) {
                 if ($row['boards'] == "%") {
                     $rangebandata = $row;
                     $rangebandata['range'] = 1;
@@ -479,7 +479,7 @@ class Common {
                 }
                 $otherbans[] = $row;
                 $otherbans[count($otherbans) - 1]['range'] = 1;
-            } elseif (preg_match('/' . $range . '/', $ip)) {
+            } elseif (preg_match('/' . $range . '/', $IPAddress)) {
                 if ($row['boards'] == "%") {
                     $rangebandata = $row;
                     $rangebandata['range'] = 1;
@@ -499,17 +499,17 @@ class Common {
                 $otherbans[count($otherbans) - 1]['range'] = 1;
             }
         }
-        while ($row = $ipbans->fetch_assoc()) {
-            if ((empty($ipbandata)) || ($ipbandata['expires'] < $row['expires'])) {
+        while ($row = $IPAddressbans->fetch_assoc()) {
+            if ((empty($IPAddressbandata)) || ($IPAddressbandata['expires'] < $row['expires'])) {
                 if ($row['boards'] == "%") {
-                    $ipbandata = $row;
+                    $IPAddressbandata = $row;
                 } else {
                     if ($board == "%") {
-                        $ipbandata = $row;
+                        $IPAddressbandata = $row;
                     } else {
                         $boards = explode(",", $row['boards']);
                         if (in_array($board, $boards)) {
-                            $ipbandata = $row;
+                            $IPAddressbandata = $row;
                         }
                     }
                 }
@@ -517,17 +517,17 @@ class Common {
             $otherbans[] = $row;
             $otherbans[count($otherbans) - 1]['range'] = 0;
         }
-        if (($ipbandata != null) && ($rangebandata != null)) {
-            if (($ipbandata['expires'] == 0) || ($ipbandata['expires'] > $rangebandata['expires'])) {
-                $bandata = $ipbandata;
-            } elseif (($rangebandata['expires'] == 0) || ($rangebandata['expires'] > $ipbandata['expires'])) {
+        if (($IPAddressbandata != null) && ($rangebandata != null)) {
+            if (($IPAddressbandata['expires'] == 0) || ($IPAddressbandata['expires'] > $rangebandata['expires'])) {
+                $bandata = $IPAddressbandata;
+            } elseif (($rangebandata['expires'] == 0) || ($rangebandata['expires'] > $IPAddressbandata['expires'])) {
                 $bandata = $rangebandata;
             } else {
-                $bandata = $ipbandata;
+                $bandata = $IPAddressbandata;
             }
-        } elseif (($ipbandata != null) || ($rangebandata != null)) {
-            if ($ipbandata != null) {
-                $bandata = $ipbandata;
+        } elseif (($IPAddressbandata != null) || ($rangebandata != null)) {
+            if ($IPAddressbandata != null) {
+                $bandata = $IPAddressbandata;
             } elseif ($rangebandata != null) {
                 $bandata = $rangebandata;
             } else {
@@ -545,8 +545,8 @@ class Common {
         }
         return 0;
     }
-    function isWarned($ip) {
-        $warns = $this->conn->query("SELECT * FROM warnings WHERE ip='" . $ip . "' AND seen=0 ORDER BY created ASC LIMIT 0, 1;");
+    function isWarned($IPAddress) {
+        $warns = $this->conn->query("SELECT * FROM warnings WHERE ip='" . $IPAddress . "' AND seen=0 ORDER BY created ASC LIMIT 0, 1;");
         if ($warns->num_rows == 1) {
             $warndata = $warns->fetch_assoc();
             return $warndata;
@@ -588,7 +588,7 @@ class Common {
         } else {
             echo " never";
         }; ?></b>.</p>
-		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_X_REAL_IP']; ?></b></p>
+		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_CF_CONNECTING_IP']; ?></b></p>
 		<?php
         $range = 0;
         if (!empty($bandata['range_ip'])) {
@@ -633,7 +633,7 @@ class Common {
         }
     }
     function banMessage($board = "%") {
-        $bandata = $this->isBanned($_SERVER['HTTP_X_REAL_IP'], $board);
+        $bandata = $this->isBanned($_SERVER['HTTP_CF_CONNECTING_IP'], $board);
         if ($bandata != 0) {
 ?>
 				<html>
@@ -689,7 +689,7 @@ class Common {
             die();
         }
     }
-    function verifyBan($ip, $ban_id, $range) {
+    function verifyBan($IPAddress, $ban_id, $range) {
         if ((!is_numeric($ban_id)) || (!is_numeric($range))) {
             return false;
         }
@@ -697,7 +697,7 @@ class Common {
             $ban = $this->conn->query("SELECT * FROM bans WHERE id=" . $ban_id);
             if ($ban->num_rows == 1) {
                 $binfo = $ban->fetch_assoc();
-                if ($binfo['ip'] == $ip) {
+                if ($binfo['ip'] == $IPAddress) {
                     return true;
                 }
             }
@@ -707,12 +707,12 @@ class Common {
                 $binfo = $ban->fetch_assoc();
                 $range = str_replace('*', '(.*)', $binfo['ip']);
                 if ($this->startsWith($range, ".")) {
-                    if ((strpos($ip, $range) !== FALSE)) {
+                    if ((strpos($IPAddress, $range) !== FALSE)) {
                         return true;
                     }
-                } elseif ($this->startsWith($ip, $range)) {
+                } elseif ($this->startsWith($IPAddress, $range)) {
                     return true;
-                } elseif (preg_match('/' . $range . '/', $ip)) {
+                } elseif (preg_match('/' . $range . '/', $IPAddress)) {
                     return true;
                 }
             }
@@ -720,7 +720,7 @@ class Common {
         return false;
     }
     function warningMessage() {
-        $warndata = $this->isWarned($_SERVER['HTTP_X_REAL_IP']);
+        $warndata = $this->isWarned($_SERVER['HTTP_CF_CONNECTING_IP']);
         if ($warndata != 0) {
 ?>
 				<html>
