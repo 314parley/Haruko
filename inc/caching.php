@@ -321,6 +321,10 @@ class Caching {
         $file.= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
         $file.= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />';
         $file.= '<meta property="og:boardname" content="' . $boarddata['short'] . '" />';
+        $file.= '<!-- I know this isn\'t very HTML5-like, but it\'s the only thing I can think of right now.-->';
+        $file.= '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />';
+        $file.= '<meta http-equiv="Pragma" content="no-cache" />';
+        $file.= '<meta http-equiv="Expires" content="0" />';
         $file.= $this->getAds($boarddata['short'], "head");
         if ($location == "index") {
             $file.= "</head><body class='modPanel'>";
