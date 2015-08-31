@@ -26,10 +26,7 @@ if ($path != "/") {
     $path = rtrim($path, "/ ");
 }
 if (((!isset($_SESSION['logged'])) || ($_SESSION['logged'] == 0)) && (!(($path == "/") || ($path == "/login")))) {
-    echo '<div class="callout callout-danger">
-                    <h4>Uh oh!</h4>
-                    <p>'.$lang['mod/not_logged_in'].'</p>
-                  </div>';
+    echo '<div class="callout callout-danger"><h4>Uh oh!</h4><p>'.$lang['mod/not_logged_in'].'</p></div>';
 }
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 $mitsuba = new Mitsuba($conn);
@@ -134,13 +131,13 @@ switch ($path) {
         include ("inc/mod/main.inc.php");
     break;
         //yes, I know this is hard-wired into the code. We need to figure out a better way.
-        
+
     case "/login":
         require "inc/mod/login.inc.php";
         header("Location: /mod.php");
     break;
         // /?logout
-        
+
     case "/logout":
         setcookie('in_mod', '0', time() - 86400);
         session_destroy();
