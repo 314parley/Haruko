@@ -26,7 +26,10 @@ if ($path != "/") {
     $path = rtrim($path, "/ ");
 }
 if (((!isset($_SESSION['logged'])) || ($_SESSION['logged'] == 0)) && (!(($path == "/") || ($path == "/login")))) {
-    die($lang['mod/not_logged_in']);
+    echo '<div class="callout callout-danger">
+                    <h4>Uh oh!</h4>
+                    <p>'.$lang['mod/not_logged_in'].'</p>
+                  </div>';
 }
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 $mitsuba = new Mitsuba($conn);
