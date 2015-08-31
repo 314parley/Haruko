@@ -6,7 +6,7 @@ if (!defined("IN_MOD"))
 if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
 		{
 			$username = $conn->real_escape_string($_POST['username']);
-			
+
 			$result = $conn->query("SELECT * FROM users WHERE username='".$username."'");
 			if ($result->num_rows == 1)
 			{
@@ -42,14 +42,14 @@ if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
 							$conn->query("DELETE FROM bruteforce_tries WHERE lasttry<".(time() - 3600));
 							if ($row['tries'] > 3)
 							{
-								die($lang['mod/bad_password']);
+								echo '<div class="callout callout-warning"><h4>Whoops</h4><p>'.$lang['mod/bad_password'].'</p></div>';
 							}
 						} else {
 							$conn->query("UPDATE bruteforce_tries SET tries=1, lasttry=".time()." WHERE ip='".$IPAddress."';");
 							$conn->query("DELETE FROM bruteforce_tries WHERE lasttry<".(time() - 3600));
 						}
 					}
-					die($lang['mod/bad_password']);
+					echo '<div class="callout callout-warning"><h4>Whoops</h4><p>'.$lang['mod/bad_password'].'</p></div>';
 				}
 			} else {
 				$IPAddress = $_SERVER['HTTP_CF_CONNECTING_IP'];
@@ -63,14 +63,14 @@ if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
 						$conn->query("DELETE FROM bruteforce_tries WHERE lasttry<".(time() - 3600));
 						if ($row['tries'] > 3)
 						{
-							die($lang['mod/bad_password']);
+							echo '<div class="callout callout-warning"><h4>Whoops</h4><p>'.$lang['mod/bad_password'].'</p></div>';
 						}
 					} else {
 						$conn->query("UPDATE bruteforce_tries SET tries=1, lasttry=".time()." WHERE ip='".$IPAddress."';");
 						$conn->query("DELETE FROM bruteforce_tries WHERE lasttry<".(time() - 3600));
 					}
 				}
-				die($lang['mod/bad_password']);
+				echo '<div class="callout callout-warning"><h4>Whoops</h4><p>'.$lang['mod/bad_password'].'</p></div>';
 			}
 		} else {
 			die($lang['mod/error']);
