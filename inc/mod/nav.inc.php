@@ -540,7 +540,7 @@ while ($row = $result->fetch_assoc())
 
  		<!-- Sidebar user panel -->
 
- 		<div class="user-panel">
+ 		<!--<div class="user-panel">
 
  		  <div class="pull-left info">
 
@@ -552,7 +552,7 @@ while ($row = $result->fetch_assoc())
 
  		  </div>
 
- 		</div>
+ 		</div>-->
 
  		<!-- sidebar menu: : style can be found in sidebar.less -->
 
