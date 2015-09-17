@@ -1,13 +1,9 @@
 <?php
-	//include required files
+	#header('content-type: application/json; charset=utf-8');
 	include("config.php");
     include("inc/mitsuba.php");
-    
-    //connect to MySQLi
     $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
     $haruko = new Mitsuba($conn);
-    
-    //get all boards
     $sql = "SELECT * FROM `boards`";
     
     if(!$result = $conn->query($sql)){
@@ -21,16 +17,27 @@
 	        unset($row["name"]);
 	        $row["subtitle"] = $row["message"];
 	        unset($row["message"]);
-	        $row["board_type"] = $row["type"];
-	        unset($row["type"]);
 	        $row["default_name"] = $row["anonymous"];
 	        unset($row["anonymous"]);
-	        $row[""] = $row[""]
-	        
+			$row["board_type"] = $row["type"];
+	        unset($row["type"]);
+	        //cooldown timers [define what `cooldowns` is here
+	        $row["cooldowns"] = $row["cooldowns"];
+	        	//cooldowns between threads
+	        	$row["cooldowns"]["threads"] = $row["time_between_threads"];
+				unset($row["time_between_threads"]);
+				//cooldowns between posts
+				$row["cooldowns"]["posts"] = $row["time_between_posts"];
+				unset($row["time_between_posts"]);
+	        $row["meta_description"] = $row["des"];
+	        unset($row["des"]);
+	        $row["max_filesize"] = $row["filesize"];
+	        unset($row["filesize"]);
+
 
 	        $boardArr[] = $row;
 	    }
 	}
-	$finalJSON = json_encode($boardArr);
+	$finalJSON = json_encode($boardArr,JSON_NUMERIC_CHECK);
 	
 	file_put_contents("boards.json",$finalJSON);
