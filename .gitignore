@@ -1,12 +1,13 @@
 # Ignore the htaccess... oops.
 .htaccess
 
-# Ignore the menu/index page... oops.
+# Ignore the rendered pages.
 menu.html
-
-# Ignore the index page... oops.
 index.html
-
+faq.html
+formatting.html
+rules.html
+news.html
 # ignore the config file, duh.
 config.php
 
@@ -17,8 +18,6 @@ config.php
 PHP_errors.log
 php-error.log
 /.idea
-/formatting.html
-/rules.html
 #[parles.us specific]
 ignore.php
 /bonzi
@@ -26,6 +25,7 @@ ignore.php
 /inc/kint
 /img/brows.png
 don8.php
+boards.json
 # also ignore the boards. or...most of them if I forget to comment it out.
 /314
 /bs
