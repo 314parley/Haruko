@@ -17,6 +17,8 @@
 	        unset($row["name"]);
 	        $row["subtitle"] = $row["message"];
 	        unset($row["message"]);
+	        $row["forced_anonymous"] = $row["noname"];
+	        unset($row["noname"]);
 	        $row["default_name"] = $row["anonymous"];
 	        unset($row["anonymous"]);
 			$row["board_type"] = $row["type"];
@@ -29,6 +31,9 @@
 				//cooldowns between posts
 				$row["cooldowns"]["posts"] = $row["time_between_posts"];
 				unset($row["time_between_posts"]);
+				$row["cooldowns"]["delete"] = $row["time_to_delete"];
+				unset($row["time_between_posts"]);
+				
 	        $row["meta_description"] = $row["des"];
 	        unset($row["des"]);
 	        $row["max_filesize"] = $row["filesize"];
