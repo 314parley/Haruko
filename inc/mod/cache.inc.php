@@ -84,7 +84,7 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 
 		}
 		
-		if ((!empty($_POST['json'])) && ($_POST['json']==1))
+		if ((!empty($_POST['b_json'])) && ($_POST['b_json']==1))
 
 		{
 			$sql = "SELECT * FROM `boards`";
