@@ -178,7 +178,7 @@ $lang['mod/board_directory'] = "Board directory (without /'s)";
 
 $lang['mod/board_name'] = "Board name";
 
-$lang['mod/board_short'] = "Board short description (optional)";
+$lang['mod/board_short'] = "Board Meta Description";
 
 $lang['mod/board_msg'] = "Board message (optional)";
 
