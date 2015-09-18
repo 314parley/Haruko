@@ -28,6 +28,8 @@ $mitsuba->admin->reqPermission("config.rebuild");
 
 <input type="checkbox" name="thumbs" value=1 /><?php echo $lang['mod/thumbnails']; ?><br />
 
+<input type="checkbox" name="json" value=1 /><?php echo $lang['mod/boards_json']; ?><br />
+
 <input type="checkbox" name="static" value=1 /><?php echo $lang['mod/all_static']; ?><br />
 
 <input type="submit" value="<?php echo $lang['mod/submit']; ?>"><br />

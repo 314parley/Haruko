@@ -308,6 +308,8 @@ $lang['mod/board_links'] = "Board links";
 
 $lang['mod/all_static'] = "All static pages";
 
+$lang['mod/boards_json'] = "Boards JSON";
+
 $lang['mod/rebuild_static'] = "Rebuild static pages";
 
 $lang['mod/frontpage'] = "Frontpage";
