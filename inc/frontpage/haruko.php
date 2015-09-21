@@ -52,7 +52,7 @@ class Frontpage {
 
               <nav class="marooncolor" role="navigation">
 
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">' . $this->config['sitename'] . '</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">' . $this->config['sitename'] . '</a>
 
             '.
 
@@ -458,7 +458,7 @@ class Frontpage {
 
               <nav class="marooncolor" role="navigation">
 
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">' . $this->config['sitename'] . '</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">' . $this->config['sitename'] . '</a>
 
             '.
 
