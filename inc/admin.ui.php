@@ -90,12 +90,9 @@ class UI {
 
             }
 
-            echo "<div style='float:left'>";
-
+            echo "<div style='float:none;'>";
+			echo "<input id='{$row['short']}' type='checkbox' name='boards[]' value='" . $row['short'] . "'" . $checked . "/>";
             echo "<label for='{$row['short']}'>/" . $row['short'] . "/ - " . $row['name'] . "</label>";
-
-            echo "<input id='{$row['short']}' type='checkbox' name='boards[]' value='" . $row['short'] . "'" . $checked . "/>";
-
             echo "</div>";
 
         }
