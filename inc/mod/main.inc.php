@@ -518,7 +518,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
  	</div><!-- /.content-wrapper -->
 
- 	<footer class="main-footer">
+ 	<!--<footer class="main-footer">
 
  	  <div class="text-center hidden-xs">
 
@@ -526,7 +526,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
  	  </div>
 
- 	</footer>
+ 	</footer>-->
 
 
 

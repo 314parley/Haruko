@@ -10,21 +10,21 @@
 
 */
 
-/*  include("config.php");
+ include("config.php");
 
     include("inc/mitsuba.php");
 
     $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 
-    $haruko = new Mitsuba($conn);*/
+    $haruko = new Mitsuba($conn);
 
-//$sql = "SELECT * FROM `posts` WHERE `strip` != ''";
+$sql = "SELECT * FROM `posts` WHERE `strip` != ''";
 
-/*$sql = "SELECT DISTINCT strip from `posts`";*/
+$sql = "SELECT DISTINCT strip from `posts`";
 
-//$trip = $conn->query("SELECT * FROM posts WHERE trip IS NOT NULL");
+$trip = $conn->query("SELECT * FROM posts WHERE trip IS NOT NULL");
 
-/*if(!$result = $conn->query($sql)){
+if(!$result = $conn->query($sql)){
 
         die('There was an error running the query [' . $conn->error . ']');
 
@@ -44,7 +44,7 @@
 
     }
 
-    }*/
+    }
 
 ?>
 
