@@ -11,7 +11,7 @@ if (!defined("IN_MOD"))
 $mitsuba->admin->reqPermission("boards.view");
 
 ?>
-
+<?php if($mitsuba->admin->canBoard("%")){ ?>
 <?php $mitsuba->admin->ui->startSection($lang['mod/create_new_board']); ?>
 
 <form action="?/boards/add" method="POST">
@@ -171,7 +171,7 @@ $("select[name='type']").change(function () {
 </script>
 
 <?php $mitsuba->admin->ui->endSection(); ?>
-
+<?php } ?>
 <br />
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/manage_boards']); ?>

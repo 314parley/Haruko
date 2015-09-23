@@ -254,7 +254,7 @@ class Admin {
 
             } else {
 
-                die("You do not have rights to this board.");
+                return;
 
             }
 
@@ -272,7 +272,7 @@ class Admin {
 
             //magic here
 
-            
+
 
         }
 
