@@ -219,7 +219,9 @@ $result = $conn->query("SELECT * FROM boards ORDER BY short ASC;");
 while ($row = $result->fetch_assoc())
 
 {
-
+	if(!$mitsuba->admin->canBoard("%")){
+if($row['short'] != $_SESSION['boards']){continue;}
+}
 echo '<tr>';
 
 echo "<td><a href='./".$row['short']."/'>/".$row['short']."/</a></td>";
