@@ -14,6 +14,10 @@ config.php
 #ignore ffmpeg...
 /inc/ffmpeg
 
+#dumbass OS X
+*/.DS_Store
+.DS_Store
+Thumbs.db
 #some other ignored files
 PHP_errors.log
 php-error.log
