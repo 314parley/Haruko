@@ -14,8 +14,6 @@ $mitsuba->admin->reqPermission("boards.view");
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/create_new_board']); ?>
 
-<?php echo $mitsuba->admin->canBoard();?>
-
 <form action="?/boards/add" method="POST">
 
 <?php $mitsuba->admin->ui->getToken($path); ?>
@@ -62,7 +60,7 @@ $mitsuba->admin->reqPermission("boards.view");
 
 <span class="opt t-fb"><?php echo $lang['mod/board_files']; ?>: <input type="text" name="files" maxlength=4 value="15" /><br /></span>
 
-<?php echo $lang['mod/board_options']; ?>: 
+<?php echo $lang['mod/board_options']; ?>:
 
 <span class="opt t-ib t-tb t-fb t-lb"><br /><input type="checkbox" name="noname" value="1" /><?php echo $lang['mod/board_no_name']; ?></span>
 
