@@ -1760,7 +1760,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                         if ($i > $all_pages) {
 
-                            $file.= "[1" . $i . "] ";
+                            $file.= "[" . $i . "] ";
 
                         } else {
 
@@ -1772,7 +1772,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                             } else {
 
-                                $file.= "[3<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
+                                $file.= "[<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
 
                             }
 
@@ -1874,7 +1874,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                     $file.= ' <div class="next">';
 
-                    if ($pg != $all_pages) {
+                    if ($pg+1 != $all_pages) {
 
                         $file.= '<form action="./' . ($pg + 1) . '.html" onsubmit="location=this.action; return false;"><input type="submit" value="' . $lang['img/next'] . '" /></form>';
 
