@@ -1898,7 +1898,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
             }
 
-            $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+            $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko" target="_top" rel="nofollow">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 
             $file.= '<div id="bottom"></div>';
 
@@ -3132,7 +3132,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
         $file.= $this->getAds($boarddata['short'], "footer");
 
-        $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+        $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko" target="_top" rel="nofollow">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 
         $file.= '<div id="bottom"></div>';
 
