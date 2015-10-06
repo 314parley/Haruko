@@ -188,33 +188,50 @@ class Frontpage {
 
                <div class="col s6">
 
-                 <h4><div class="card-panel">Recent Images</div></h4>
+                 <h4><div class="card-panel">Recent Posts</div></h4>
 
-                 <div class="row">
-
-             <!--<div class="col s12">This div is 12-columns wide</div>-->
-
-             <div class="col s6">
+                 <div class="row">';
+                 $posts = $this->conn->query("SELECT * FROM posts ORDER BY date AND `board`<>'b' DESC LIMIT 4");
+                 while ($row = $posts->fetch_assoc()){
+             $file .='<div class="col s6">
 
                <div class="card">
 
-                    <div class="card-image">
-
-                      <img src="img/sample-1.jpg">
-
-                      <span class="card-title">Subject</span>
-
-                    </div>
+                    <div class="card-image">';
+                    if (!empty($row['filename'])){
+	                    if ($row['filename'] == "deleted"){
+		                    $file.='<img src="/img/deleted.gif" />';
+	                    } elseif (substr($row['filename'], 0, 8) == "spoiler:") {
+		                    $file.='<img src="img/spoiler.png">';
+	                    } elseif (substr($row['filename'], 0, 6) == "embed:") {
+		                    $file.='<h4>Embedded Content</h4>';
+	                    }else{
+		                    #$file.='<img src="/'.$row['board'].'/src/thumb/".$row['filename']." />';
+		                    if(preg_match("/\.(webm)$/", $row['filename'])){
+			                    $file.='<video src="/'.$row['board'].'/src/'.$row['filename'].'" width="100%"/>';
+		                    }else{
+		                    $file.='<img src="/'.$row['board'].'/src/thumb/'.$row['filename'].'"/>';
+		                    }
+	                    }
+                    }else{
+	                    $file.='<img src="img/sample-1.jpg">';
+                    }
+                      if (!empty($row['subject'])){
+	                      $file.='<span class="card-title">'.$row['subject'].'</span>';
+                      }else{
+	                      $file.='<span class="card-title"></span>';
+                      }
+                    $file.='</div>
 
                     <div class="card-content">
 
-                      <p>Im a post, with a subject, and with an image.<br /><a>>>555555</a><br />blahblah</a></p>
+                      <p>'.$row["comment"].'</p>
 
                     </div>
 
                     <div class="card-action">
 
-                      <a href="#">View</a>
+                      <a href="/'.$row['board'].'/">View</a>
 
                       <a href="#">Reply</a>
 
@@ -222,39 +239,10 @@ class Frontpage {
 
                   </div>
 
+             </div>';
+             }
+             $file.='
              </div>
-
-             <div class="col s6">
-
-               <div class="card">
-
-                    <div class="card-image">
-
-                      <img src="img/sample-1.jpg">
-
-                      <span class="card-title"></span>
-
-                    </div>
-
-                    <div class="card-content">
-
-                      <p>Im a post, without a subject, and with an image.<br /><a>>>555555</a><br />blahblah</a></p>
-
-                    </div>
-
-                    <div class="card-action">
-
-                      <a href="#">View</a>
-
-                      <a href="#">Reply</a>
-
-                    </div>
-
-                  </div>
-
-             </div>
-
-           </div>
 
                </div>
 
