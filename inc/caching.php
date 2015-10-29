@@ -1760,7 +1760,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                         if ($i > $all_pages) {
 
-                            $file.= "[1" . $i . "] ";
+                            $file.= "[" . $i . "] ";
 
                         } else {
 
@@ -1772,7 +1772,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                             } else {
 
-                                $file.= "[3<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
+                                $file.= "[<a href='?/board&b=" . $board . "&p=" . $i . "'>" . $i . "</a>] ";
 
                             }
 
@@ -1874,7 +1874,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
                     $file.= ' <div class="next">';
 
-                    if ($pg != $all_pages) {
+                    if ($pg+1 != $all_pages) {
 
                         $file.= '<form action="./' . ($pg + 1) . '.html" onsubmit="location=this.action; return false;"><input type="submit" value="' . $lang['img/next'] . '" /></form>';
 
@@ -1898,7 +1898,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
             }
 
-            $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+            $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko" target="_top" rel="nofollow">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 
             $file.= '<div id="bottom"></div>';
 
@@ -3132,7 +3132,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
         $file.= $this->getAds($boarddata['short'], "footer");
 
-        $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a>Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
+        $file.= '<br /><div style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"><span class="absBotDisclaimer">- <a href="https://github.com/314parley/Haruko" target="_top" rel="nofollow">Haruko</a> + <a href="http://github.com/MitsubaBBS/Mitsuba" target="_top" rel="nofollow">mitsuba</a> -</span></div>';
 
         $file.= '<div id="bottom"></div>';
 

@@ -321,8 +321,24 @@ switch ($path) {
         }
 
         }*/
-
-        include ("inc/mod/main.inc.php");
+        if(!stristr($path,'api')){
+	        include ("inc/mod/main.inc.php");
+        }else{
+	        switch (true){
+		        case stristr($path,'admin_stuff'):
+		        	include ("inc/mod/api.admin_stuff.inc.php");
+		        break;
+		        case stristr($path, 'get_post'):
+		        	include("inc/mod/api.get_post.inc.php");
+		        break;
+		        case stristr($path, 'update_post'):
+		        	include("inc/mod/api.update_post.inc.php");
+		        break;
+		        default:
+		        	include ("inc/mod/api.admin_stuff.inc.php");
+		        break;
+	        }
+        }
 
     break;
 

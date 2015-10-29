@@ -194,17 +194,11 @@ $mitsuba->admin->ui->startSection();
 
 								echo "<td>";
 
-									if (!empty($row['subject']))
-
-										{
-
-											echo $row['subject'];
-
-										}else{
-
-											echo "<em>No Subject</em>";
-
-										}
+									if (!empty($row['subject'])){
+										echo $row['subject'];
+									}else{
+										echo "<em>No Subject</em>";
+									}
 
 								echo "</td>";
 

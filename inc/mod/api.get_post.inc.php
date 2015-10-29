@@ -21,17 +21,17 @@ $mitsuba->admin->reqPermission("post.edit");
 			{
 
 				$row = $result->fetch_assoc();
-
+				header('Content-Type: application/json');
 				echo json_encode(array('comment' => htmlspecialchars($row['comment']), 'raw' => $row['raw'], 'id' => $row['id']));
 
 			} else {
-
+				header('Content-Type: application/json');
 				echo json_encode(array('error' => 404));
 
 			}
 
 		} else {
-
+			header('Content-Type: application/json');
 			echo json_encode(array('error' => 404));
 
 		}
