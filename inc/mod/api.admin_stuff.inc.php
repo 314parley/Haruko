@@ -21,17 +21,17 @@ $mitsuba->admin->reqPermission("post.viewip");
 			{
 
 				$row = $result->fetch_assoc();
-
+				header('Content-Type: application/json');
 				echo json_encode(array('ip' => $row['ip'], 'sage' => $row['sage']));
 
 			} else {
-
+				header('Content-Type: application/json');
 				echo json_encode(array('error' => 404));
 
 			}
 
 		} else {
-
+			header('Content-Type: application/json');
 			echo json_encode(array('error' => 404));
 
 		}
