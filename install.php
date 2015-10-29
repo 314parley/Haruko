@@ -75,7 +75,11 @@ if (!empty($_GET['mode'])) {
 }
 
 function randomSalt($length) {
-
+if(function_exists('openssl_random_pseudo_bytes')){
+  $salt = bin2hex(openssl_random_pseudo_bytes($length));
+  $salt = mb_strimwidth($salt, 0, $length,"");
+  return $salt;
+}else{
     $alphabet = 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789+_-)(*&^%$#@!~|';
 
     $pass = array();
@@ -91,7 +95,7 @@ function randomSalt($length) {
     }
 
     return implode($pass);
-
+}
 }
 
 switch ($mode) {
