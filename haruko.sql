@@ -1253,4 +1253,3 @@ CREATE TABLE IF NOT EXISTS `wordfilter` (
 --
 -- Dumping data for table `wordfilter`
 --
-
