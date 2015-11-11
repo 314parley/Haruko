@@ -45,6 +45,12 @@ hardkurahen - javascripts
 JanPavulon - javascripts
 
 sebagaua - some PHPs
+Note
+----
+314chan's network structure runs on Cloudflare. If you'd like to install Haruko in a network that doesn't include Cloudflare, simply run 
+`grep -rl HTTP_CF_CONNECTING_IP . | xargs sed -i 's/HTTP_CF_CONNECTING_IP/REMOTE_ADDR/g' `
+
+*Keep in mind REMOTE_ADDR can be changed by the user if they know what they're doing*
 
 License
 --------

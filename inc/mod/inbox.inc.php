@@ -92,7 +92,7 @@ if (!defined("IN_MOD"))
 
 
 
-				  <?php 
+				  <?php
 
 				  $pms = $conn->query("SELECT users.username, pm.* FROM pm LEFT JOIN users ON pm.from_user=users.id WHERE pm.to_user=".$_SESSION['id']." ORDER BY pm.created DESC");
 
@@ -100,7 +100,7 @@ if (!defined("IN_MOD"))
 
 				  {
 
-					 
+
 
 				  	echo "<tr>";
 
@@ -114,7 +114,7 @@ if (!defined("IN_MOD"))
 
 					  	//PM hasn't been read yet.
 
-				  		echo "<td class='mailbox-subject'><b>".strip_tags($row['title'])."</b></td>";
+				  		echo "<td class='mailbox-subject'><strong>".strip_tags($row['title'])."</strong></td>";
 
 				  	} else {
 
@@ -150,7 +150,7 @@ if (!defined("IN_MOD"))
 
 			<!-- Check all button -->
 
-			<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>                    
+			<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
 
 			<div class="btn-group">
 
