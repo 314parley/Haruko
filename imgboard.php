@@ -104,7 +104,7 @@ if (!empty($_POST['mode'])) {
 
             $board = $_POST['board'];
 
-            if (($mod == 0) && ($mitsuba->common->isWhitelisted($_SERVER['HTTP_CF_CONNECTING_IP']) < 1)) {
+            if (($mod == 0) && ($mitsuba->common->isWhitelisted($mitsuba->common->getIP()) < 1)) {
 
                 $mitsuba->common->banMessage($board);
 
@@ -306,7 +306,7 @@ if (!empty($_POST['mode'])) {
 
             }
 
-            if (($mitsuba->common->isWhitelisted($_SERVER['HTTP_CF_CONNECTING_IP']) != 2) && (($mod == 0) || (!$mitsuba->admin->checkPermission("post.ignorespamlimits")))) {
+            if (($mitsuba->common->isWhitelisted($mitsuba->common->getIP()) != 2) && (($mod == 0) || (!$mitsuba->admin->checkPermission("post.ignorespamlimits")))) {
 
                 if ((empty($_POST['resto'])) || ($_POST['resto'] == 0)) {
 
@@ -852,7 +852,7 @@ if (!empty($_POST['mode'])) {
 
                 $email = $conn->real_escape_string(htmlspecialchars($_POST['email']));
 
-                $IPAddress = $_SERVER['HTTP_CF_CONNECTING_IP'];
+                $IPAddress = $mitsuba->common->getIP();
 
                 if ($mitsuba->common->verifyBan($IPAddress, $_POST['banid'], $_POST['banrange'])) {
 
