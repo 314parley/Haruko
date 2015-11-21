@@ -107,7 +107,7 @@ class Frontpage {
               <br><br>
 
               <div class="card-panel">
-
+              <center><!-- yes, I know center was deprecated in favor of CSS. give me a break :p --><font color=red> 314chan now has a URL resolvable at http://www.314.chan/ if you use <a href="https://www.opennicproject.org/">OpenNIC</a> as a DNS</font><br /><small>(this will be moved elsewhere later.)</small></center>
               <table class="centered striped">
 
                       <thead>

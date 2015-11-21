@@ -117,7 +117,36 @@ class Common {
         return substr(crypt(md5($IPAddress . 't' . $board . $topic . $junk . $id_salt), 'h!'), -8);
 
     }
+    
+    function getIP()
+{
+    $fields = array('HTTP_X_FORWARDED_FOR',
+                    'REMOTE_ADDR',
+                    'HTTP_CF_CONNECTING_IP',
+                    'HTTP_X_CLUSTER_CLIENT_IP');
 
+    foreach($fields as $f)
+    {
+        $tries = isset($_SERVER[$f]) ? $_SERVER[$f] : '';
+        if (empty($tries))
+            continue;
+        $tries = explode(',',$tries);
+        foreach($tries as $try)
+        {
+            $r = filter_var($try,
+                            FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 |
+                            FILTER_FLAG_NO_PRIV_RANGE |
+                            FILTER_FLAG_NO_RES_RANGE);
+
+            if ($r !== false)
+            {
+                return $try;
+            }
+        }
+    }
+    return false;
+}
+    
     function getGraphicsExtension() {
 
         if (extension_loaded('imagick')) {
@@ -135,7 +164,7 @@ class Common {
         }
 
     }
-
+    
     function getBoardData($short) {
 
         return $this->isBoard($short); //yeah, yeah, I know...
@@ -1201,7 +1230,7 @@ class Common {
 
         }; ?></b>.</p>
 
-		<p>According to our server your IP is: <b><?php echo $_SERVER['HTTP_CF_CONNECTING_IP']; ?></b></p>
+		<p>According to our server your IP is: <b><?php echo self::getIP(); ?></b></p>
 
 		<?php
 
@@ -1291,7 +1320,7 @@ class Common {
 
     function banMessage($board = "%") {
 
-        $bandata = $this->isBanned($_SERVER['HTTP_CF_CONNECTING_IP'], $board);
+        $bandata = $this->isBanned(self::getIP(), $board);
 
         if ($bandata != 0) {
 
@@ -1465,7 +1494,7 @@ class Common {
 
     function warningMessage() {
 
-        $warndata = $this->isWarned($_SERVER['HTTP_CF_CONNECTING_IP']);
+        $warndata = $this->isWarned(self::getIP());
 
         if ($warndata != 0) {
 

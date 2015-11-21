@@ -38,7 +38,7 @@ class Board {
 
                             if (preg_match($row['search'], $comment)) {
 
-                                $this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
+                                $this->mitsuba->common->addSystemBan($mitsuba->common->getIP(), $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
 
                                 echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
@@ -56,7 +56,7 @@ class Board {
 
                         if (stripos($comment, $row['search']) !== false) {
 
-                            $this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
+                            $this->mitsuba->common->addSystemBan($mitsuba->common->getIP(), $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], $row['boards']);
 
                             echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
@@ -76,7 +76,7 @@ class Board {
 
                         if (preg_match($row['search'], $comment)) {
 
-                            $this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
+                            $this->mitsuba->common->addSystemBan($mitsuba->common->getIP(), $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
 
                             echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
@@ -94,7 +94,7 @@ class Board {
 
                     if (stripos($comment, $row['search']) !== false) {
 
-                        $this->mitsuba->common->addSystemBan($_SERVER['HTTP_CF_CONNECTING_IP'], $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
+                        $this->mitsuba->common->addSystemBan($mitsuba->common->getIP(), $row['reason'], htmlspecialchars($_POST['com']), $row['expires'], "%");
 
                         echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
@@ -114,7 +114,7 @@ class Board {
 
         global $lang;
 
-        $lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='" . $_SERVER['HTTP_CF_CONNECTING_IP'] . "' AND resto=0 AND board='" . $bdata['short'] . "' ORDER BY date DESC LIMIT 0, 1");
+        $lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='" . $mitsuba->common->getIP() . "' AND resto=0 AND board='" . $bdata['short'] . "' ORDER BY date DESC LIMIT 0, 1");
 
         if ($lastdate->num_rows == 1) {
 
@@ -138,7 +138,7 @@ class Board {
 
         global $lang;
 
-        $lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='" . $_SERVER['HTTP_CF_CONNECTING_IP'] . "' AND board='" . $bdata['short'] . "' ORDER BY date DESC LIMIT 0, 1");
+        $lastdate = $this->conn->query("SELECT date FROM posts WHERE ip='" . $mitsuba->common->getIP() . "' AND board='" . $bdata['short'] . "' ORDER BY date DESC LIMIT 0, 1");
 
         if ($lastdate->num_rows == 1) {
 
