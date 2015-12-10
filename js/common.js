@@ -1172,31 +1172,32 @@ function imgThumbnail(element)
 
 function addExpandAllImg() {
 	if($(".file").length >= 2) {
-		var powiekszone,nigger;
+		var enlarged,arbitrary;
 		$(".post.op").append('<a id="expandAllImages" href="#">[Expand all images]</a>');
 		$("#expandAllImages").click(function()  {
-			if(powiekszone) {
+			if(enlarged) {
 				$(".file > img").each(function(){
 					imgThumbnail($(this));
 				});
-				powiekszone = 0;
+				enlarged = 0;
 				$("#expandAllImages").text("[Expand all images]");
 			} else {
-				nigger = 1;
+				arbitrary = 1;
 				$(".file").each(function(){
-					if(nigger) {
-						nigger--;
+					if(arbitrary) {
+						arbitrary--;
 						return 1;
 					}
 					imgExpand($(this));
 				});
-				powiekszone = 1;
+				enlarged = 1;
 				$("#expandAllImages").text("[Collapse all images]");
 			}
 			return false;
 		});
 	}
 }
+
 
 var targetImageWidth = 0;
 var targetDiagonal = 0;

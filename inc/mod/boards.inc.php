@@ -40,7 +40,7 @@ $mitsuba->admin->reqPermission("boards.view");
 
 <option value="archive"><?php echo $lang['mod/archive']; ?></option>
 
-</select>
+</select><br />
 
 <span class="opt t-ib t-tb t-fb t-lb"><?php echo $lang['mod/board_limit']; ?>: <input type="text" name="limit" maxlength=9 value="0" /><br /></span>
 

@@ -391,7 +391,6 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 			if ($mitsuba->admin->boards->addBoard($_POST['short'], $_POST['type'], $_POST['name'], $_POST['des'], $_POST['msg'], $limit, $spoilers, $noname, $ids, $embeds, $bbcode, $time_between_posts, $time_between_threads, $time_to_delete, $filesize, $pages, $hidden, $unlisted, $nodup, $nofile, $maxchars, $anonymous, $extensions, $catalog, $captcha, $boards, $allow_replies, $file_replies, $links, $files) > 0)
 
 			{
-
 				$mitsuba->admin->logAction(sprintf($lang['log/added_board'], $conn->real_escape_string($_POST['short'])));
 
 				?>

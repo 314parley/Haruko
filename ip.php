@@ -5,7 +5,7 @@ function getIP()
                     'REMOTE_ADDR',
                     'HTTP_CF_CONNECTING_IP',
                     'HTTP_X_CLUSTER_CLIENT_IP');
-
+    $cloudflare = explode("\n", file_get_contents("https://www.cloudflare.com/ips-v4").file_get_contents("https://www.cloudflare.com/ips-v6"));
     foreach($fields as $f)
     {
         $tries = $_SERVER[$f];
@@ -27,5 +27,10 @@ function getIP()
     }
     return false;
 }
-echo getIP();
+#echo getIP();
+
+function CFIP(){
+	return explode("\n", file_get_contents("https://www.cloudflare.com/ips-v4").file_get_contents("https://www.cloudflare.com/ips-v6"));
+}
+var_dump(CFIP());
 ?>

@@ -38,43 +38,43 @@ switch ($data['type'])
 
 	case "imageboard":
 
-		echo "<td>".$lang['mod/imageboard']."</td>";
+		echo "<td>".$lang['mod/imageboard']."</td><br />";
 
 		break;
 
 	case "textboard":
 
-		echo "<td>".$lang['mod/textboard']."</td>";
+		echo "<td>".$lang['mod/textboard']."</td><br />";
 
 		break;
 
 	case "overboard":
 
-		echo "<td>".$lang['mod/overboard']."</td>";
+		echo "<td>".$lang['mod/overboard']."</td><br />";
 
 		break;
 
 	case "fileboard":
 
-		echo "<td>".$lang['mod/fileboard']."</td>";
+		echo "<td>".$lang['mod/fileboard']."</td></br />";
 
 		break;
 
 	case "linkboard":
 
-		echo "<td>".$lang['mod/linkboard']."</td>";
+		echo "<td>".$lang['mod/linkboard']."</td></br />";
 
 		break;
 
 	case "archive":
 
-		echo "<td>".$lang['mod/archive']."</td>";
+		echo "<td>".$lang['mod/archive']."</td></br />";
 
 		break;
 
 	default:
 
-		echo "<td>".$lang['mod/fool']."</td>";
+		echo "<td>".$lang['mod/fool']."</td></br />";
 
 		break;
 
