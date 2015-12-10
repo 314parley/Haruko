@@ -178,9 +178,9 @@ $lang['mod/board_directory'] = "Board directory (without /'s)";
 
 $lang['mod/board_name'] = "Board name";
 
-$lang['mod/board_short'] = "Board Meta Description";
+$lang['mod/board_short'] = "Board Meta Description <small>(will show up on Search engines etc)</small>";
 
-$lang['mod/board_msg'] = "Board message (optional)";
+$lang['mod/board_msg'] = "Board Description (optional)";
 
 $lang['mod/board_limit'] = "Board bumplimit (optional, 0 for no limit)";
 
@@ -591,6 +591,8 @@ $lang['mod/thumbnails'] = "Thumbnails";
 $lang['mod/cleaner'] = "Cleaner";
 
 $lang['mod/delete_expired_bans'] = "Delete expired bans";
+
+$lang['mod/delete_deleted_posts'] = "Delete deleted posts (database)";
 
 $lang['mod/cleaning_done'] = "Cleaning done";
 

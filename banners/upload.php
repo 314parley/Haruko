@@ -39,7 +39,7 @@ img {
 <body>
 
 <?php
-
+	ini_set('display_errors', 1);
 $allowedExts = array("jpg", "jpeg", "gif", "png");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
@@ -76,9 +76,9 @@ if ((($_FILES["file"]["type"] == "image/gif") || ($_FILES["file"]["type"] == "im
 
         } else {
 
-            move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
+            move_uploaded_file($_FILES["file"]["tmp_name"], "" . $_FILES["file"]["name"]);
 
-            echo "<h1>Thanks! '" . $_FILES["file"]["name"] . "' has been submitted for review.</h1>";
+            echo "<h1>Thanks! '" . $_FILES["file"]["name"] . "' has been uploaded.</h1>";
 
         }
 
@@ -89,5 +89,3 @@ if ((($_FILES["file"]["type"] == "image/gif") || ($_FILES["file"]["type"] == "im
     echo "Invalid file";
 
 }
-
-?>

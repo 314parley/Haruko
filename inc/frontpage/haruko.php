@@ -350,17 +350,17 @@ class Frontpage {
 
                 <div class="col l3 s12">
 
-                  <h5 class="white-text">Connect</h5>
+                  <h5 class="white-text">Why 314chan?</h5>
 
                   <ul>
 
-                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li class="white-text"><strong>Permanent U.S. Ownership.</strong>&nbsp;<em>We will never sell out to a Japanese company.</em></li>
 
-                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li class="white-text"><strong>Head staff that cares.</strong>&nbsp;<em>Our staff has never ignored a user.</em></li>
 
-                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li class="white-text"><strong>No Ads.</strong>&nbsp;<em>Parley will never host ads on the server(unless need for money is dire.)</em></li>
 
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li class="white-text"><strong>Captcha as a last resort.</strong>&nbsp;<em>We will never enable Captchas (unless there are ongoing spam attacks.)</em> </li>
 
                   </ul>
 
