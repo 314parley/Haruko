@@ -1259,7 +1259,7 @@ function addZoom(img) {
 		}
 	});
 	
-	$(img).dblclick(function (e) {
+	$(img).click(function (e) {
 		imgThumbnail(this);
 	});
 }
