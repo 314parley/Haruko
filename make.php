@@ -40,8 +40,8 @@
 	          <div class="container">
 		          <br><br>
 		          <div class="row">
-			          <?
-				          ini_set('display_errors', 1);
+			          <?php
+				          
 				          include("config.php");
 				          include("inc/mitsuba.php");
 				          $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
@@ -56,7 +56,7 @@
 								}
 					          echo "<h1>Board Created!</h1>";
 					          }else{
-						          echo "<h1>YOU BROKE IT</h1>";
+						          echo "<h1>YOU BROKE IT ;-; contact parley.</h1><br /><em>(This usually means a MariaDB transaction failed, or the board already exists.)</em>";
 					          }
 				          }else{
 			          ?>
@@ -97,7 +97,7 @@
 				      </div>
 					<button class="btn waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i></button>
 				    </form>
-				    <?
+				    <?php
 					    }
 				    ?>
 				  </div>
