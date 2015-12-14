@@ -1046,7 +1046,7 @@ class Caching {
 
 					<td>' . $lang['img/name'] . '</td>
 
-					<td><input class="board-input" name="name" type="text" /></td>
+					<td><input class="board-input" name="name" type="text" board-input autocomplete=off/></td>
 
 					</tr>';
 
@@ -1188,7 +1188,7 @@ class Caching {
 
 				<td>' . $lang['img/password'] . '</td>
 
-				<td><input id="postPassword" name="pwd" type="password" maxlength="8" /> <span class="password">' . $lang['img/password_used'] . '</span></td>
+				<td><input id="postPassword" name="pwd" type="password" maxlength="8" autocomplete="off"/> <span class="password">' . $lang['img/password_used'] . '</span></td>
 
 				</tr>';
 

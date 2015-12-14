@@ -68,7 +68,7 @@ $mitsuba->admin->ui->startSection();
 
 							<th><?php echo $lang['mod/subject']; ?></th>
 
-							<th><?php echo $lang['mod/file']; ?></th>
+							<!--<th><?php echo $lang['mod/file']; ?></th>-->
 
 							<th><?php echo $lang['mod/delete']; ?></th>
 
@@ -202,7 +202,7 @@ $mitsuba->admin->ui->startSection();
 
 								echo "</td>";
 
-								echo "<td>";
+								/*echo "<td>";
 
 									if (!empty($row['filename'])){
 
@@ -230,7 +230,7 @@ $mitsuba->admin->ui->startSection();
 
 										}
 
-								echo "</td>";
+								echo "</td>";*/
 
 								echo "<td>";
 
