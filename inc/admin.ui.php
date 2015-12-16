@@ -44,7 +44,7 @@ class UI {
 
         if ($_SESSION['token'] != $token) {
 
-            die("Invalid form.");
+            exit("Invalid form.");
 
         }
 

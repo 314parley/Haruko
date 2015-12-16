@@ -86,13 +86,13 @@ class Caching {
 
 						<h2>Settings</h2>';
 
-        $no = 0;
+        $num = 0;
 
         foreach ($settings as $name => $desc) {
 
-            $out.= '<input type="checkbox" name="' . $name . '" id="opt_' . $no . '"/><label for="opt_' . $no . '">' . $desc . '</label>';
+            $out.= '<input type="checkbox" name="' . $name . '" id="opt_' . $num . '"/><label for="opt_' . $num . '">' . $desc . '</label>';
 
-            $no++;
+            $num++;
 
         }
 
@@ -144,13 +144,13 @@ class Caching {
 
         while ($row = $result->fetch_assoc()) {
 
-            $id = $row['id'];
+            $identifier = $row['id'];
 
             if ($row['parent'] < 0) {
 
-                $categories[$id] = $row['title'];
+                $categories[$identifier] = $row['title'];
 
-                $data[$categories[$id]] = [];
+                $data[$categories[$identifier]] = [];
 
             } else array_push($data[$categories[$row['parent']]], $row);
 
@@ -224,7 +224,7 @@ class Caching {
 
     }
 
-    function processComment($board, $string, $parser, $thread = 0, $specialchars = 1, $bbcode = 1, $id = 0, $resto = 0, $wordfilter = 1, $wf_table = array()) {
+    function processComment($board, $string, $parser, $thread = 0, $specialchars = 1, $bbcode = 1, $identifier = 0, $resto = 0, $wordfilter = 1, $wf_table = array()) {
 
         global $lang;
 
@@ -250,7 +250,7 @@ class Caching {
 
                 $new.= "<br />";
 
-                if (($c_lines > 15) && ($thread == 0) && (is_numeric($id)) && ($id > 0)) break;
+                if (($c_lines > 15) && ($thread == 0) && (is_numeric($identifier)) && ($identifier > 0)) break;
 
                 continue;
 
@@ -296,7 +296,7 @@ class Caching {
 
             }
 
-            if (($c_lines > 15) && ($thread == 0) && (is_numeric($id)) && ($id > 0)) {
+            if (($c_lines > 15) && ($thread == 0) && (is_numeric($identifier)) && ($identifier > 0)) {
 
                 break;
 
@@ -340,15 +340,15 @@ class Caching {
 
         }, $new);
 
-        if (($c_lines > 15) && ($thread == 0) && (is_numeric($id)) && ($id > 0)) {
+        if (($c_lines > 15) && ($thread == 0) && (is_numeric($identifier)) && ($identifier > 0)) {
 
             if ($resto == 0) {
 
-                $new.= '<br/><span class="abbr">' . sprintf($lang['img/comment_long'], '<a href="./res/' . $id . '.html#p' . $id . '">', '</a>') . '</span>';
+                $new.= '<br/><span class="abbr">' . sprintf($lang['img/comment_long'], '<a href="./res/' . $identifier . '.html#p' . $identifier . '">', '</a>') . '</span>';
 
             } else {
 
-                $new.= '<br/><span class="abbr">' . sprintf($lang['img/comment_long'], '<a href="./res/' . $resto . '.html#p' . $id . '">', '</a>') . '</span>';
+                $new.= '<br/><span class="abbr">' . sprintf($lang['img/comment_long'], '<a href="./res/' . $resto . '.html#p' . $identifier . '">', '</a>') . '</span>';
 
             }
 
@@ -1045,9 +1045,7 @@ class Caching {
                 $postform.= '<tr>
 
 					<td>' . $lang['img/name'] . '</td>
-
 					<td><input class="board-input" name="name" type="text" board-input autocomplete=off/></td>
-
 					</tr>';
 
             }
@@ -1187,9 +1185,7 @@ class Caching {
             $postform.= '<tr>
 
 				<td>' . $lang['img/password'] . '</td>
-
 				<td><input id="postPassword" name="pwd" type="password" maxlength="8" autocomplete="off"/> <span class="password">' . $lang['img/password_used'] . '</span></td>
-
 				</tr>';
 
             if ($adm_type >= 2) {
@@ -3108,7 +3104,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
             }
 
-            //processComment($board, $string, $parser, $thread = 0, $specialchars = 1, $bbcode = 1, $id = 0, $resto = 0, $wordfilter = 1, $wf_table = array())
+            //processComment($board, $string, $parser, $thread = 0, $specialchars = 1, $bbcode = 1, $identifier = 0, $resto = 0, $wordfilter = 1, $wf_table = array())
 
             //$file .= $this->processComment($row['board'], $row['comment'], $parser, 2, 0, $boarddata['bbcode'], $row['id'], $row['resto'], $wf, $replace_array);
 
@@ -4134,21 +4130,21 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
     }
 
-    function generatePost($board, $id) {
+    function generatePost($board, $identifier) {
 
-        if ((empty($id)) || (!is_numeric($id))) {
+        if ((empty($identifier)) || (!is_numeric($identifier))) {
 
             return -15;
 
         }
 
-        if ((empty($id)) || (!$this->mitsuba->common->isBoard($board))) {
+        if ((empty($identifier)) || (!$this->mitsuba->common->isBoard($board))) {
 
             return -16;
 
         }
 
-        $result = $this->conn->query("SELECT * FROM posts WHERE id=" . $id . " AND board='" . $board . "' AND deleted=0");
+        $result = $this->conn->query("SELECT * FROM posts WHERE id=" . $identifier . " AND board='" . $board . "' AND deleted=0");
 
         if ($result->num_rows == 1) {
 

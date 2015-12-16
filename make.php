@@ -56,7 +56,7 @@
 								}
 					          echo "<h1>Board Created!</h1>";
 					          }else{
-						          echo "<h1>YOU BROKE IT ;-; contact parley.</h1><br /><em>(This usually means a MariaDB transaction failed, or the board already exists.)</em>";
+						          echo "<h1>YOU BROKE IT ;-; contact parley.</h1><br /><em>(This usually means a MariaDB transaction failed, or the board/directory already exists.)</em>";
 					          }
 				          }else{
 			          ?>

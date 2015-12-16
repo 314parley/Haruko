@@ -16,17 +16,17 @@ class Links {
 
     }
 
-    function deleteBoardLink($id) {
+    function deleteBoardLink($identifier) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
         }
 
-        $this->conn->query("DELETE FROM links WHERE parent=" . $id . ";");
+        $this->conn->query("DELETE FROM links WHERE parent=" . $identifier . ";");
 
-        $this->conn->query("DELETE FROM links WHERE id=" . $id . ";");
+        $this->conn->query("DELETE FROM links WHERE id=" . $identifier . ";");
 
         $this->mitsuba->caching->rebuildBoardLinks();
 
@@ -46,9 +46,9 @@ class Links {
 
     }
 
-    function updateBoardLink($id, $url, $relativity, $title, $short) {
+    function updateBoardLink($identifier, $url, $relativity, $title, $short) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
@@ -66,11 +66,11 @@ class Links {
 
         $short = $this->conn->real_escape_string($short);
 
-        $cat = $this->conn->query("SELECT * FROM links WHERE id=" . $id);
+        $cat = $this->conn->query("SELECT * FROM links WHERE id=" . $identifier);
 
         if ($cat->num_rows == 1) {
 
-            $this->conn->query("UPDATE links SET title='" . $title . "', url='" . $url . "', relative=" . $relativity . ", short='" . $short . "' WHERE id=" . $id);
+            $this->conn->query("UPDATE links SET title='" . $title . "', url='" . $url . "', relative=" . $relativity . ", short='" . $short . "' WHERE id=" . $identifier);
 
             $this->mitsuba->caching->rebuildBoardLinks();
 
@@ -118,9 +118,9 @@ class Links {
 
     }
 
-    function moveDownCategory($id) {
+    function moveDownCategory($identifier) {
 
-        $result = $this->conn->query("SELECT * FROM links WHERE id=" . $id . ";");
+        $result = $this->conn->query("SELECT * FROM links WHERE id=" . $identifier . ";");
 
         if ($result->num_rows == 1) {
 
@@ -136,7 +136,7 @@ class Links {
 
                 $this->conn->query("UPDATE links SET short='c" . ($curpos) . "' WHERE short='c" . ($curpos + 1) . "';");
 
-                $this->conn->query("UPDATE links SET short='c" . ($curpos + 1) . "' WHERE id=" . $id);
+                $this->conn->query("UPDATE links SET short='c" . ($curpos + 1) . "' WHERE id=" . $identifier);
 
                 $this->mitsuba->caching->rebuildBoardLinks();
 
@@ -152,9 +152,9 @@ class Links {
 
     }
 
-    function moveUpCategory($id) {
+    function moveUpCategory($identifier) {
 
-        $result = $this->conn->query("SELECT * FROM links WHERE id=" . $id . ";");
+        $result = $this->conn->query("SELECT * FROM links WHERE id=" . $identifier . ";");
 
         if ($result->num_rows == 1) {
 
@@ -170,7 +170,7 @@ class Links {
 
                 $this->conn->query("UPDATE links SET short='c" . ($curpos) . "' WHERE short='c" . ($curpos - 1) . "';");
 
-                $this->conn->query("UPDATE links SET short='c" . ($curpos - 1) . "' WHERE id=" . $id);
+                $this->conn->query("UPDATE links SET short='c" . ($curpos - 1) . "' WHERE id=" . $identifier);
 
                 $this->mitsuba->caching->rebuildBoardLinks();
 
@@ -186,13 +186,13 @@ class Links {
 
     }
 
-    function getLinkTable($id) {
+    function getLinkTable($identifier) {
 
-        $result = $this->conn->query("SELECT * FROM links WHERE parent=" . $id . " ORDER BY short ASC, title ASC, id DESC;");
+        $result = $this->conn->query("SELECT * FROM links WHERE parent=" . $identifier . " ORDER BY short ASC, title ASC, id DESC;");
 
         if ($result->num_rows > 0) {
 
-            if ($id != - 1) {
+            if ($identifier != - 1) {
 
                 $table = "<table style='width: 92% !important;'>";
 
