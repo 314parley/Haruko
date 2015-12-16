@@ -913,14 +913,14 @@ function adminStuff(parent)
 			var threadcontrols = "";
 			if (permissions['bans.add']==1)
 			{
-				bansdel = '[<a href="'+api_url+'/bans/add&b='+board+'&p='+id+'">B</a>';
+				bansdel = '[<a href="'+api_url+'/bans/add&b='+board+'&p='+id+'" title="Ban User">B</a>';
 				if (permissions['post.delete.single']==1)
 				{
-					bansdel += ' / <a href="'+api_url+'/bans/add&b='+board+'&p='+id+'&d=1">&</a>';
+					bansdel += ' / <a href="'+api_url+'/bans/add&b='+board+'&p='+id+'&d=1" title="Ban and Delete">&</a>';
 				}
 			} else if (permissions['bans.add.request']==1)
 			{
-				bansdel = '[<a href="'+api_url+'/bans/add&b='+board+'&p='+id+'">B</a>';
+				bansdel = '[<a href="'+api_url+'/bans/add&b='+board+'&p='+id+'" title="Ban User">B</a>';
 			}
 			if (permissions['post.delete.single']==1)
 			{
@@ -930,43 +930,43 @@ function adminStuff(parent)
 				} else {
 					bansdel += " / ";
 				}
-				bansdel += '<a href="'+api_url+'/delete_post&b='+board+'&p='+id+'">D</a>';
+				bansdel += '<a href="'+api_url+'/delete_post&b='+board+'&p='+id+'" title="Delete Post">D</a>';
 				if ($(this).siblings(".file").length >= 1)
 				{
-					bansdel += ' / <a href="'+api_url+'/delete_post&b='+board+'&p='+id+'&f=1">F</a>]';
+					bansdel += ' / <a href="'+api_url+'/delete_post&b='+board+'&p='+id+'&f=1" title="Delete File Only">F</a>]';
 				} else {
 					bansdel += ']';
 				}
 			}
 			if (permissions['post.edit']==1)
 			{
-				edit = ' [<a href="'+api_url+'/edit_post&b='+board+'&p='+id+'" class="edit">E</a>] ';
+				edit = ' [<a href="'+api_url+'/edit_post&b='+board+'&p='+id+'" class="edit" title="Edit Post">E</a>] ';
 			}
 			if (permissions['post.sticky']==1)
 			{
 				if (threadcontrols == "")
 				{
-					threadcontrols = '[<a href="'+api_url+'/sticky/toggle&b='+board+'&t='+id+'">S</a>';
+					threadcontrols = '[<a href="'+api_url+'/sticky/toggle&b='+board+'&t='+id+'" title="Sticky">S</a>';
 				} else {
-					threadcontrols += ' / <a href="'+api_url+'/sticky/toggle&b='+board+'&t='+id+'">S</a>';
+					threadcontrols += ' / <a href="'+api_url+'/sticky/toggle&b='+board+'&t='+id+'" title="Sticky">S</a>';
 				}
 			}
 			if (permissions['post.closed']==1)
 			{
 				if (threadcontrols == "")
 				{
-					threadcontrols = '[<a href="'+api_url+'/locked/toggle&b='+board+'&t='+id+'">L</a>';
+					threadcontrols = '[<a href="'+api_url+'/locked/toggle&b='+board+'&t='+id+'" title="Lock">L</a>';
 				} else {
-					threadcontrols += ' / <a href="'+api_url+'/locked/toggle&b='+board+'&t='+id+'">L</a>';
+					threadcontrols += ' / <a href="'+api_url+'/locked/toggle&b='+board+'&t='+id+'" title="Lock">L</a>';
 				}
 			}
 			if (permissions['post.antibump']==1)
 			{
 				if (threadcontrols == "")
 				{
-					threadcontrols = '[<a href="'+api_url+'/antibump/toggle&b='+board+'&t='+id+'">A</a>';
+					threadcontrols = '[<a href="'+api_url+'/antibump/toggle&b='+board+'&t='+id+'" title="Permasage">P</a>';
 				} else {
-					threadcontrols += ' / <a href="'+api_url+'/antibump/toggle&b='+board+'&t='+id+'">A</a>';
+					threadcontrols += ' / <a href="'+api_url+'/antibump/toggle&b='+board+'&t='+id+'" title="Permasage">P</a>';
 				}
 			}
 			threadcontrols += ']';
@@ -983,11 +983,7 @@ function adminStuff(parent)
 						if (json.error != 404)
 						{
 							opIp = json.ip;
-							if (json.sage == 1)
-							{
-								$(el).children(".postNum").after(' <span style="color: red;">[A]</span> ');
-							}
-							$(el).children(".nameBlock").after(' <span class="posterIp">(<a href="http://whatismyipaddress.com/ip/'+json.ip+'" target="_blank">'+json.ip+'</a>)</span> [<a href="'+api_url+'/info&ip='+json.ip+'">N</a>] <b style="color: red;">[ OP ]</b>');
+							$(el).children(".nameBlock").after(' <span class="posterIp">(<a href="http://whatismyipaddress.com/ip/'+json.ip+'" target="_blank">'+json.ip+'</a>)</span> [<a href="'+api_url+'/info&ip='+json.ip+'" title="IP notes">N</a>] <b style="color: red;" title="This user is the OP">[OP]</b>');
 						}
 					}
 				});
@@ -1050,7 +1046,7 @@ function adminStuff(parent)
 							}
 							if (json.ip == opIp)
 							{
-								op = ' <b style="color: red;">[ OP ]</b>';
+								op = ' <b style="color: red;">[OP]</b>';
 							}
 							$(el).children(".nameBlock").after(' <span class="posterIp">(<a href="http://whatismyipaddress.com/ip/'+json.ip+'" target="_blank">'+json.ip+'</a>)</span> [<a href="'+api_url+'/info&ip='+json.ip+'">N</a>]'+op);
 						}

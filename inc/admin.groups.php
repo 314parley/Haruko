@@ -16,15 +16,15 @@ class Groups {
 
     }
 
-    function isGroup($id) {
+    function isGroup($identifier) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return 0;
 
         }
 
-        $result = $this->conn->query("SELECT * FROM groups WHERE id=" . $this->conn->real_escape_string($id));
+        $result = $this->conn->query("SELECT * FROM groups WHERE id=" . $this->conn->real_escape_string($identifier));
 
         if ($result->num_rows == 1) {
 
@@ -64,15 +64,15 @@ class Groups {
 
     }
 
-    function updateGroup($id, $name, $capcode, $capcode_style, $capcode_icon) {
+    function updateGroup($identifier, $name, $capcode, $capcode_style, $capcode_icon) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
         }
 
-        $group = $this->conn->query("SELECT * FROM groups WHERE id=" . $id);
+        $group = $this->conn->query("SELECT * FROM groups WHERE id=" . $identifier);
 
         if ($group->num_rows == 1) {
 
@@ -86,21 +86,21 @@ class Groups {
 
             $capcode_icon = $this->conn->real_escape_string($capcode_icon);
 
-            $this->conn->query("UPDATE groups SET name='" . $name . "', capcode='" . $capcode . "', capcode_style='" . $capcode_style . "', capcode_icon='" . $capcode_icon . "' WHERE id=" . $id);
+            $this->conn->query("UPDATE groups SET name='" . $name . "', capcode='" . $capcode . "', capcode_style='" . $capcode_style . "', capcode_icon='" . $capcode_icon . "' WHERE id=" . $identifier);
 
         }
 
     }
 
-    function delGroup($id) {
+    function delGroup($identifier) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
         }
 
-        $this->conn->query("DELETE FROM groups WHERE id=" . $id);
+        $this->conn->query("DELETE FROM groups WHERE id=" . $identifier);
 
         //MAYBE: delete users
 

@@ -42,7 +42,7 @@ class Board {
 
                                 echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
-                                die();
+                                exit();
 
                             }
 
@@ -60,7 +60,7 @@ class Board {
 
                             echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
-                            die();
+                            exit();
 
                         }
 
@@ -80,7 +80,7 @@ class Board {
 
                             echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
-                            die();
+                            exit();
 
                         }
 
@@ -98,7 +98,7 @@ class Board {
 
                         echo '<meta http-equiv="refresh" content="2;URL=' . "'./banned.php'" . '">';
 
-                        die();
+                        exit();
 
                     }
 

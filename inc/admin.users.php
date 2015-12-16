@@ -70,23 +70,23 @@ class Users {
 
     }
 
-    function delUser($id) {
+    function delUser($identifier) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
         }
 
-        $this->conn->query("DELETE FROM users WHERE id=" . $id);
+        $this->conn->query("DELETE FROM users WHERE id=" . $identifier);
 
-        $this->conn->query("DELETE FROM notes WHERE mod_id=" . $id);
+        $this->conn->query("DELETE FROM notes WHERE mod_id=" . $identifier);
 
     }
 
-    function updateUser($id, $username, $password, $group, $boards) {
+    function updateUser($identifier, $username, $password, $group, $boards) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return -1;
 
@@ -98,7 +98,7 @@ class Users {
 
         }
 
-        $user = $this->conn->query("SELECT * FROM users WHERE id=" . $id);
+        $user = $this->conn->query("SELECT * FROM users WHERE id=" . $identifier);
 
         if ($user->num_rows == 1) {
 
@@ -116,21 +116,21 @@ class Users {
 
             $boards = $this->conn->real_escape_string($boards);
 
-            $this->conn->query("UPDATE users SET username='" . $username . "'" . $password_db . ", `group`=" . $group . ", boards='" . $boards . "' WHERE id=" . $id);
+            $this->conn->query("UPDATE users SET username='" . $username . "'" . $password_db . ", `group`=" . $group . ", boards='" . $boards . "' WHERE id=" . $identifier);
 
         }
 
     }
 
-    function isUser($id) {
+    function isUser($identifier) {
 
-        if (!is_numeric($id)) {
+        if (!is_numeric($identifier)) {
 
             return 0;
 
         }
 
-        $result = $this->conn->query("SELECT * FROM users WHERE id=" . $this->conn->real_escape_string($id));
+        $result = $this->conn->query("SELECT * FROM users WHERE id=" . $this->conn->real_escape_string($identifier));
 
         if ($result->num_rows == 1) {
 

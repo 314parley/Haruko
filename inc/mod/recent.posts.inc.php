@@ -22,7 +22,7 @@ if ((!empty($_GET['max'])) && (is_numeric($_GET['max'])))
 
 }
 
-$mitsuba->admin->ui->startSection();
+$mitsuba->admin->ui->startSection("");
 
 ?>
 
@@ -201,37 +201,6 @@ $mitsuba->admin->ui->startSection();
 									}
 
 								echo "</td>";
-
-								/*echo "<td>";
-
-									if (!empty($row['filename'])){
-
-										if ($row['filename'] == "deleted"){
-
-											echo "<img src='./img/deleted.gif' />";
-
-										} elseif (substr($row['filename'], 0, 8) == "spoiler:") {
-
-											echo "<a href='./".$row['board']."/src/".substr($row['filename'], 8)."' target='_blank'><img src='./".$row['board']."/src/thumb/".substr($row['filename'], 8)."' /></a><br /><b>Spoiler image</b>";
-
-										} elseif (substr($row['filename'], 0, 6) == "embed:") {
-
-											echo "<a href='".substr($row['filename'], 6)."'>Embed</a>";
-
-										} else {
-
-											echo "<a href='/".$row['board']."/src/".$row['filename']."' target='_blank'><img src='./".$row['board']."/src/thumb/".$row['filename']."' /></a>";
-
-										}
-
-										} else {
-
-											echo "<em>No File</em>";
-
-										}
-
-								echo "</td>";*/
-
 								echo "<td>";
 
 								echo '[<a href="?/delete_post&b='.$row['board'].'&p='.$row['id'].'">D</a>] [<a href="?/delete_post&b='.$row['board'].'&p='.$row['id'].'&f=1">F</a>] [<a href="?/bans/add&b='.$row['board'].'&p='.$row['id'].'">B</a>]';
