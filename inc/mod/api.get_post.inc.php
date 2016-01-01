@@ -10,7 +10,7 @@ if (!defined("IN_MOD"))
 
 $mitsuba->admin->reqPermission("post.edit");
 
-		if ((!empty($_GET['b'])) && (!empty($_GET['p'])) && ($mitsuba->common->isBoard($_GET['b'])) && (is_numeric($_GET['p'])))
+		if ((!empty($_GET['b'])) && (!empty($_GET['p'])) && ($mitsuba->common->isBoard($_GET['b'])) && (is_numeric($_GET['p'])) && $mitsuba->admin->canBoard($_GET['b']))
 
 		{
 

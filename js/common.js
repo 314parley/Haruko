@@ -323,6 +323,8 @@ function autoUpdate()
 		updateInterval = setTimeout(autoUpdate, 1000);
 	}
 }
+var url = window.location.href;
+var resID = url.substring(url.indexOf("/"), url.lastIndexOf("."));
 
 function updateThread(isAuto)
 {
@@ -333,7 +335,7 @@ function updateThread(isAuto)
 	}
 	var tid = "#"+$(".thread:first").attr("id");
 	var url = window.location.href.split(/#/)[0];
-	updateRequest = $.ajax({
+	/*updateRequest = $.ajax({
 	type: 'get',
 	url: url+"?random="+Math.floor(Math.random() * 900000),
 	success: function(data, textStatus, xhr){
@@ -403,7 +405,22 @@ function updateThread(isAuto)
 			updateInterval = setTimeout(autoUpdate, 1000);
 		}
 		}
-	});
+	});*/
+	var request = new XMLHttpRequest();
+	request.open('get', "/" + resID + ".json", true);
+	request.onload = function(){
+		if(request.status >=200 && request.status < 400){
+			alert(JSON.stringify(request.responseText));
+		}else{
+			alert("something went wrong...");
+		}
+	};
+	
+	request.onerror = function(){
+		alert("connection error?");
+	}
+	request.send();
+	
 }
 
 function addThreadUpdater()

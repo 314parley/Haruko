@@ -3267,7 +3267,9 @@ if ($(\"#custom_cc\").prop(\"checked\"))
                 $posts = $this->conn->query("SELECT * FROM posts WHERE board='" . $board . "' AND resto=" . $thread_id);
 
                 while ($row2 = $posts->fetch_assoc()) {
-
+	                if($row2['resto'] == "0"){
+		                $row2['resto'] = $row2['id'];
+		            }
                     $api_posts[] = $this->serializePost($row2, $boarddata, $parser);
 
                 }

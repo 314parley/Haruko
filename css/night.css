@@ -783,10 +783,10 @@ div.closed {
 	border: 2px dashed #707070;
 }
 
-.reply:target,.reply.highlight {
-	background:#0c2458;
-	color:#FFF;
-	border: 2px dashed #707070;
+.op:target, .op.highlight, .reply:target, .reply.highlight {
+	background:#193674!important;
+	color:#FFF!important;
+	border: 2px dashed #707070!important;
 }
 
 .hand {
