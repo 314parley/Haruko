@@ -54,9 +54,14 @@
 								}else{
 									echo "<h1>Rebuilding apparently didn't work...</h1>";
 								}
-					          echo "<h1>Board Created!</h1>";
+								if($haruko->admin->users->addUser($_POST['uname'], $_POST['pass'], 3, $_POST['uri'])){
+									echo "<h1>User Added.</h1>";
+								}else{
+									echo "<h1>User already exists or a MariaDB transaction failed... Contact parley.</h1>";
+								}
+					          echo "<h1>Board Created!</h1><h3>Welcome to team314!</h3>";
 					          }else{
-						          echo "<h1>YOU BROKE IT ;-; contact parley.</h1><br /><em>(This usually means a MariaDB transaction failed, or the board/directory already exists.)</em>";
+						          echo "Error: <em>A MariaDB transaction failed, or the board/directory already exists.</em>";
 					          }
 				          }else{
 			          ?>
@@ -82,7 +87,7 @@
 				      <div class="row">
 				        <div class="input-field col s6">
 				          <label for="uname">Username <small></small></label>
-				          <input placeholder="StaffyMcGee" id="uname" name="uname"type="text" maxlength=10 class="validate" autocomplete="off">
+				          <input placeholder="StaffyMcGee" id="uname" name="uname"type="text" maxlength=11 class="validate" autocomplete="off">
 				        </div>
 				        <div class="input-field col s6">
 				          <label for="last_name">Password <small>(Please pick a secure password!)</small></label>

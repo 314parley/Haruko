@@ -1,3 +1,33 @@
+<?php
+/*
+    vote.php has yet to be written.
+    for now, it's just collecting info and stuff.   
+*/
+	include("config.php");
+	include("inc/mitsuba.php");
+    $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
+    $haruko = new Mitsuba($conn);
+	$sql = "SELECT * FROM `bans`";
+	//$sql = "SELECT DISTINCT strip from `posts`";
+	//$trip = $conn->query("SELECT * FROM posts WHERE trip IS NOT NULL");
+	
+	if(!$result = $conn->query($sql)){
+
+        die('There was an error running the query [' . $conn->error . ']');
+
+    }else{
+
+        while($row = $result->fetch_assoc()){
+
+            echo("<pre>");
+            var_dump($row);
+            echo("</pre>");
+
+    }
+
+    }
+
+?>
 <!doctype html>
 <html lang="en">
         <head>
@@ -36,7 +66,34 @@
             <div class="container">
               <br><br>
               <div class="card-panel">
-	              This is a comprehensive list of all bans on 314chan. IPs are masked, by removing the last few bits of the IP.
+	              This is a comprehensive list of all bans on 314chan. IPs are masked, by removing the last few bits of the IP.<br />
+	                    <table>
+		                    <thead>
+			                    <tr>
+				                    <th data-field="id">Name</th>
+				                    <th data-field="name">Item Name</th>
+				                    <th data-field="price">Item Price</th>
+				                </tr>
+				            </thead>
+				            
+				            <tbody>
+					            <tr>
+						            <td>Alvin</td>
+						            <td>Eclair</td>
+						            <td>$0.87</td>
+						        </tr>
+						        <tr>
+							        <td>Alan</td>
+							        <td>Jellybean</td>
+							        <td>$3.76</td>
+							    </tr>
+							    <tr>
+								    <td>Jonathan</td>
+								    <td>Lollipop</td>
+								    <td>$7.00</td>
+								</tr>
+							</tbody>
+						</table>
             </div>
           </div>
           </div>

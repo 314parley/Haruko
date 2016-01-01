@@ -118,8 +118,7 @@ class Common {
 
     }
     
-    function getIP()
-{
+    function getIP(){
     $fields = array('HTTP_X_FORWARDED_FOR',
                     'REMOTE_ADDR',
                     'HTTP_CF_CONNECTING_IP',
@@ -1200,7 +1199,7 @@ class Common {
 
 		<p>You have been <?php if ($left == - 1) {
 
-            echo "<b>permamently</b>";
+            echo "<b>permanently</b>";
 
         } ?> <?php if (!empty($bandata['range'])) {
 
@@ -1252,7 +1251,7 @@ class Common {
 
 ?>
 
-			<p>You may appeal your ban in the form below. Please explain why you deserve to be unbanned. Poorly writen, rude or offensive appeals may be declined. E-mail address is optional.</p>
+			<br /><p>You may appeal your ban in the form below. Please explain why you deserve to be unbanned. E-mail address is optional.</p>
 
 			<?php
 
@@ -1274,27 +1273,22 @@ class Common {
 
 ?>
 
-			<p><form action="./imgboard.php" method="POST">
-
+			<form action="/imgboard.php" method="POST" class="col s12">
 			<input type="hidden" name="mode" value="usrapp" />
-
 			<input type="hidden" name="banid" value="<?php echo $bandata['id']; ?>" />
-
 			<input type="hidden" name="banrange" value="<?php echo $range; ?>" />
-
-			<table class="postform">
-
-			<tbody>
-
-			<tr><td class="postBlock">E-mail</td><td><input type="text" name="email" value="<?php echo $app_mail; ?>"/><input type="submit" value="Submit"></td></tr>
-
-			<tr><td class="postBlock">Message</td><td><textarea style="width: 100%;" rows=6 name="msg"><?php echo $app_msg; ?></textarea></td></tr>
-
-			</tbody>
-
-			</table>
-
-			</form></p>
+			<div class="input-field col s6">
+			<input id="email" type="email" name="email" value="<?php echo $app_mail; ?>"/>
+			<label for="email">Email</label>
+			</div>
+			<div class="input-field col s12">
+			<textarea id="appeal" class="materialize-textarea" rows="6" name="msg"><?php echo $app_msg; ?></textarea>
+			<label for="appeal">Appeal Message</label>
+			</div>
+			<!--<input type="submit" value="Submit">-->
+			<!-- button is bugged... I know, I know.-->
+			<button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">send</i></button>
+			</form>
 
 			<?php
 
@@ -1326,102 +1320,90 @@ class Common {
 
 ?>
 
-				<html>
+				<html lang="en">
 
-	<head>
+        <head>
 
-	<title>Banned</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-<?php
+						<meta charset="UTF-8">
 
-            $first_default = 1;
+				<title>Banned</title>
 
-            $styles = $this->conn->query("SELECT * FROM styles ORDER BY `default` DESC");
+            <link href="/css/MIcons.css" rel="stylesheet">
 
-            while ($row = $styles->fetch_assoc()) {
+            <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-                if ($first_default == 1) {
+            <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-                    echo '<link rel="stylesheet" id="switch" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '">';
-
-                    $first_default = 0;
-
-                }
-
-                echo '<link rel="alternate stylesheet" style="text/css" href="' . $this->mitsuba->getPath($row['path'], "index", $row['relative']) . '" title="' . $row['name'] . '">';
-
-            }
-
-?>
-
-	<script type='text/javascript' src='./js/style.js'></script>
-
-	</head>
+					</head>
 
 	<body>
+<div class="navbar-fixed">
 
-	<div id="doc">
+              <nav class="marooncolor" role="navigation">
 
-	<br /><br />
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">314chan</a>
 
-	<div class="box-outer top-box">
+            
 
-	<div class="box-inner">
+              <ul class="right hide-on-med-and-down">
 
-	<div class="boxbar"><h2>You are banned ;_;</h2></div>
+                <li><a href="rules.html">Rules</a></li>
 
-	<div class="boxcontent">
+                <li><a href="faq.html">FAQ</a></li>
 
-	<?php
+                <li><a href="news.html">News</a></li>
 
-            $imagesDir = './rnd/banned/';
+                <li><a href="https://irc.314chan.org">IRC</a></li>
 
-            if (is_dir($imagesDir)) {
+              </ul>
 
-                $images = glob($imagesDir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
-                $randomImage = $images[array_rand($images) ];
 
-                if ($return == 1) {
+              <ul id="nav-mobile" class="side-nav" style="left: -250px;">
 
-                    $file.= '<img style="float: right;" src="' . $randomImage . '" alt="Mitsuba" />';
+                <li><a href="rules.html">Rules</a></li>
 
-                }
+                <li><a href="faq.html">FAQ</a></li>
 
-            }
+                <li><a href="news.html">News</a></li>
 
-            $this->banInfo($bandata, $board);
+                <li><a href="https://irc.314chan.org">IRC</a></li>
 
-            if ((!empty($bandata['more'])) && (count($bandata['more']) > 1)) {
+              </ul>
 
-?>
+              
 
-		<p><b>There are more than one bans placed on your IP.</b></p>
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-		<?php
+            </div>
 
-                foreach ($bandata['more'] as $ban) {
+          </nav>
 
-                    echo "<hr />";
+        </div>
+<div class="container">
+            <div class="card-panel">
 
-                    $this->banInfo($ban, $board);
-
-                }
-
-            }
-
-?>
-
-	</div>
-
-	</div>
-
-	</div>
-
-	</body>
-
+				<h4>You are banned ;_;</h4>
+				<img style="float: right;" src="/banned/r.php" alt="Mitsuba" height="155px"/>
+				
+				<?php
+					$this->banInfo($bandata, $board);
+					if ((!empty($bandata['more'])) && (count($bandata['more']) > 1)) {		
+				?>
+					<p><b>There's more than one ban placed on your IP.</b></p>
+					<?php
+						foreach ($bandata['more'] as $ban) {
+							echo "<hr />";
+							$this->banInfo($ban, $board);
+						}
+					}
+				?>
+			</div>
+		</body>
 	</html>
 
 	<?php

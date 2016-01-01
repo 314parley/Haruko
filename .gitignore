@@ -32,12 +32,16 @@ ignore.php
 don8.php
 boards.json
 # also ignore the boards. or...most of them if I forget to comment it out.
-/314
-/bs
-/b
-/hrg
-/tst
-/pol
-/donate
-/404
-/403
+/314/
+/76/
+/archive/
+/bs/
+/b/
+/captcha/
+/hrg/
+/tst/
+/pol/
+/donate/
+
+/404/
+/403/
