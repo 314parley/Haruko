@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("ads.list");
 
 if (isset($_POST['mode']))
@@ -294,4 +294,8 @@ while ($row = $result->fetch_assoc())
 
 </form>
 
-<?php $mitsuba->admin->ui->endSection(); ?>
+<?php $mitsuba->admin->ui->endSection(); 
+	}else{
+		echo "Sorry, Global Admins only.";
+	}
+?>
