@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("ads.update");
 
 if ((!empty($_GET['i'])) && (is_numeric($_GET['i'])))
@@ -107,5 +107,7 @@ while ($row = $result->fetch_assoc())
 	$mitsuba->admin->ui->endSection();
 
 }
-
+}else{
+	echo "Sorry. Global Admins only.";
+}
 ?>
