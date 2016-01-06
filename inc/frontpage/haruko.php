@@ -191,7 +191,8 @@ class Frontpage {
                  <h4><div class="card-panel">Recent Posts</div></h4>
 
                  <div class="row">';
-                 $posts = $this->conn->query("SELECT * FROM posts ORDER BY date AND `board`<>'b' DESC LIMIT 4");
+                 #$posts = $this->conn->query("SELECT * FROM posts ORDER BY date AND `board`<>'b' DESC LIMIT 4");
+                 $posts = $this->conn->query("SELECT * FROM posts ORDER BY date DESC LIMIT 4");
                  while ($row = $posts->fetch_assoc()){
              $file .='<div class="col s6">
 

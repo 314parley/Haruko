@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("config.update");
 
 $mitsuba->admin->ui->checkToken($_POST['token']);
@@ -114,4 +114,8 @@ $mitsuba->admin->updateConfig($config);
 
 <a href="?/config"><?php echo $lang['mod/back']; ?></a>
 
-<?php $mitsuba->admin->ui->endSection(); ?>
+<?php $mitsuba->admin->ui->endSection(); 
+	}else{
+		echo "Sorry. That's for global admins only.";
+	}
+?>

@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("config.global_message");
 
 		if (isset($_POST['message']))
@@ -63,5 +63,7 @@ $mitsuba->admin->reqPermission("config.global_message");
 		<?php
 
 		}
-
+}else{
+	echo "I'm sorry, this is only for global administrators!";
+}
 ?>

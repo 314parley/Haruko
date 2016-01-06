@@ -270,7 +270,7 @@ class Common {
 
             } else {
 
-                //echo "The file you uploaded was <strong>NOT</strong> a valid WebM file.";
+                echo "The file you uploaded was <strong>NOT</strong> a valid WebM file.";
 
 
 
@@ -1251,7 +1251,7 @@ class Common {
 
 ?>
 
-			<br /><p>You may appeal your ban in the form below. Please explain why you deserve to be unbanned. E-mail address is optional.</p>
+			<br /><p>You may appeal your ban in the form below. Please explain why you deserve to be unbanned.</p>
 
 			<?php
 
@@ -1278,8 +1278,6 @@ class Common {
 			<input type="hidden" name="banid" value="<?php echo $bandata['id']; ?>" />
 			<input type="hidden" name="banrange" value="<?php echo $range; ?>" />
 			<div class="input-field col s6">
-			<input id="email" type="email" name="email" value="<?php echo $app_mail; ?>"/>
-			<label for="email">Email</label>
 			</div>
 			<div class="input-field col s12">
 			<textarea id="appeal" class="materialize-textarea" rows="6" name="msg"><?php echo $app_msg; ?></textarea>

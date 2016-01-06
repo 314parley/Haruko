@@ -9,7 +9,7 @@ if (!defined("IN_MOD"))
 }
 
 $mitsuba->admin->reqPermission("pages.view");
-
+if($mitsuba->admin->canBoard("%")){
 if (!empty($_GET['m']))
 
 {
@@ -151,3 +151,7 @@ echo "</tr>";
 </form>
 
 <?php $mitsuba->admin->ui->endSection(); ?>
+<?php }else{
+	echo "Sorry. That feature is currently for Global Admins only.";
+	}
+?>
