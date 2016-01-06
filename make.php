@@ -47,7 +47,7 @@
 				          $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 				          $haruko = new Mitsuba($conn);
 				          if ($_POST) {
-					          if($haruko->admin->boards->addBoard($_POST['uri'], "imageboard", $_POST['bname'], $_POST['desc'], $_POST['desc'], 0, 1, 0, 0, 1, 1, 20, 60, 120, 2097152, 15, 0, 0, 1, 0, 2000, "Anonymous", "%", 1, 0, "", 1, 1, "", 0) > 0){
+					          if($haruko->admin->boards->addBoard(strtolower($_POST['uri']), "imageboard", $_POST['bname'], $_POST['desc'], $_POST['desc'], 0, 1, 0, 0, 1, 1, 20, 60, 120, 2097152, 15, 0, 0, 1, 0, 2000, "Anonymous", "%", 1, 0, "", 1, 1, "", 0) > 0){
 								if ((!empty($_POST['uri'])) && ($haruko->common->isBoard($_POST['uri']))){
 									$haruko->caching->rebuildBoardCache($_POST['uri']);
 									echo "<h1>/".$_POST['uri']."/ Rebuilt!</h1>";
@@ -59,7 +59,7 @@
 								}else{
 									echo "<h1>User already exists or a MariaDB transaction failed... Contact parley.</h1>";
 								}
-					          echo "<h1>Board Created!</h1><h3>Welcome to team314!</h3>";
+					          echo "<h1>Board Created!</h1><h3>Welcome to team314!<br />Login with your credentials at <a href='/mod.php'>mod.php</a></h3>";
 					          }else{
 						          echo "Error: <em>A MariaDB transaction failed, or the board/directory already exists.</em>";
 					          }
