@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("config.cleaner");
 
 ?>
@@ -27,4 +27,8 @@ $mitsuba->admin->reqPermission("config.cleaner");
 
 </form>
 
-<?php $mitsuba->admin->ui->endSection(); ?>
+<?php $mitsuba->admin->ui->endSection(); 
+	}else{
+		echo "Sorry. This is for Global Admins only.";
+	}
+?>

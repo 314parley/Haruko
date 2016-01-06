@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("config.cleaner");
 
 $mitsuba->admin->ui->checkToken($_POST['token']);
@@ -41,4 +41,8 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 
 <a href="?/cleaner"><?php echo $lang['mod/back']; ?></a>
 
-<?php $mitsuba->admin->ui->endSection(); ?>
+<?php $mitsuba->admin->ui->endSection(); }
+	else{
+		echo "Sorry. This is for Global Admins only.";
+	}
+?>
