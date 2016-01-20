@@ -511,7 +511,11 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
 
           </div>
-          <div class="callout callout-danger lead">
+            <div class="callout callout-danger lead">
+    <h4>ATTENTION!</h4>
+    <h5>I have already seen staff <em>banning</em> users instead of <em>warning</em> them. I always prefer warnings just because it's a slap on the wrist. I will finish my staffing guides, and I will make a link to the warning page (just like the ban option)</h5>
+  </div>
+            <div class="callout callout-danger lead">
     <h4>Welcome to team314chan!</h4>
     <h5>Hello. If you visited your board now, there is an ongoing bug (working on it) where when your board is first created, the post form is initially borked.<br />To fix it, create a post (maybe a sticky explaining your board etc), and the pages will render properly.</h5>
   </div>

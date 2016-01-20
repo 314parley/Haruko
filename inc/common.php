@@ -241,7 +241,6 @@ class Common {
     function thumb($board, $filename, $ext, $s = 250) {
 
         $extension = $this->getGraphicsExtension();
-
         if ($ext == ".webm") {
 
             //initialize

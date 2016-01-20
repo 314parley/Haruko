@@ -320,7 +320,7 @@ switch ($path) {
         }
 
         }*/
-        if(!stristr($path,'api')){
+        if((!stristr($path,'api'))){
 	        include ("inc/mod/main.inc.php");
         }else{
 	        switch (true){

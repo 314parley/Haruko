@@ -109,7 +109,7 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 					unset($row["type"]);
 					
 				//cooldown timers [define what `cooldowns` is here]
-					$row["cooldowns"] = $row["cooldowns"];
+					@$row["cooldowns"] = $row["cooldowns"];
 					//cooldowns between threads
 					$row["cooldowns"]["threads"] = $row["time_between_threads"];
 					unset($row["time_between_threads"]);

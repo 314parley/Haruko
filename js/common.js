@@ -410,7 +410,7 @@ function updateThread(isAuto)
 	request.open('get', "/" + resID + ".json", true);
 	request.onload = function(){
 		if(request.status >=200 && request.status < 400){
-			alert(JSON.stringify(request.responseText));
+			console.dir(JSON.stringify(request.responseText));
 		}else{
 			alert("something went wrong...");
 		}

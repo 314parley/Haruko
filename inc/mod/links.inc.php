@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("links.view");
 
 	if (!empty($_GET['m']))
@@ -122,4 +122,8 @@ echo $mitsuba->admin->links->getLinkTable(-1);
 
 </form>
 
-<?php $mitsuba->admin->ui->endSection(); ?>
+<?php $mitsuba->admin->ui->endSection(); 
+	}else{
+		echo "Sorry, but due to abuse, this feature is only for Global Admins. Contact a global admin to add your board.";
+	}
+?>

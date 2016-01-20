@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("links.update");
 
 		if (isset($_GET['i']))
@@ -113,5 +113,7 @@ $mitsuba->admin->ui->startSection($lang['mod/edit_link']);
 		<?php
 
 		}
-
+}else{
+	echo "Sorry, but due to abuse, this feature is only for Global Admins.";
+}
 ?>

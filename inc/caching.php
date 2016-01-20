@@ -142,7 +142,7 @@ class Caching {
 
         $result = $this->conn->query("SELECT * FROM links");
 
-        while ($row = $result->fetch_assoc()) {
+        /*while ($row = $result->fetch_assoc()) {
 
             $identifier = $row['id'];
 
@@ -154,9 +154,9 @@ class Caching {
 
             } else array_push($data[$categories[$row['parent']]], $row);
 
-        }
+        }*/
 
-        foreach ($data as $category => $links) {
+        /*foreach ($data as $category => $links) {
 
             $out.= '<div class="group">';
 
@@ -168,13 +168,13 @@ class Caching {
 
                 $i++;
 
-                /*if ($boardLink['relative'] == 1)
+                if ($boardLink['relative'] == 1)
 
                 {
 
                 $out .= ' <a href="'.$this->mitsuba->getPath($boardLink['url'], $location, 1).'" title="'.$boardLink['title'].'">'.$boardLink['short'].'</a> /';
 
-                } else*/
+                } else
 
                 if ($boardLink['relative'] == 2) {
 
@@ -190,7 +190,7 @@ class Caching {
 
                 } else {
 
-                    $out.= '<a href="' . $boardLink['url'] . '" title="' . $boardLink['title'] . '"> /' . $boardLink['short'] . '</a>';
+                    $out.= '<a href="' . $boardLink['url'] . '" title="' . $boardLink['title'] . '">' . $boardLink['short'] . '</a>';
 
                 }
 
@@ -198,9 +198,9 @@ class Caching {
 
             $out.= ']</div>';
 
-        }
-
-        $out.= '<div class="group">[<a class="fa fa-twitter" href="http://www.twitter.com/314chan" title="@314chan"></a> / <a class="fa fa-heartbeat" href="https://status.314chan.org/" title="Status Page"></a> / <a class="fa fa-pie-chart" href="https://anal.314chan.org/" title="Analytics"></a> <!--/ <a class="fa fa-phone" href="https://314chan.org/index.php?view=faq#id3" title="Tech Support"></a>--><!-- / <a>blahblahblah</a>-->]</div>';
+        }*/
+        $out.='<div class="group">[ <a href="/314/">314</a> / <a href="/b/">b</a> ]</div>';
+        $out.= '<div class="group">[<a class="fa fa-home" href="/" title="Home"></a> / <a class="fa fa-twitter" href="http://www.twitter.com/314chan" title="@314chan"></a> / <a class="fa fa-heartbeat" href="https://status.314chan.org/" title="Status Page"></a> / <a class="fa fa-pie-chart" href="https://anal.314chan.org/" title="Analytics"></a> / <a class="fa fa-list-alt" href="/boards.php" title="All Boards"></a>]</div>';
 
         return $out;
 

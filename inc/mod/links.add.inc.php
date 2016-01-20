@@ -7,7 +7,7 @@ if (!defined("IN_MOD"))
 	die("Nah, I won't serve that file to you.");
 
 }
-
+if($mitsuba->admin->canBoard("%")){
 $mitsuba->admin->reqPermission("links.add");
 
 		if (isset($_GET['p']))
@@ -110,6 +110,9 @@ $mitsuba->admin->reqPermission("links.add");
 
 		<?php
 
+		}
+		}else{
+			echo "Sorry, but due to abuse, this feature is only for Global Admins.";
 		}
 
 ?>

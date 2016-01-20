@@ -9,7 +9,7 @@ if (!defined("IN_MOD"))
 }
 
 $mitsuba->admin->reqPermission("post.delete.single");
-
+if($mitsuba->admin->canBoard($_GET['b'])){
 		if ((!empty($_GET['b'])) && (!empty($_GET['p'])) && ($mitsuba->common->isBoard($_GET['b'])) && (is_numeric($_GET['p'])))
 
 		{
@@ -27,7 +27,7 @@ $mitsuba->admin->reqPermission("post.delete.single");
 			}
 
 			$mitsuba->posting->deletePost($_GET['b'], $_GET['p'], "", $imageonly, true);
-
+			$mitsuba->admin->logAction("Deleted post ".$_GET['p']." off of board ".$_GET['b'].".");
 			if ($imageonly == 1)
 
 			{
@@ -60,6 +60,9 @@ $mitsuba->admin->reqPermission("post.delete.single");
 
 		
 
+		}
+		}else{
+			echo "You don't have the correct permissions to delete from this board!";
 		}
 
 ?>

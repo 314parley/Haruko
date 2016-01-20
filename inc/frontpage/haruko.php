@@ -152,7 +152,7 @@ class Frontpage {
 
 			                        $file .= '<td>
 
-			                        <a class="boardlink" href="'.$child['url'].'" title="'.$child['title'].'">/'.$child['url'].'/ - '.$child['title'].'</a>
+			                        <a class="boardlink" href="'.$child['url'].'" title="'.$child['title'].'">/'.$child['short'].'/ - '.$child['title'].'</a>
 
 			                        </td>';
 

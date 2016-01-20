@@ -259,13 +259,14 @@ if (!empty($_POST['mode'])) {
                 }
 
                 if ((!empty($_POST['capcode'])) && ($_POST['capcode'] == 1) && ($mitsuba->admin->checkPermission("post.capcode"))) {
-
-                    $cc_text = $_SESSION['capcode_text'];
-
-                    $cc_style = $_SESSION['capcode_style'];
-
-                    $cc_icon = $_SESSION['capcode_icon'];
-
+	                if($mitsuba->admin->canBoard("%")){
+		                $cc_text = "Global Staff";
+		                $cc_style = "color: #0048FF";
+	                }else{
+	                $cc_text = $_SESSION['capcode_text'];
+	                $cc_style = $_SESSION['capcode_style'];
+	                $cc_icon = $_SESSION['capcode_icon'];
+	                }
                 } elseif ((!empty($_POST['capcode'])) && ($_POST['capcode'] == 2) && (!empty($_POST['cc_text'])) && (!empty($_POST['cc_color'])) && ($mitsuba->admin->checkPermission("post.customcapcode"))) {
 
                     $cc_text = $_POST['cc_text'];
@@ -435,8 +436,7 @@ if (!empty($_POST['mode'])) {
                 }
 
                 if ((empty($_FILES['upfile']['tmp_name'])) && (!empty($_FILES['upfile']['name']))) {
-
-                    $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']);
+                    $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']."&nbsp;1");
 
                     exit;
 
@@ -450,7 +450,7 @@ if (!empty($_POST['mode'])) {
 
                     if (($file_size > $bdata['filesize']) && ($ignoresizelimit != 1)) {
 
-                        $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']);
+                        $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']."2");
 
                         exit;
 
@@ -458,7 +458,7 @@ if (!empty($_POST['mode'])) {
 
                     if (!($nfo = $mitsuba->common->isFile($_FILES['upfile']['tmp_name'], $bdata['extensions']))) {
 
-                        $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']);
+                        $mitsuba->common->showMsg($lang['img/error'], $lang['img/file_too_big']."3");
 
                         exit;
 
@@ -586,7 +586,7 @@ if (!empty($_POST['mode'])) {
 
                             unlink($target_path);
 
-                            $mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb'] . "blah");
+                            $mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']);
 
                             exit;
 
@@ -604,7 +604,7 @@ if (!empty($_POST['mode'])) {
 
                             unlink($target_path);
 
-                            $mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb'] . "bloop");
+                            $mitsuba->common->showMsg($lang['img/error'], $lang['img/no_thumb']);
 
                             exit;
 
