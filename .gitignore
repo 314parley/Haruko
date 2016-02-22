@@ -15,6 +15,7 @@
 !/js/
 !/libs/
 !/modules/
+
 !*.html
 8ch.html
 index.html
@@ -25,4 +26,5 @@ rules.html
 !*.php
 config.php
 status.php
+s.php
 !*.sql

@@ -230,12 +230,19 @@ class Frontpage {
                     </div>
 
                     <div class="card-action">
+                    ';
+                    if($row['resto']!= 0){
+                      $file .='<a href="/'.$row['board'].'/res/'.$row['resto'].'.html#p'.$row['id'].'">View</a>';
+                      }else{
+	                  $file .='<a href="/'.$row['board'].'/res/'.$row['id'].'.html">View</a>';
+                      }
+                    if($row['resto']!= 0){
+                      $file .='<a href="/'.$row['board'].'/res/'.$row['resto'].'.html#q'.$row['id'].'">Reply</a>';
+                      }else{
+	                  $file .='<a href="/'.$row['board'].'/res/'.$row['id'].'.html#q'.$row['id'].'">Reply</a>';
+                      }
 
-                      <a href="/'.$row['board'].'/">View</a>
-
-                      <a href="#">Reply</a>
-
-                    </div>
+                    $file .='</div>
 
                   </div>
 
