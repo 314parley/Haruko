@@ -411,5 +411,3 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 		</table>-->
 
 		<?php $mitsuba->admin->ui->endSection(); ?>
-
-		<!--<script type="text/javascript">parent.nav.location.reload();</script>-->

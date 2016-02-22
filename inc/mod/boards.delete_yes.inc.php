@@ -30,7 +30,7 @@ $mitsuba->admin->reqPermission("boards.delete");
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/board_deleted']); ?>
 
-<script type="text/javascript">parent.nav.location.reload();</script><a href="?/boards"><?php echo $lang['mod/back']; ?></a><?php $mitsuba->admin->ui->endSection(); ?>
+<a href="?/boards"><?php echo $lang['mod/back']; ?></a><?php $mitsuba->admin->ui->endSection(); ?>
 
 				<?php
 

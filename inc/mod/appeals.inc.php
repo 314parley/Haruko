@@ -155,5 +155,3 @@ while ($row = $appeals->fetch_assoc())
 </tbody>
 
 <?php $mitsuba->admin->ui->endSection(); ?>
-
-<script type="text/javascript">parent.nav.location.reload();</script>

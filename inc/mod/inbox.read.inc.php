@@ -48,8 +48,6 @@ if ((!empty($_GET['id'])) && (is_numeric($_GET['id'])))
 
 <?php $mitsuba->admin->ui->endSection(); ?>
 
-<script type="text/javascript">parent.nav.location.reload();</script>
-
 				<?php
 
 			}

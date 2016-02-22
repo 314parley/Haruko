@@ -19,9 +19,6 @@ if (!defined("IN_MOD"))
 			$conn->query("DELETE FROM pm WHERE id=".$_GET['id']." AND to_user=".$_SESSION['id']);
 
 			?>
-
-			<script type="text/javascript">parent.nav.location.reload();</script>
-
 			<meta http-equiv="refresh" content="0;URL='?/inbox'" />
 
 			<?php

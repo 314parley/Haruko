@@ -91,5 +91,3 @@ echo "</tr>";
 </table>
 
 <?php $mitsuba->admin->ui->endSection(); ?>
-
-<script type="text/javascript">parent.nav.location.reload();</script>

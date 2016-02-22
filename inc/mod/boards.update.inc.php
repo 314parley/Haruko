@@ -402,7 +402,7 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/board_updated']); ?>
 
-<script type="text/javascript">parent.nav.location.reload();</script><a href="?/boards"><?php echo $lang['mod/back']; ?></a><?php $mitsuba->admin->ui->endSection(); ?>
+<a href="?/boards"><?php echo $lang['mod/back']; ?></a><?php $mitsuba->admin->ui->endSection(); ?>
 
 				<?php
 

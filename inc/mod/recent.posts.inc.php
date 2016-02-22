@@ -98,7 +98,7 @@ $mitsuba->admin->ui->startSection("");
 
 							}
 
-							$posts = $conn->query("SELECT * FROM posts ORDER BY date DESC LIMIT 0, ".$max);
+							$posts = $conn->query("SELECT * FROM posts WHERE deleted = 0 ORDER BY date DESC LIMIT 0, ".$max);
 
 							
 

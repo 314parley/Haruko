@@ -88,22 +88,29 @@ foreach ($jsonIterator as $key => $val) {
                   <p class="grey-text text-lighten-4">314chan would like to be as open as possible. We employ a system in which the boards are controlled by the users, and for the users. I will explain more in depth <a href="monarchy.html">here</a></p>
                   </div>
                 <div class="col l3 s12">
-                  <h5 class="white-text">Our Network</h5>
+                  <h5 class="white-text">Our Friends</h5>
                   <ul>
                     <li><a class="white-text" href="http://www.76chan.org">76chan</a></li>
-                    <li><a class="white-text" href="http://www.711chan.org">711chan</a></li>
-                    <!--<li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 3</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 4</a></li>-->
                   </ul>
                 </div>
                 <div class="col l3 s12">
-                  <h5 class="white-text">Connect</h5>
+
+                  <h5 class="white-text">Why 314chan?</h5>
+
                   <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+
+                    <li class="white-text"><strong>Permanent U.S. Ownership.</strong>&nbsp;<em>We will never sell out to a Japanese company.</em></li>
+
+                    <li class="white-text"><strong>Head staff that cares.</strong>&nbsp;<em>Our staff has never ignored a user.</em></li>
+
+                    <li class="white-text"><strong>No Ads.</strong>&nbsp;<em>Parley will never host ads on the server(unless need for money is dire.)</em></li>
+
+                    <li class="white-text"><strong>Captcha as a last resort.</strong>&nbsp;<em>We will never enable Captchas (unless there are ongoing spam attacks.)</em> </li>
+
                   </ul>
+
                 </div>
               </div>
             </div>

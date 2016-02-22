@@ -105,7 +105,6 @@ class Frontpage {
             <div class="container">
 
               <br><br>
-
               <div class="card-panel">
               <center><!-- yes, I know center was deprecated in favor of CSS. give me a break :p --><font color=red> 314chan now has a URL resolvable at http://www.314.chan/ if you use <a href="https://www.opennicproject.org/">OpenNIC</a> as a DNS</font><br /><small>(this will be moved elsewhere later.)</small></center>
               <table class="centered striped">
@@ -136,7 +135,7 @@ class Frontpage {
 
                         while ($row = $cats->fetch_assoc()){
 
-	                        $children = $this->conn->query("SELECT * FROM links WHERE parent=".$row['id']." ORDER BY short ASC");
+	                        $children = $this->conn->query("SELECT * FROM links WHERE parent=".$row['id']." AND deleted = 0 ORDER BY date ASC");
 
 	                        while ($child = $children->fetch_assoc()){
 
@@ -215,7 +214,7 @@ class Frontpage {
 		                    }
 	                    }
                     }else{
-	                    $file.='<img src="img/sample-1.jpg">';
+	                    $file.='';
                     }
                       if (!empty($row['subject'])){
 	                      $file.='<span class="card-title">'.$row['subject'].'</span>';
@@ -333,13 +332,11 @@ class Frontpage {
 
                 <div class="col l3 s12">
 
-                  <h5 class="white-text">Our Network</h5>
+                  <h5 class="white-text">Our Friends</h5>
 
                   <ul>
 
                     <li><a class="white-text" href="http://www.76chan.org">76chan</a></li>
-
-                    <li><a class="white-text" href="http://www.711chan.org">711chan</a></li>
 
                     <!--<li><a class="white-text" href="#!">Link 3</a></li>
 

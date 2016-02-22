@@ -109,5 +109,3 @@ echo "</tr>";
 <?php printf($lang['mod/showing_requests'], 15); ?> <a href="?/ban_requests/all"><?php echo $lang['mod/show_all']; ?></a>
 
 <?php $mitsuba->admin->ui->endSection(); ?>
-
-<script type="text/javascript">parent.nav.location.reload();</script>
