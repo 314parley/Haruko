@@ -2046,7 +2046,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
 						}
 
-						
+
 
 					sp:hover,sp:focus,sp:hover a {
 
@@ -2068,7 +2068,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
             <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">' . $this->config['sitename'] . '</a>
 
-            
+
 
               <ul class="right hide-on-med-and-down">
 
@@ -2096,7 +2096,7 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
               </ul>
 
-              
+
 
               <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
@@ -2368,13 +2368,13 @@ if ($(\"#custom_cc\").prop(\"checked\"))
 
             if ($row['locked'] == 1) {
 
-                $file.= '<i alt="Closed" title="Closed" class="fa fa-lock fa-2 stickyIcon"></i>';
+                $file.= '<i alt="Closed" title="Closed" class="fa fa-lock fa-2"></i>';
 
             }
 
             if ($row['sticky'] == 1) {
 
-                $file.= '<i alt="Sticky" title="Sticky" class="fa fa-thumb-tack fa-2 stickyIcon"></i>';
+                $file.= '<i alt="Sticky" title="Sticky" class="fa fa-thumb-tack fa-2"></i>';
 
             }
 

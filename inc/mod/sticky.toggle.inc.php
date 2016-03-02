@@ -34,11 +34,11 @@ if ((!empty($_GET['b'])) && (!empty($_GET['t'])) && ($bdata = $mitsuba->common->
 
 				?>
 
-	
+
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/unstickied']); ?>
 
-<meta http-equiv="refresh" content="1;URL='./<?php echo $_GET['b']."/".$_GET['t']; ?>.html'" />
+<meta http-equiv="refresh" content="1;URL='./<?php echo $_GET['b']."/res/".$_GET['t']; ?>.html'" />
 
 <?php $mitsuba->admin->ui->endSection(); ?>
 
@@ -52,11 +52,11 @@ if ((!empty($_GET['b'])) && (!empty($_GET['t'])) && ($bdata = $mitsuba->common->
 
 				?>
 
-	
+
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/stickied']); ?>
 
-<meta http-equiv="refresh" content="1;URL='./<?php echo $_GET['b']."/".$_GET['t']; ?>.html'" />
+<meta http-equiv="refresh" content="1;URL='./<?php echo $_GET['b']."/res/".$_GET['t']; ?>.html'" />
 
 <?php $mitsuba->admin->ui->endSection(); ?>
 
@@ -68,7 +68,7 @@ if ((!empty($_GET['b'])) && (!empty($_GET['t'])) && ($bdata = $mitsuba->common->
 
 			?>
 
-	
+
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/thread_not_found']); ?>
 
@@ -80,7 +80,7 @@ if ((!empty($_GET['b'])) && (!empty($_GET['t'])) && ($bdata = $mitsuba->common->
 
 		} else {
 
-		
+
 
 		}
 
