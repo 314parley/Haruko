@@ -56,28 +56,20 @@ $mitsuba->admin->reqPermission("reports.clear.multiple");
 
 				break;
 
-		
+
 
 		}
 
 	}
 
 	?>
-
-<?php $mitsuba->admin->ui->startSection($lang['mod/reports']); ?>
-
-
-
 <?php
 
-if ($mitsuba->admin->checkPermission("reports.clear.all"))
+if (($mitsuba->admin->checkPermission("reports.clear.all")) && ($mitsuba->admin->canBoard("%")))
 
 {
 
 ?>
-
-<a href="?/reports/clear_all"><?php echo $lang['mod/clear_all']; ?></a>
-
 <?php
 
 }
@@ -85,13 +77,17 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 ?>
 
 <div class="col-md-12">
-
+<br />
               <div class="box">
 
                 <div class="box-header">
 
-                  <h3 class="box-title">Striped Full Width Table</h3>
-
+                  <h3 class="box-title"><?php echo $lang['mod/reports']?></h3>
+									<div class="box-tools">
+										<div class="input-group">
+											<a href="?/reports/clear_all"><?php echo $lang['mod/clear_all']; ?></a>
+										</div>
+									</div>
                 </div><!-- /.box-header -->
 
                 <div class="box-body no-padding">
@@ -122,7 +118,7 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 
 		$bbcode = $conn->query("SELECT * FROM bbcodes;");
 
-		
+
 
 		while ($row = $bbcode->fetch_assoc())
 
@@ -218,13 +214,13 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 
 			echo "<td class='text-center text-nowrap'>".$row['reporter_ip']."</td>";
 
-			echo "<td class='text-center text-nowrap'>[ <a href='?/reports&cl=1&id=".$row['id']."'>C</a> ] [ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."'>B</a> "; 
+			echo "<td class='text-center text-nowrap'>[ <a href='?/reports&cl=1&id=".$row['id']."'>C</a> ] [ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."'>B</a> ";
 
 			if ($mitsuba->admin->checkPermission("reports.clear.multiple"))
 
 			{
 
-				echo "/ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."&d=1'>&</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."'>D</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."&f=1'>F</a> ] <br />"; 
+				echo "/ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."&d=1'>&</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."'>D</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."&f=1'>F</a> ] <br />";
 
 				echo "[ <a href='?/info&ip=".$pdata['ip']."'>N</a> ] <br />";
 
@@ -284,7 +280,7 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 
 		$bbcode = $conn->query("SELECT * FROM bbcodes;");
 
-		
+
 
 		while ($row = $bbcode->fetch_assoc())
 
@@ -380,13 +376,13 @@ if ($mitsuba->admin->checkPermission("reports.clear.all"))
 
 			echo "<td class='text-center text-nowrap'>".$row['reporter_ip']."</td>";
 
-			echo "<td class='text-center text-nowrap'>[ <a href='?/reports&cl=1&id=".$row['id']."'>C</a> ] [ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."'>B</a> "; 
+			echo "<td class='text-center text-nowrap'>[ <a href='?/reports&cl=1&id=".$row['id']."'>C</a> ] [ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."'>B</a> ";
 
 			if ($mitsuba->admin->checkPermission("reports.clear.multiple"))
 
 			{
 
-				echo "/ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."&d=1'>&</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."'>D</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."&f=1'>F</a> ] <br />"; 
+				echo "/ <a href='?/bans/add&b=".$row['board']."&p=".$row['reported_post']."&d=1'>&</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."'>D</a> / <a href='?/delete_post&b=".$row['board']."&p=".$row['reported_post']."&f=1'>F</a> ] <br />";
 
 				echo "[ <a href='?/info&ip=".$pdata['ip']."'>N</a> ] <br />";
 

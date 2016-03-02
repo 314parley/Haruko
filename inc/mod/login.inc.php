@@ -8,26 +8,18 @@ if (!defined("IN_MOD"))
 
 }
 
-if ((!empty($_POST['username'])) && (!empty($_POST['password'])))
-
-		{
+if ((!empty($_POST['username'])) && (!empty($_POST['password']))){
 
 			$username = $conn->real_escape_string($_POST['username']);
-
-
-
 			$result = $conn->query("SELECT * FROM users WHERE username='".$username."'");
-
-			if ($result->num_rows == 1)
-
-			{
+			if ($result->num_rows == 1){
 
 				$data = $result->fetch_assoc();
-
-				$mitsuba->admin->reqPermission("user.login", $data['id']);
-
+				if($data['group'] == 4){
+					die("<h1>You are currently suspended.<br /> Please talk to a global administrator to discuss lifting the suspension. You will now be redirected back to the login panel.<br /> Thank you for any service you have provided!</h1>");
+				}
+				//$mitsuba->admin->reqPermission("user.login", $data['id']);
 				$password = hash("sha512", $_POST['password'].$data['salt']);
-
 				if ($data['password'] == $password)
 
 				{

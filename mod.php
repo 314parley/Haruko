@@ -110,7 +110,7 @@ function deleteEntry($conn, $type, $id) {
 
     } else {
 
-        die("Insufficient permissions");
+        die("Insufficient permissions4");
 
     }
 

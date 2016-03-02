@@ -263,7 +263,7 @@ if (!empty($_POST['mode'])) {
 		                $cc_text = "Global Staff";
 		                $cc_style = "color: #0048FF";
 	                }else{
-	                $cc_text = $_SESSION['capcode_text'];
+	                $cc_text = "/".$_SESSION['boards']."/ ".$_SESSION['capcode_text'];
 	                $cc_style = $_SESSION['capcode_style'];
 	                $cc_icon = $_SESSION['capcode_icon'];
 	                }

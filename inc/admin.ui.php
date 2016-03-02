@@ -81,7 +81,8 @@ class UI {
             $checked = "";
 
             if (($boards !== "%") && ($boards !== "")) {
-
+              var_dump($row['short']);
+echo $this->mitsuba->admin->canBoard($row['short']);
                 if (in_array($boards, $row['short'])) {
 
                     $checked = " checked ";
