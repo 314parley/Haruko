@@ -132,7 +132,7 @@ class Posting {
 
                         return 1; //done-image
 
-                        
+
 
                     } else {
 
@@ -242,7 +242,7 @@ class Posting {
 
                         return 2; //done post
 
-                        
+
 
                     } else {
 
@@ -385,8 +385,9 @@ class Posting {
             $locked = 0;
 
         }
+        $bdata = $this->mitsuba->common->getBoardData($board);
 
-        if (($resto == 0) && (empty($filename)) && ($nofile == 0)) {
+        if (($resto == 0) && (empty($filename)) && ($nofile == 0) && ($bdata['type'] !== 'textboard')) {
 
             echo "<center><h1>" . $lang['img/no_file'] . "</h1><br /><a href='./" . $board . "'>" . $lang['img/return'] . "</a></center>";
 
@@ -402,7 +403,7 @@ class Posting {
 
         }
 
-        $bdata = $this->mitsuba->common->getBoardData($board);
+
 
         $fname2 = $filename;
 
