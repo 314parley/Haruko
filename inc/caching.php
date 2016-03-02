@@ -1257,20 +1257,22 @@ if ($(\"#custom_cc\").prop(\"checked\"))
                 $boarddata['extensions'] = implode(", ", $AllExtensions);
 
             }
-
+$bdata = $this->mitsuba->common->getBoardData($board);
             $postform.= '<tr class="rules">
 
 				<td colspan="2">
 
-				<ul class="rules">
-
-				<li>' . $lang['img/supported_types'] . $boarddata['extensions'] . '</li>
+				<ul class="rules">';
+        if($bdata['type'] != "textboard"){
+				$postform.='<li>' . $lang['img/supported_types'] . $boarddata['extensions'] . '</li>
 
 				<li>' . sprintf($lang['img/max_filesize'], $this->mitsuba->common->human_filesize($boarddata['filesize'])) . '</li>
 
-				<li>' . $lang['img/thumbnail'] . '</li>
-
-				<li>' . sprintf($lang['img/unique_user_posts'], $unique) . '</li>
+				<li>' . $lang['img/thumbnail'] . '</li>';
+      }else{
+        $postform.='';
+      }
+				$postform.='<li>' . sprintf($lang['img/unique_user_posts'], $unique) . '</li>
 
 				' . $rules_ads . '</ul>
 
