@@ -36,7 +36,9 @@ $mitsuba->admin->reqPermission("warnings.delete");
               <h3 class="box-title"><?php echo $lang['mod/warnings'];?></h3>
 
               <div class="box-tools">
-	              <?php printf($lang['mod/showing_warnings'], 15); ?> <a href="?/warnings/all"><?php echo $lang['mod/show_all']; ?></a> <a href="?/warnings/recent&c=100"><?php printf($lang['mod/show_recent'], 100); ?></a>
+	              <?php printf($lang['mod/showing_warnings'], 15); ?>
+	              | <a href="?/warnings/all"><?php echo $lang['mod/show_all']; ?></a>
+	              | <a href="?/warnings/recent&c=100"><?php printf($lang['mod/show_recent'], 100); ?></a>
               </div>
             </div>
             <!-- /.box-header -->
