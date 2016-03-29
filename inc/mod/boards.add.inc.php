@@ -40,7 +40,7 @@ $mitsuba->admin->ui->checkToken($_POST['token']);
 
 			$captcha = 0;
 
-			$filesize = 2097152;
+			$filesize = 12582912;
 
 			$time_to_delete = 120;
 

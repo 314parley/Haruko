@@ -22,7 +22,7 @@ $mitsuba->admin->reqPermission("users.delete");
 
 				$mitsuba->admin->users->delUser($id);
 
-				$mitsuba->admin->logAction(sprintf($lang['log/deleted_user'], $username));
+				$mitsuba->admin->logAction(sprintf($lang['log/user_deleted'], $username));
 
 					?>
 

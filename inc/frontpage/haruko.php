@@ -118,7 +118,7 @@ class Frontpage {
                         </tr>';
 
                         $cats = $this->conn->query("SELECT * FROM links WHERE parent=-1 ORDER BY short ASC;");
-
+#var_dump($cats->fetch_assoc());
                         while ($row = $cats->fetch_assoc())
 
                         $file .= '<th data-field="section">'.$row['title'].'</th>';
@@ -136,7 +136,7 @@ class Frontpage {
                         while ($row = $cats->fetch_assoc()){
 
 	                        $children = $this->conn->query("SELECT * FROM links WHERE parent=".$row['id']." AND deleted = 0 ORDER BY date ASC");
-
+	                        if($children){
 	                        while ($child = $children->fetch_assoc()){
 
 		                        if (!empty($child['url_index'])){
@@ -157,7 +157,7 @@ class Frontpage {
 
 		                        }
 
-	                        }
+	                        }}
 
                         }
 
@@ -517,9 +517,9 @@ class Frontpage {
 
         while ($row = $result->fetch_assoc()) {
 
-            $file.= '<div class="card-panel">';
+            $file.= '<a name="'.$row['id'].'"></a><div class="card-panel">';
 
-            $file.= '<h4>' . $row['title'] . ' by ' . $row['who'] . ' - ' . date("d/m/Y h:i", $row['date']) . '</h4><hr />';
+            $file.= '<h5><strong>' . $row['title'] . '</strong> by ' . $row['who'] . ' - ' . date("d/m/Y h:i", $row['date']) . '</h5><hr />';
 
             $file.= $row['text'];
 

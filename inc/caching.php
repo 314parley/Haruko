@@ -1018,11 +1018,11 @@ class Caching {
 
                 if ($return == 1) {
 
-                    $postform.= '<form id="postform" action="./imgboard.php?mod=1" method="post" enctype="multipart/form-data">';
+                    $postform.= '<form id="postform" action="/imgboard.php?mod=1" class="dropzone" method="post" enctype="multipart/form-data">';
 
                 } else {
 
-                    $postform.= '<form id="postform" action="../imgboard.php" method="post" enctype="multipart/form-data">';
+                    $postform.= '<form id="postform" action="/imgboard.php" class="dropzone" method="post" enctype="multipart/form-data">';
 
                 }
 

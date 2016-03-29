@@ -244,7 +244,7 @@ class Admin {
 
         }
 
-        if ($_SESSION['boards'] != "%") {
+        if ($_SESSION['boards'] != "%" && $this->conn->query("SELECT * FROM `users` WHERE boards = '%' AND username = ".$_SESSION['username'])) {
 
             $boards = explode(",", $_SESSION['boards']);
 

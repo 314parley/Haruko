@@ -8,7 +8,7 @@ html {
 
 body:not(#menu) {
 	background-image: none!important;
-	background-color: #000112;
+	background-color: #000000;
 	font-family: trebuchet ms, sans serif;
 	color: #CCC;
 	font-size: 80%;
@@ -516,10 +516,10 @@ div.pagelist {
 	margin-left: 30px;
 	padding: 3px 7px;
 	float: left;
-	border: none;
+	/*border: none;
 	background: #071135;
 	border-right: 2px solid #D9BFB7;
-	border-bottom: 2px solid #D9BFB7;
+	border-bottom: 2px solid #D9BFB7;*/
 	list-style: none;
 	overflow: hidden;
 	color: #999;

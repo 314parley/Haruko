@@ -50,7 +50,7 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
 
 	<link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-	<link href="/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
 
  </head>
 
@@ -515,10 +515,10 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
     <h4>ATTENTION!</h4>
     <h5>I have already seen staff <em>banning</em> users instead of <em>warning</em> them. I always prefer warnings just because it's a slap on the wrist. I will finish my staffing guides, and I will make a link to the warning page (just like the ban option)</h5>
   </div>
-            <div class="callout callout-danger lead">
+            <!--<div class="callout callout-danger lead">
     <h4>Welcome to team314chan!</h4>
     <h5>Hello. If you visited your board now, there is an ongoing bug (working on it) where when your board is first created, the post form is initially borked.<br />To fix it, create a post (maybe a sticky explaining your board etc), and the pages will render properly.</h5>
-  </div>
+  </div>-->
  	  </section><!-- /.content -->
 
  	  <?php  } ?>
@@ -540,23 +540,9 @@ if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==1))
  	<!-- Control Sidebar -->
 
  	<aside class="control-sidebar control-sidebar-dark">
-
- 	  <!-- Create the tabs -->
-
- 	  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-
- 		<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-
-
-
- 		<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-
- 	  </ul>
-
- 	  <!-- Tab panes -->
-
- 	  
-
+	 	<div class="tab-content">
+		 	<h2>Mod options will eventually go here...</h2>
+		</div>
  	</aside><!-- /.control-sidebar -->
 
  	<!-- Add the sidebar's background. This div must be placed

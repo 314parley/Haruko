@@ -13,7 +13,9 @@ $mitsuba->admin->reqPermission("announcements.view");
 ?>
 
 <?php $mitsuba->admin->ui->startSection($lang['mod/announcements']); ?>
-
+<?php if($mitsuba->admin->canBoard("%")){?>
+[<a href="?/announcements/add">Add Announcement</a> / <a href="?/announcements/manage">Manage Announcements</a>]
+<?php }?>
 
 
 <?php

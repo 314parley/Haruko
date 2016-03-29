@@ -83,7 +83,7 @@ if (empty($_GET['r']))
 <form action="?/bans/add" method="POST">
 
 <?php $mitsuba->admin->ui->getToken($path); ?>
-
+<?php ?>
 <?php echo $lang['mod/ip']; ?>: <input type="text" name="ip" value="<?php echo $IPAddress; ?>"/><br />
 
 <?php echo $lang['mod/reason']; ?>: <input type="text" name="reason" /><br />
