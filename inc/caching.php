@@ -2120,11 +2120,9 @@ $bdata = $this->mitsuba->common->getBoardData($board);
 
 				<h1>' . $title . '</h1>
 
-				';
-
-            require_once ("libs/Michelf/Markdown.php");
-
-            $file.= \Michelf\Markdown::defaultTransform($text);
+				';            
+            require_once("libs/Parsedown/Parsedown.php");
+            $file.= \Parsedown::instance()->text($text);
 
             $file.= '
 
