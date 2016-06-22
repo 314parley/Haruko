@@ -1,3 +1,5 @@
+
+# THIS PROJECT IS NOW DEPRECIATED. INSTEAD OF USING GITHUB, WE ARE USING [GITGUD.IO](https://gitgud.io/parley/Haruko)
 Haruko
 =======
 
