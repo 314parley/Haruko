@@ -1,5 +1,6 @@
-
 # THIS PROJECT IS NOW DEPRECIATED. INSTEAD OF USING GITHUB, WE ARE USING [GITGUD.IO](https://gitgud.io/parley/Haruko)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F314parley%2FHaruko.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F314parley%2FHaruko?ref=badge_shield)
+
 Haruko
 =======
 
@@ -59,3 +60,7 @@ License
 See [LICENSE](https://github.com/314parley/Haruko/blob/master/LICENSE).
 
 Haruko contains code from [jQuery (MIT license)](http://jquery.com/), [PHP Markdown by Michel Fortin (custom license, available on website)](http://michelf.ca/projects/php-markdown/), [jBBCode by Jackson Owens (MIT license)](http://jbbcode.com/), [cool-php-captcha by José Rodríguez (GPLv3)](https://code.google.com/p/cool-php-captcha/), [Meny by Hakim El Hattab (custom license, available on website)](https://github.com/hakimel/Meny), [AdminLTE (MIT license)](https://github.com/almasaeed2010/AdminLTE) and [jquery.cookie by Klaus Hartl (MIT license)](https://github.com/carhartl/jquery-cookie).
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F314parley%2FHaruko.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F314parley%2FHaruko?ref=badge_large)
